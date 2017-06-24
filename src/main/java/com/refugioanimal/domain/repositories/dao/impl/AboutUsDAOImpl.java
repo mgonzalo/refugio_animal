@@ -5,7 +5,7 @@ package com.refugioanimal.domain.repositories.dao.impl;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-import org.hibernate.Session;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,6 @@ public class AboutUsDAOImpl implements AboutUsDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-
-//	public void setSessionFactory(SessionFactory sf) {
-//		this.sessionFactory = sf;
-//	}
 
 	/*
 	 * (non-Javadoc)
@@ -71,8 +67,9 @@ public class AboutUsDAOImpl implements AboutUsDAO {
 	 */
 	@Override
 	public AboutUs getAboutUs() {
-		Session session = this.sessionFactory.getCurrentSession();
-		AboutUs aboutUs = (AboutUs) session.createQuery("from AboutUs");
+//		Query query = sessionFactory.openSession().createQuery("from AboutUs");
+		Criteria criteria = sessionFactory.openSession().createCriteria(AboutUs.class);
+		AboutUs aboutUs = (AboutUs) criteria.uniqueResult();
 		logger.info("AboutUs found, details=" + aboutUs);
 		return aboutUs;
 	}

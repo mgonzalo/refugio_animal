@@ -21,17 +21,17 @@ import javax.persistence.Table;
 public class EventInfo {
 
 	@Id
-	@Column(name = "idEvento")
+	@Column(name = "idEvento", nullable = false)
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
-	@Column(name = "Fecha")
+	@Column(name = "fecha", nullable = true)
 	private Date eventDate;
 
-	@Column(name = "Descripcion")
+	@Column(name = "descripcion", nullable = true, length=500)
 	private String description;
 
-	@Column(name = "Lugar")
+	@Column(name = "lugar", nullable = true, length=200)
 	private String place;
 
 	/**

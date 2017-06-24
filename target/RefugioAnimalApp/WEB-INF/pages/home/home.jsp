@@ -55,16 +55,16 @@
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">MASCOTAS <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="/SearchPets">BUSCAR</a></li>
+                <li><a href="/searchPets">BUSCAR</a></li>
                 <li><a href="/pets/publish">PUBLICAR</a></li>
-				<li><a href="/AnimalCare">CUIDADOS</a></li>
+				<li><a href="/animalCare">CUIDADOS</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">VETERINARIAS/REFUGIOS<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="/SearchVeterinaryRefuges">BUSCAR</a></li>
-                <li><a href="/PublishVeterinaryRefuges">PUBLICAR</a></li>
+                <li><a href="/searchVeterinaryRefuges">BUSCAR</a></li>
+                <li><a href="/publishVeterinaryRefuges">PUBLICAR</a></li>
               </ul>
             </li>
             <li><a href="/contactus">CONTACTO</a></li>

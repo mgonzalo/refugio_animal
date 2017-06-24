@@ -21,8 +21,8 @@ public class PetDaoImpl implements PetDAO {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PetDaoImpl.class);
 	
-	@Autowired
-	private SessionFactory sessionFactory;
+//	@Autowired
+//	private SessionFactory sessionFactory;
 
 	/**
 	 * 

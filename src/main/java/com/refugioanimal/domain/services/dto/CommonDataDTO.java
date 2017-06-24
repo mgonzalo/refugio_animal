@@ -16,8 +16,8 @@ public class CommonDataDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = -6809254299238993204L;
 
-	private String aboutUsData;
-	private List<EventDataDTO> eventDataDTOs;
+	private AboutUsDataDTO aboutUsData;
+	private List<EventDataDTO> eventData;
 
 	/**
 	 * defualt constructor for the class.
@@ -27,29 +27,27 @@ public class CommonDataDTO implements Serializable {
 	}
 
 	/**
-	 * Constructor for class.
-	 * 
 	 * @param aboutUsData
-	 * @param eventDataDTOs
+	 * @param eventData
 	 */
-	public CommonDataDTO(String aboutUsData, List<EventDataDTO> eventDataDTOs) {
+	public CommonDataDTO(AboutUsDataDTO aboutUsData, List<EventDataDTO> eventData) {
 		super();
 		this.aboutUsData = aboutUsData;
-		this.eventDataDTOs = eventDataDTOs;
+		this.eventData = eventData;
 	}
 
 	/**
 	 * @return the aboutUsData
 	 */
-	public String getAboutUsData() {
+	public AboutUsDataDTO getAboutUsData() {
 		return aboutUsData;
 	}
 
 	/**
-	 * @return the eventDataDTOs
+	 * @return the eventData
 	 */
-	public List<EventDataDTO> getEventDataDTOs() {
-		return eventDataDTOs;
+	public List<EventDataDTO> getEventData() {
+		return eventData;
 	}
 
 }

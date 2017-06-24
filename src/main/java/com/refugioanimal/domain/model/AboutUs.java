@@ -19,11 +19,11 @@ import javax.persistence.Table;
 public class AboutUs {
 
 	@Id
-	@Column(name = "idAboutUS")
+	@Column(name = "idAboutUS", nullable = false)
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
-	@Column(name = "Descripcion")
+	@Column(name = "descripcion", nullable = true, length=1000)
 	private String description;
 
 	/**

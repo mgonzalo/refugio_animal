@@ -17,6 +17,7 @@ public class EventDataDTO implements Serializable {
 	private static final long serialVersionUID = 1187324200443449407L;
 
 	private String eventDescription;
+	private String eventPlace;
 	private Date dateDescription;
 
 	/**
@@ -30,11 +31,13 @@ public class EventDataDTO implements Serializable {
 	 * Constructor for class.
 	 * 
 	 * @param eventDescription
+	 * @param eventPlace
 	 * @param dateDescription
 	 */
-	public EventDataDTO(String eventDescription, Date dateDescription) {
+	public EventDataDTO(String eventDescription, String eventPlace, Date dateDescription) {
 		super();
 		this.eventDescription = eventDescription;
+		this.eventPlace = eventPlace;
 		this.dateDescription = dateDescription;
 	}
 
@@ -46,10 +49,10 @@ public class EventDataDTO implements Serializable {
 	}
 
 	/**
-	 * @param eventDescription the eventDescription to set
+	 * @return the eventPlace
 	 */
-	public void setEventDescription(String eventDescription) {
-		this.eventDescription = eventDescription;
+	public String getEventPlace() {
+		return eventPlace;
 	}
 
 	/**
@@ -57,13 +60,6 @@ public class EventDataDTO implements Serializable {
 	 */
 	public Date getDateDescription() {
 		return dateDescription;
-	}
-
-	/**
-	 * @param dateDescription the dateDescription to set
-	 */
-	public void setDateDescription(Date dateDescription) {
-		this.dateDescription = dateDescription;
 	}
 
 }

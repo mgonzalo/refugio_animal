@@ -1,40 +1,59 @@
-
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<web-app id="WebRefugioAnimal_ID" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-	<display-name>Refugio Animal Application</display-name>
+	<display-name>RefugioAnimalApp</display-name>
+	
+	<context-param>
+		    <param-name>contextConfigLocation</param-name>
+		    <param-value>
+		       classpath:com/refugioanimal/config/spring/spring-*.xml
+		    </param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>	
 
 	<servlet>
 		<servlet-name>mvc-dispatcher</servlet-name>
-		<servlet-class>
-			org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		 <init-param>
+	   	  <param-name>contextConfigLocation</param-name>
+		  <param-value>
+		        classpath:com/refugioanimal/config/spring/mvc-spring.xml
+		  </param-value>
+	     </init-param>	
+	     <load-on-startup>1</load-on-startup> 
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Encoding -->
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter> 
 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
-	</context-param>
+<!-- 	<context-param> -->
+<!-- 		<param-name>contextConfigLocation</param-name> -->
+<!-- 		<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value> -->
+<!-- 	</context-param> -->
 	
 	<welcome-file-list>
 	 	<!-- 
 	 		Por especificación es obligatorio declarar un file, pero en realidad no existe.
-	 		Es interceptado el request por acegi y luego pro Spring MVC 
+	 		Es interceptado el request por Spring MVC 
 	 	-->
 		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
 
-	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-	</listener>
 </web-app>

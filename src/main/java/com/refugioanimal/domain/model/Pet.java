@@ -19,39 +19,42 @@ import javax.persistence.Table;
 public class Pet {
 
 	@Id
-	@Column(name = "idMascota")
+	@Column(name = "idMascota", nullable = false)
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
-	@Column(name = "idTipoMascota")
+	@Column(name = "idTipoMascota", nullable = false)
 	private Long petTypeId;
 
-	@Column(name = "Nombre")
+	@Column(name = "nombre", nullable = true, length = 150)
 	private String petName;
 
-	@Column(name = "idTamanio")
+	@Column(name = "idTamanio", nullable = false)
 	private Long sizeId;
 
-	@Column(name = "Edad")
+	@Column(name = "edad", nullable = false)
 	private Long age;
 
-	@Column(name = "Sexo")
+	@Column(name = "sexo", nullable = false)
 	private Boolean sex;
 
-	@Column(name = "Raza")
+	@Column(name = "raza", nullable = true, length = 150)
 	private String breed;
 
-	@Column(name = "Castrado")
+	@Column(name = "castrado", nullable = false)
 	private Boolean castrated;
 
-	@Column(name = "Vacunado")
+	@Column(name = "vacunado", nullable = false)
 	private Boolean vaccinated;
 
-	@Column(name = "Compatibilidad")
+	@Column(name = "compatibilidad", nullable = false)
 	private Boolean compatibility;
 
-	@Column(name = "CuidadoEspecial")
+	@Column(name = "cuidado_especial", nullable = false)
 	private Boolean specialCare;
+
+	@Column(name = "descripcion", nullable = true, length = 1000)
+	private String description;
 
 	/**
 	 * @return the id
@@ -205,6 +208,20 @@ public class Pet {
 	 */
 	public void setSpecialCare(Boolean specialCare) {
 		this.specialCare = specialCare;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

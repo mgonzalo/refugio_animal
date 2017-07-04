@@ -216,18 +216,21 @@
 					<div class="col-md-9">
 					<c:forEach items="${results}" var="resultPetsSearch">
 						<!-- Single Blog Post -->
-						<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
-						<section class="blog-post-content">
-							<div>
-								<a href="<spring:url value="/pets/${resultPetsSearch.petID}"/>">
+						<a href="<spring:url value="/pets/${resultPetsSearch.petID}"/>">
+							<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
+							<section class="blog-post-content">
+								<div>
 									<h2 class="blog-post-title">
 										<img alt="${resultPetsSearch.name}" src="<spring:url value="/resources/img/pets/${resultPetsSearch.petID}/${resultPetsSearch.petID}_princ.jpg"/>"/>
-										Nombre Mascota ${resultPetsSearch.name} - Edad ${resultPetsSearch.age} año - Sexo ${resultPetsSearch.sex} - Raza ${resultPetsSearch.breed}
+										Nombre Mascota ${resultPetsSearch.name} 
+										Edad ${resultPetsSearch.age} años 
+										Sexo ${resultPetsSearch.sex} 
+										Raza ${resultPetsSearch.breed}
 									</h2>
-								</a>
-							</div>
-						</section> 
-						</article>
+								</div>
+							</section> 
+							</article>
+						</a>
 					</c:forEach>
 					</div>
 				</div>

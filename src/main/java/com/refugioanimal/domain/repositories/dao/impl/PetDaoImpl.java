@@ -3,7 +3,6 @@
  */
 package com.refugioanimal.domain.repositories.dao.impl;
 
-import static java.lang.Boolean.TRUE;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.hibernate.criterion.Restrictions.eq;
 import static org.hibernate.criterion.Restrictions.le;
@@ -14,7 +13,6 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,10 +82,11 @@ public class PetDaoImpl implements PetDAO {
 	public List<Pet> searchPets(SearchDTO searchDTO) {
 
 		Criteria criteria = sessionFactory.openSession().createCriteria(Pet.class);
-		if (searchDTO.getPetType() != null || searchDTO.getPetType() > ALL_DEFAULT_VALUE_COMBO_BOX) {
+
+		if (searchDTO.getPetType() != null && searchDTO.getPetType() > ALL_DEFAULT_VALUE_COMBO_BOX) {
 			criteria.add(eq("petType.id", searchDTO.getPetType()));
 		}
-		if (searchDTO.getSizeType() != null || searchDTO.getSizeType() > ALL_DEFAULT_VALUE_COMBO_BOX) {
+		if (searchDTO.getSizeType() != null && searchDTO.getSizeType() > ALL_DEFAULT_VALUE_COMBO_BOX) {
 			criteria.add(eq("size.id", searchDTO.getSizeType()));
 		}
 		if (isNotBlank(searchDTO.getBreed().trim())) {
@@ -105,13 +104,14 @@ public class PetDaoImpl implements PetDAO {
 		if (searchDTO.getVaccinate()) {
 			criteria.add(eq("vaccinated", searchDTO.getVaccinate()));
 		}
-		if (searchDTO.getProvinceId() != null || searchDTO.getProvinceId() > ALL_DEFAULT_VALUE_COMBO_BOX) {
+		if (searchDTO.getProvinceId() != null && searchDTO.getProvinceId() > ALL_DEFAULT_VALUE_COMBO_BOX) {
 			criteria.add(eq("owner.provinceId", searchDTO.getProvinceId()));
-			if (searchDTO.getLocationId() != null || searchDTO.getLocationId() > ALL_DEFAULT_VALUE_COMBO_BOX) {
+			if (searchDTO.getLocationId() != null && searchDTO.getLocationId() > ALL_DEFAULT_VALUE_COMBO_BOX) {
 				criteria.add(eq("owner.locationId", searchDTO.getLocationId()));
 			}
 		}
-		criteria.add(Restrictions.eq("publication.active", TRUE));
+		// TODO: arreglar esto.
+		// criteria.add(Restrictions.eq("publication.active", TRUE));
 		List<Pet> pets = criteria.list();
 		return pets;
 	}

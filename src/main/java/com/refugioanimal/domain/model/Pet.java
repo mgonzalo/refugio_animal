@@ -63,9 +63,10 @@ public class Pet {
 	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String description;
 
-	@ManyToOne(fetch = LAZY)
-	private User owner;
-
+//	@OneToOne(cascade = ALL)
+//	@JoinColumn(name = "idUsuario", nullable = false)
+//	private User owner;
+//
 	@OneToOne(cascade = ALL)
 	@JoinColumn(name = "idMascota", nullable = false)
 	private Publication publication;
@@ -307,19 +308,19 @@ public class Pet {
 		this.description = description;
 	}
 
-	/**
-	 * @return the owner
-	 */
-	public User getOwner() {
-		return owner;
-	}
-
-	/**
-	 * @param owner the owner to set
-	 */
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
+//	/**
+//	 * @return the owner
+//	 */
+//	public User getOwner() {
+//		return owner;
+//	}
+//
+//	/**
+//	 * @param owner the owner to set
+//	 */
+//	public void setOwner(User owner) {
+//		this.owner = owner;
+//	}
 
 	/**
 	 * @return the publication

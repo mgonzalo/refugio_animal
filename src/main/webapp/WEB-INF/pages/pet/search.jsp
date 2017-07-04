@@ -210,7 +210,7 @@
 	<div class="container">
 	 <c:choose>
  	        <c:when test="${results.size() > 0}">
- 	        	<h4>Resultados</h4>
+ 	        	<h4 class="blog-post-title">Resultados</h4>
 				<div class="row">
 					<!-- BLog Article Section -->
 					<div class="col-md-9">
@@ -219,9 +219,12 @@
 						<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
 						<section class="blog-post-content">
 							<div>
-								<h2 class="blog-post-title">
-									${resultPetsSearch.name} - ${resultPetsSearch.age} ${resultPetsSearch.sex} ${resultPetsSearch.breed}
-								</h2>
+								<a href="<spring:url value="/pets/${resultPetsSearch.petID}"/>">
+									<h2 class="blog-post-title">
+										<img alt="${resultPetsSearch.name}" src="<spring:url value="/resources/img/pets/${resultPetsSearch.petID}/${resultPetsSearch.petID}_princ.jpg"/>"/>
+										Nombre Mascota ${resultPetsSearch.name} - Edad ${resultPetsSearch.age} año - Sexo ${resultPetsSearch.sex} - Raza ${resultPetsSearch.breed}
+									</h2>
+								</a>
 							</div>
 						</section> 
 						</article>
@@ -230,7 +233,7 @@
 				</div>
  	        </c:when>
  	        <c:otherwise>
- 	        	<p>No se encontraron resultados para la busqueda, revise los filtros aplicados.</p>
+ 	        	<h3>No se encontraron resultados para la busqueda, revise los filtros aplicados.</h3>
  	        </c:otherwise>
  	 </c:choose>
 	</div>

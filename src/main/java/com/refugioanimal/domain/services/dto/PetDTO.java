@@ -21,15 +21,16 @@ public class PetDTO implements Serializable {
 	// like mammal, reptile, fish. etc.
 	private Long specieType;
 	private String name;
+	private Long age;
 	private String sex;
 	private String breed;// raza
-	private Long size;
-	private Long age;
+	private Long sizeType;
 	private Boolean castrated;
 	private Boolean vaccinate;
 	private Boolean compatibilityWithOtherAnimals;
 	private Boolean specialCare;
 	private String description;
+	private UserDTO userDTO;
 
 	/**
 	 * default constructor for class.
@@ -47,15 +48,17 @@ public class PetDTO implements Serializable {
 	 * @param name
 	 * @param sex
 	 * @param breed
-	 * @param size
+	 * @param sizeType
 	 * @param age
 	 * @param castrated
 	 * @param vaccinate
 	 * @param compatibilityWithOtherAnimals
 	 * @param specialCare
 	 * @param description
+	 * @param user
 	 */
-	public PetDTO(Long petID, Long petType, Long specieType, String name, String sex, String breed, Long size, Long age, Boolean castrated, Boolean vaccinate, Boolean compatibilityWithOtherAnimals, Boolean specialCare, String description) {
+	public PetDTO(Long petID, Long petType, Long specieType, String name, String sex, String breed, Long sizeType, Long age, Boolean castrated, Boolean vaccinate, Boolean compatibilityWithOtherAnimals, Boolean specialCare, String description,
+			UserDTO user) {
 		super();
 		this.petID = petID;
 		this.petType = petType;
@@ -63,13 +66,14 @@ public class PetDTO implements Serializable {
 		this.name = name;
 		this.sex = sex;
 		this.breed = breed;
-		this.size = size;
+		this.sizeType = sizeType;
 		this.age = age;
 		this.castrated = castrated;
 		this.vaccinate = vaccinate;
 		this.compatibilityWithOtherAnimals = compatibilityWithOtherAnimals;
 		this.specialCare = specialCare;
 		this.description = description;
+		this.userDTO = user;
 	}
 
 	/**
@@ -115,10 +119,10 @@ public class PetDTO implements Serializable {
 	}
 
 	/**
-	 * @return the size
+	 * @return the sizeType
 	 */
-	public Long getSize() {
-		return size;
+	public Long getSizeType() {
+		return sizeType;
 	}
 
 	/**
@@ -161,6 +165,111 @@ public class PetDTO implements Serializable {
 	 */
 	public String getDescription() {
 		return description;
+	}
+
+	/**
+	 * @return the userDTO
+	 */
+	public UserDTO getUserDTO() {
+		return userDTO;
+	}
+
+	/**
+	 * @param petID the petID to set
+	 */
+	public void setPetID(Long petID) {
+		this.petID = petID;
+	}
+
+	/**
+	 * @param petType the petType to set
+	 */
+	public void setPetType(Long petType) {
+		this.petType = petType;
+	}
+
+	/**
+	 * @param specieType the specieType to set
+	 */
+	public void setSpecieType(Long specieType) {
+		this.specieType = specieType;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @param age the age to set
+	 */
+	public void setAge(Long age) {
+		this.age = age;
+	}
+
+	/**
+	 * @param sex the sex to set
+	 */
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	/**
+	 * @param breed the breed to set
+	 */
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+
+	/**
+	 * @param size the sizeType to set
+	 */
+	public void setsizeType(Long size) {
+		this.sizeType = size;
+	}
+
+	/**
+	 * @param castrated the castrated to set
+	 */
+	public void setCastrated(Boolean castrated) {
+		this.castrated = castrated;
+	}
+
+	/**
+	 * @param vaccinate the vaccinate to set
+	 */
+	public void setVaccinate(Boolean vaccinate) {
+		this.vaccinate = vaccinate;
+	}
+
+	/**
+	 * @param compatibilityWithOtherAnimals the compatibilityWithOtherAnimals to set
+	 */
+	public void setCompatibilityWithOtherAnimals(Boolean compatibilityWithOtherAnimals) {
+		this.compatibilityWithOtherAnimals = compatibilityWithOtherAnimals;
+	}
+
+	/**
+	 * @param specialCare the specialCare to set
+	 */
+	public void setSpecialCare(Boolean specialCare) {
+		this.specialCare = specialCare;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @param userDTO the userDTO to set
+	 */
+	public void setUserDTO(UserDTO userDTO) {
+		this.userDTO = userDTO;
 	}
 
 }

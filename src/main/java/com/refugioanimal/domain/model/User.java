@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@Column(name = "idUsuario", nullable = false)
+	@Column(name = "idUsuario", unique = true, nullable = false)
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
@@ -31,7 +31,7 @@ public class User {
 	private String dni;
 	@Column(name = "email", nullable = false, length = 150)
 	private String email;
-	@Column(name = "telfono", nullable = false, length = 80)
+	@Column(name = "telefono", nullable = false, length = 80)
 	private String phone;
 	@Column(name = "movil", nullable = true, length = 80)
 	private String mobilePhone;
@@ -43,7 +43,7 @@ public class User {
 	private Long locationId;
 	@Column(name = "direccion", nullable = true, length = 250)
 	private String direction;
-	@Column(name = "idTipoEntidad", nullable = false)
+	@Column(name = "idTipoEntidad", nullable = true)
 	private Long entityTypeId;
 	@Column(name = "razon_Social", nullable = true, length = 200)
 	private String businessName;
@@ -53,6 +53,52 @@ public class User {
 	private String availableTime;
 	@Column(name = "dedicacion", nullable = true, length = 200)
 	private String dedication;
+
+	/**
+	 * default constructor for class.
+	 */
+	public User() {
+		super();
+	}
+
+	/**
+	 * Constructor for class.
+	 * 
+	 * @param name
+	 * @param lastname
+	 * @param dni
+	 * @param email
+	 * @param phone
+	 * @param mobilePhone
+	 * @param countryId
+	 * @param provinceId
+	 * @param locationId
+	 * @param direction
+	 * @param entityTypeId
+	 * @param businessName
+	 * @param workingHours
+	 * @param availableTime
+	 * @param dedication
+	 */
+	public User(String name, String lastname, String dni, String email, String phone, String mobilePhone, Long countryId, Long provinceId, Long locationId, String direction, Long entityTypeId, String businessName, String workingHours,
+			String availableTime, String dedication) {
+		super();
+		this.name = name;
+		this.lastname = lastname;
+		this.dni = dni;
+		this.email = email;
+		this.phone = phone;
+		this.mobilePhone = mobilePhone;
+		this.countryId = countryId;
+		this.provinceId = provinceId;
+		this.locationId = locationId;
+		this.direction = direction;
+		this.entityTypeId = entityTypeId;
+		this.businessName = businessName;
+		this.workingHours = workingHours;
+		this.availableTime = availableTime;
+		this.dedication = dedication;
+	}
 
 	/**
 	 * @return the id

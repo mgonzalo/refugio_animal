@@ -3,12 +3,17 @@
  */
 package com.refugioanimal.domain.model;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,24 +24,26 @@ import javax.persistence.Table;
 public class Pet {
 
 	@Id
-	@Column(name = "idMascota", nullable = false)
+	@Column(name = "idMascota", unique = true, nullable = false)
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
-	@Column(name = "idTipoMascota", nullable = false)
-	private Long petTypeId;
+	@OneToOne(cascade = ALL)
+	@JoinColumn(name = "idTipoMascota", nullable = false)
+	private PetType petType;
 
-	@Column(name = "nombre", nullable = true, length = 150)
+	@Column(name = "nombre", nullable = false, length = 150)
 	private String petName;
 
-	@Column(name = "idTamanio", nullable = false)
-	private Long sizeId;
+	@OneToOne(cascade = ALL)
+	@JoinColumn(name = "idTamanio", nullable = false)
+	private Size size;
 
 	@Column(name = "edad", nullable = false)
 	private Long age;
 
-	@Column(name = "sexo", nullable = false)
-	private Boolean sex;
+	@Column(name = "sexo", nullable = false, length = 2)
+	private Character sex;
 
 	@Column(name = "raza", nullable = true, length = 150)
 	private String breed;
@@ -56,6 +63,82 @@ public class Pet {
 	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String description;
 
+	@ManyToOne(fetch = LAZY)
+	private User owner;
+
+	@OneToOne(cascade = ALL)
+	@JoinColumn(name = "idMascota", nullable = false)
+	private Publication publication;
+
+	/**
+	 * default constructor for class.
+	 */
+	public Pet() {
+		super();
+	}
+
+	/**
+	 * Constructor for class.
+	 * 
+	 * @param id
+	 * @param petType
+	 * @param petName
+	 * @param size
+	 * @param age
+	 * @param sex
+	 * @param breed
+	 * @param castrated
+	 * @param vaccinated
+	 * @param compatibility
+	 * @param specialCare
+	 * @param description
+	 */
+	public Pet(Long id, PetType petType, String petName, Size size, Long age, Character sex, String breed, Boolean castrated, Boolean vaccinated, Boolean compatibility, Boolean specialCare, String description) {
+		super();
+		this.id = id;
+		this.petType = petType;
+		this.petName = petName;
+		this.size = size;
+		this.age = age;
+		this.sex = sex;
+		this.breed = breed;
+		this.castrated = castrated;
+		this.vaccinated = vaccinated;
+		this.compatibility = compatibility;
+		this.specialCare = specialCare;
+		this.description = description;
+	}
+
+	/**
+	 * Constructor for class.
+	 * 
+	 * @param petType
+	 * @param petName
+	 * @param size
+	 * @param age
+	 * @param sex
+	 * @param breed
+	 * @param castrated
+	 * @param vaccinated
+	 * @param compatibility
+	 * @param specialCare
+	 * @param description
+	 */
+	public Pet(PetType petType, String petName, Size size, Long age, Character sex, String breed, Boolean castrated, Boolean vaccinated, Boolean compatibility, Boolean specialCare, String description) {
+		super();
+		this.petType = petType;
+		this.petName = petName;
+		this.size = size;
+		this.age = age;
+		this.sex = sex;
+		this.breed = breed;
+		this.castrated = castrated;
+		this.vaccinated = vaccinated;
+		this.compatibility = compatibility;
+		this.specialCare = specialCare;
+		this.description = description;
+	}
+
 	/**
 	 * @return the id
 	 */
@@ -71,17 +154,17 @@ public class Pet {
 	}
 
 	/**
-	 * @return the petTypeId
+	 * @return the petType
 	 */
-	public Long getPetTypeId() {
-		return petTypeId;
+	public PetType getPetType() {
+		return petType;
 	}
 
 	/**
-	 * @param petTypeId the petTypeId to set
+	 * @param petType the petType to set
 	 */
-	public void setPetTypeId(Long petTypeId) {
-		this.petTypeId = petTypeId;
+	public void setPetType(PetType petType) {
+		this.petType = petType;
 	}
 
 	/**
@@ -99,17 +182,17 @@ public class Pet {
 	}
 
 	/**
-	 * @return the sizeId
+	 * @return the size
 	 */
-	public Long getSizeId() {
-		return sizeId;
+	public Size getSize() {
+		return size;
 	}
 
 	/**
-	 * @param sizeId the sizeId to set
+	 * @param size the size to set
 	 */
-	public void setSizeId(Long sizeId) {
-		this.sizeId = sizeId;
+	public void setSize(Size size) {
+		this.size = size;
 	}
 
 	/**
@@ -129,14 +212,14 @@ public class Pet {
 	/**
 	 * @return the sex
 	 */
-	public Boolean getSex() {
+	public Character getSex() {
 		return sex;
 	}
 
 	/**
 	 * @param sex the sex to set
 	 */
-	public void setSex(Boolean sex) {
+	public void setSex(Character sex) {
 		this.sex = sex;
 	}
 
@@ -222,6 +305,34 @@ public class Pet {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * @return the owner
+	 */
+	public User getOwner() {
+		return owner;
+	}
+
+	/**
+	 * @param owner the owner to set
+	 */
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	/**
+	 * @return the publication
+	 */
+	public Publication getPublication() {
+		return publication;
+	}
+
+	/**
+	 * @param publication the publication to set
+	 */
+	public void setPublication(Publication publication) {
+		this.publication = publication;
 	}
 
 }

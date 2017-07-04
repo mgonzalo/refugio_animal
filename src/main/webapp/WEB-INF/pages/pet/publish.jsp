@@ -70,153 +70,165 @@
   <!-- Contact Section -->
   <section class="animated-progress-area mt-50 contact-form-section section-padding">
     <div class="container">
+    	<c:choose>
+    		<c:when test="${resultStatus == 'CREATED'}">
+    			<c:set var="className" value="alert alert-success"/>
+    		</c:when>
+    		<c:otherwise>
+    			<c:set var="className" value="alert alert-danger"/>
+    		</c:otherwise>
+    	</c:choose>
+      <div id="messageSave" class="${className}" style="display: ${showDiv};">
+  			<strong>${resultMessaje}</strong>
+	  </div>
       <div class="row">
-        <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
+        <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn">
           <h2>Publicar Mascota!</h2>
           <p>Para publicar, completa el siguiente formulario:</p>
         </div>
         <div class="col-md-7 col-md-offset-1 contact-form contact-info-section">
           <spring:url value="/pets/new" var="petActionUrl" />
-          <form:form class="shake" role="form" action="${petActionUrl}" modelAttribute="petDTO" method="post" id="formPublish" name="contact-form" data-toggle="validator">
-           	<h4>Especie:</h4>
-            <div class="form-group wow slideInRight">
-              <label for="animal" class="sr-only">Especie</label>
-              <form:select path="specieType" id="petType" class="form-control contact-control" name="animal" data-error="Por favor seleccione el tipo de especie">
-              	<option id="1">Mamifero</option>
-              	<option id="2">Ave</option>
-              	<option id="3">Insecto</option>
-              	<option id="4">Reptil</option>
-              </form:select>
-              <div class="help-block with-errors"></div>
-            </div>
-           	<h4>Tipo:</h4>
-            <div class="form-group wow slideInRight">
-              <label for="animal" class="sr-only">Tipo</label>
-               <form:select path="petType" id="petType" class="form-control contact-control" name="animal" data-error="Por favor seleccione el tipo de mascota">
-              	<option id="1">Perro</option>
-              	<option id="2">Gato</option>
-              	<option id="3">Conejo</option>
-              	<option id="4">Paloma</option>
-              </form:select>
-              <div class="help-block with-errors"></div>
-            </div>
+          <form:form class="shake" role="form" action="${petActionUrl}" modelAttribute="petDTO" method="post" id="formPublish" name="formPublish" data-toggle="validator">
 			<h4>Datos de la Mascota:</h4>
-            <div class="form-group wow slideInRight">
-              <label for="nombre" class="sr-only">Nombre</label>
-              <form:input path="name" type="text" placeholder="name" id="nombre" class="form-control contact-control" name="nombre" data-error="Por favor complete el nombre"/>
+            <div class="form-group">
+              <form:input path="name" type="text" placeholder="Nombre" id="name" class="form-control contact-control" name="name" data-error="Por favor complete el nombre"/>
               <div class="help-block with-errors"></div>
             </div>
-
-            <div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="edad" class="sr-only">Edad</label>
-              <form:input path="age" type="text" placeholder="Edad" id="age" class="form-control contact-control" name="edad" data-error="Por favor complete la edad"/>
+            <div class="form-group">
+              <form:input path="age" type="text" placeholder="Edad" id="age" class="form-control contact-control" name="age" data-error="Por favor complete la edad"/>
               <div class="help-block with-errors"></div>
             </div>
-
-            <div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="sexo" class="sr-only">Sexo</label>
-              <form:input path="sex" type="text" placeholder="Hembra o Macho" id="sex" class="form-control contact-control" name="sexo" data-error="Por favor complete el sexo"/>
+            <div class="form-group">
+              <form:input path="sex" type="text" placeholder="Sexo: Hembra(H) o Macho(M)" id="sex" class="form-control contact-control" name="sex" maxlength="1" data-error="Por favor complete el sexo"/>
               <div class="help-block with-errors"></div>
             </div>
-			
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="ubicacion" class="sr-only">Ubicacion</label>
-              <form:input path="" type="text" placeholder="Ubicacion" id="ubicacion" class="form-control contact-control" name="ubicacion" data-error="Por favor complete la ubicacion"/>
-              <div class="help-block with-errors"></div>
-            </div>
-			
 			<h4>Caracteristicas de la Mascota:</h4>
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="raza" class="sr-only">Raza</label>
-              <form:input path="breed" type="text" placeholder="Raza" id="raza" class="form-control contact-control" name="raza" data-error="Por favor complete la raza"/>
+			<div class="form-group">
+              <h6>Especie:</h6>
+              <span>
+              <form:select path="specieType" id="specieType" class="form-control contact-control" name="specieType" data-error="Por favor seleccione el tipo de especie">
+              	<form:option value="1" label="Mamifero"/>
+              	<form:option value="2" label="Ave"/>
+              	<form:option value="3" label="Insecto"/>
+              	<form:option value="4" label="Reptil"/>
+              </form:select>
+              </span>
               <div class="help-block with-errors"></div>
             </div>
-			
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="tamano" class="sr-only">Tamano</label>
-              <form:input path="size" type="text" placeholder="Tamano: Chico, Mediano o Grande" id="tamano" class="form-control contact-control" name="tamano" data-error="Por favor complete el tamano"/>
+            <div class="form-group">
+               <h6>Tipo:</h6>
+               <span>
+               <form:select path="petType" id="petType" class="form-control contact-control" name="petType" data-error="Por favor seleccione el tipo de mascota">
+              	<form:option value="1" label="Perro"/>
+              	<form:option value="2" label="Gato"/>
+              	<form:option value="3" label="Conejo"/>
+              	<form:option value="4" label="Paloma"/>
+              </form:select>
+               </span>
               <div class="help-block with-errors"></div>
             </div>
-
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="castrado" class="sr-only">Castrado</label>
-              <form:input path="castrated" type="text" placeholder="Castrado: SI o NO" id="tamano" class="form-control contact-control" name="castrado" data-error="Por favor complete si esta castrado"/>
+			<div class="form-group">
+              <form:input path="breed" type="text" placeholder="Raza" id="breed" class="form-control contact-control" name="breed" data-error="Por favor complete la raza"/>
               <div class="help-block with-errors"></div>
             </div>
-			
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="vacunado" class="sr-only">Vacunado</label>
-              <form:input path="vaccinate" type="text" placeholder="Vacunado: SI o NO" id="vacunado" class="form-control contact-control" name="vacunado" data-error="Por favor complete si esta vacunado"/>
+			<div class="form-group">
+               <h6>Tamaño:</h6>
+               <span>
+              <form:select path="sizeType" id="sizeType" class="form-control contact-control" name="sizeType" data-error="Por favor seleccione el tamaño de la mascota">
+              	<form:option value="1" label="Pequeño"/>
+              	<form:option value="2" label="Mediano"/>
+              	<form:option value="3" label="Grande"/>
+              	<form:option value="4" label="Gigante"/>
+              </form:select>
+              </span>
               <div class="help-block with-errors"></div>
             </div>
-			
+			<div class="form-group">
+              <h6>Castrado:</h6>
+              <span><form:checkbox path="castrated" id="castrated" name="castrated" label="" cssStyle="form-control contact-control"/></span>
+              <div class="help-block with-errors"></div>
+            </div>
+			<div class="form-group">
+  				<h6>Vacunado:</h6>              
+  				<span><form:checkbox path="vaccinate" id="vaccinate" name="vaccinate" label="" cssStyle="form-control contact-control"/></span>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group">
+              <h6>Cuidado especial:</h6>
+              <span><form:checkbox path="specialCare" id="specialCare" name="specialCare" label="" cssStyle="form-control contact-control"/></span>
+              <div class="help-block with-errors"></div>
+            </div>
+           <div class="form-group">
+              <h6>Compatibilidad con otros animales:</h6>
+              <span><form:checkbox path="compatibilityWithOtherAnimals" id="compatibilityWithOtherAnimals" name="compatibilityWithOtherAnimals" label="" cssStyle="form-control contact-control"/></span>	
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group">
+              <form:textarea path="description" id="description" name="description" cols="100" rows="3" placeholder="Descripcion de la Mascota" cssStyle="form-control contact-control"/>
+              <div class="help-block with-errors"></div>
+            </div>
 			<h4>Fotos de la Mascota:</h4>
-			
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="foto1" class="sr-only">Foto1</label>
-              <input type="file" id="nombre" class="form-control" name="foto1" >
+			<div class="form-group">
+              <h6>Foto Principal</h6>
+              <span><input type="file" id="nombre" class="form-control" name="foto1"></span>
               <div class="help-block with-errors"></div>
             </div>
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="foto2" class="sr-only">Foto2</label>
-              <input type="file" id="nombre" class="form-control" name="foto2" >
+			<div class="form-group">
+              <h6>Foto2</h6>
+              <span><input type="file" id="nombre" class="form-control" name="foto2"></span>
               <div class="help-block with-errors"></div>
             </div>
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="foto3" class="sr-only">Foto3</label>
-              <input type="file" id="nombre" class="form-control" name="foto3" >
-              <div class="help-block with-errors"></div>
-            </div>
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="foto4" class="sr-only">Foto4</label>
-              <input type="file" id="nombre" class="form-control" name="foto4" >
-              <div class="help-block with-errors"></div>
-            </div>
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="foto5" class="sr-only">Foto5</label>
-              <input type="file" id="nombre" class="form-control" name="foto5" >
-              <div class="help-block with-errors"></div>
-            </div>
-			
-			<h4>Datos del dueno:</h4>
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="nombre" class="sr-only">Nombre</label>
-              <input type="text" placeholder="Nombre y Apellido" id="nombre" class="form-control contact-control" name="nombre" required data-error="Por favor complete el nombre y el Apellido">
+			<div class="form-group">
+              <h6>Foto3</h6>
+              <span><input type="file" id="nombre" class="form-control" name="foto3"></span>
               <div class="help-block with-errors"></div>
             </div>
 
-            <div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="DNI" class="sr-only">DNI</label>
-              <input type="text" placeholder="DNI" id="dni" class="form-control contact-control" name="dni" required data-error="Por favor complete el DNI">
+			<h4>Datos del dueño:</h4>
+			<div class="form-group">
+              <form:input path="userDTO.name" placeholder="Nombre y Apellido" id="user.name" class="form-control contact-control" name="user.name" data-error="Por favor complete el nombre y el Apellido"/>
               <div class="help-block with-errors"></div>
             </div>
-
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="email" class="sr-only">Email</label>
-              <input type="email" placeholder="Email" id="email" class="form-control contact-control" name="email" required data-error="Por favor complete tu Email">
+            <div class="form-group">
+               <form:input path="userDTO.docNumber" placeholder="Numero de Documento" id="user.docnumber" class="form-control contact-control" name="user.docnumber" data-error="Por favor complete el DNI"/>
               <div class="help-block with-errors"></div>
             </div>
-			
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="telefono" class="sr-only">Telefono</label>
-              <input type="text" placeholder="Telefono" id="telefono" class="form-control contact-control" name="telefono" required data-error="Por favor complete el telefono">
+			<div class="form-group">
+              <form:input path="userDTO.email" placeholder="Email" id="user.email" class="form-control contact-control" name="user.email" data-error="Por favor complete tu Email"/>
               <div class="help-block with-errors"></div>
             </div>
-			
-            <div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="direccion" class="sr-only">Direccion</label>
-              <input type="text" placeholder="Direccion" id="direccion" class="form-control contact-control" name="Direccion" required data-error="Por favor complete la direccion">
+			<div class="form-group">
+               <form:input path="userDTO.phone" placeholder="Telefono" id="user.phone" class="form-control contact-control" name="user.phone" data-error="Por favor complete el telefono"/>
               <div class="help-block with-errors"></div>
             </div>
-			
-			<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-              <label for="ubicacion" class="sr-only">Ubicacion</label>
-              <input type="text" placeholder="Ubicacion" id="ubicacion" class="form-control contact-control" name="ubicacion" required data-error="Por favor complete la ubicacion">
+            <div class="form-group">
+              <h6>Provincia:</h6>
+			  <span><form:select path="userDTO.provinceId" id="user.provinceId" class="form-control contact-control" name="user.provinceId" data-error="Por favor seleccione seleccione la provincia">
+              	<form:option value="1" label="Buenos Aires"/>
+              	<form:option value="2" label="Buenos Aires - GBA"/>
+              	<form:option value="3" label="Capital Federal"/>
+              	<form:option value="4" label="Catamarca"/>
+              </form:select>
+              </span>
               <div class="help-block with-errors"></div>
             </div>
-			
-            <button class="btn btn-common btn-lg wow bounceInUp" data-wow-delay="0.8s" type="submit" id="form-submit"><i class="fa fa-send"></i> Publicar</button>
-            <div id="msgSubmit" class="h3 text-center hidden"></div>
+			<div class="form-group">
+              <h6>Localidad:</h6>
+              <span>
+			  <form:select path="userDTO.locationId" id="user.locationId" class="form-control contact-control" name="user.locationId" data-error="Por favor seleccione seleccione la localidad">
+              	<form:option value="1" label="25 de Mayo"/>
+              	<form:option value="2" label="3 de febrero"/>
+              	<form:option value="3" label="A. Alsina"/>
+              	<form:option value="4" label="A. Gonzáles Cháves"/>
+              </form:select>
+              </span>
+              <div class="help-block with-errors"></div>
+            </div>
+			<div class="form-group">
+              <form:input path="userDTO.street" type="text" placeholder="Direccion" id="user.street" class="form-control contact-control" name="user.street" data-error="Por favor complete la ubicacion"/>
+              <div class="help-block with-errors"></div>
+            </div>
+            <button class="btn btn-common btn-lg" type="submit" id="form-submit"><i class="fa fa-send"></i>Publicar</button>
             <div class="clearfix"></div>
           </form:form>
         </div>

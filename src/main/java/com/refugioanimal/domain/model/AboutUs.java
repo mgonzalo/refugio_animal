@@ -19,12 +19,19 @@ import javax.persistence.Table;
 public class AboutUs {
 
 	@Id
-	@Column(name = "idAboutUS", nullable = false)
+	@Column(name = "idAboutUS", unique = true, nullable = false)
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
-	@Column(name = "descripcion", nullable = true, length=1000)
+	@Column(name = "descripcion", unique = true, nullable = false, length = 1000)
 	private String description;
+
+	/**
+	 * default constructor for class.
+	 */
+	public AboutUs() {
+		super();
+	}
 
 	/**
 	 * @return the id

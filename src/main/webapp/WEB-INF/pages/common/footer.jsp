@@ -9,7 +9,7 @@
         <!-- Row Starts -->
         <div class="row section">
           <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-3 col-xs-12 wow fadeIn">
+          <div class="footer-widget col-xs-12 col-sm-6 col-md-8">
             <h3 class="small-title">Sobre Nosotros</h3>
             <c:out value="${commonData.aboutUsData.aboutUsDescription}" escapeXml="false"/>
             <div class="social-footer">

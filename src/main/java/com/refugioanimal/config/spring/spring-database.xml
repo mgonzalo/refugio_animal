@@ -21,6 +21,11 @@
 				<value>com.refugioanimal.domain.model.AboutUs</value>
 				<value>com.refugioanimal.domain.model.EventInfo</value>
 				<value>com.refugioanimal.domain.model.Pet</value>
+				<value>com.refugioanimal.domain.model.PetType</value>
+				<value>com.refugioanimal.domain.model.Size</value>
+				<value>com.refugioanimal.domain.model.Species</value>
+				<value>com.refugioanimal.domain.model.Status</value>
+				<value>com.refugioanimal.domain.model.User</value>
 			</list>
 		</property>
    		<property name="packagesToScan" value="com.refugioanimal.domain.model" />

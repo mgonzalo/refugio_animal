@@ -1,215 +1,241 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Viewport Meta Tag -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="RefugioAnimal, es una aplicacion para publicar o adptar mascotas, contactarte con refugios o veterinarios, realizar donaciones y aprender mas cobre como cuidar a tu mascota.">
-   	<meta name="title" content="Refugio Animal Argentina - no compres, adopta!"/>
-    <meta name="author" content="RefugioAnimal.org"/>
-    <link rel="shortcut icon" href="<spring:url value="/resources/img/favicon.ico"/>">
-    <title>Refugio Animal Argentina - no compres, adopta!.</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/bootstrap.min.css"/>"/>
-    <!-- Main Style -->
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/main.css"/>"/>
-    <!-- Slicknav Css -->
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/slicknav.css"/>"/>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Viewport Meta Tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description"
+	content="RefugioAnimal, es una aplicacion para publicar o adptar mascotas, contactarte con refugios o veterinarios, realizar donaciones y aprender mas cobre como cuidar a tu mascota.">
+<meta name="title"
+	content="Refugio Animal Argentina - no compres, adopta!" />
+<meta name="author" content="RefugioAnimal.org" />
+<link rel="shortcut icon"
+	href="<spring:url value="/resources/img/favicon.ico"/>">
+<title>Refugio Animal Argentina - no compres, adopta!.</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/bootstrap.min.css"/>" />
+<!-- Main Style -->
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/main.css"/>" />
+<!-- Slicknav Css -->
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/slicknav.css"/>" />
 
-    <!-- Responsive Style -->
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/responsive.css"/>"/>
-    <!--Fonts-->
-    <link rel="stylesheet" media="screen" href="<spring:url value="/resources/fonts/font-awesome.min.css"/>"/>
-    <link rel="stylesheet" media="screen" href="<spring:url value="/resources/fonts/simple-line-icons.css"/>"/>    
-     
-     <!-- Extras -->
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/owl.carousel.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/owl.theme.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/animate.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/normalize.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/settings.css"/>"/>
+<!-- Responsive Style -->
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/responsive.css"/>" />
+<!--Fonts-->
+<link rel="stylesheet" media="screen"
+	href="<spring:url value="/resources/fonts/font-awesome.min.css"/>" />
+<link rel="stylesheet" media="screen"
+	href="<spring:url value="/resources/fonts/simple-line-icons.css"/>" />
 
-    <!-- Color CSS Styles  -->
-    <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/green.css"/>" media="screen"/>       
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+<!-- Extras -->
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/owl.carousel.css"/>" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/owl.theme.css"/>" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/animate.css"/>" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/normalize.css"/>" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/settings.css"/>" />
+
+<!-- Color CSS Styles  -->
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/resources/css/green.css"/>" media="screen" />
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
     </script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
     <![endif]-->
-  </head>
-  <body>
+</head>
+<body>
 
-    <!-- Header area wrapper starts -->
-    <header id="header-wrap">
-      <jsp:include page="../common/header.jsp" />
-    </header>
-    <!-- Header-wrap Section End -->
-    
-    <!-- Page Header -->
-    <div class="page-header-section">
-      <div class="container">
-        <div class="row">
-          <div class="page-header-area">
-            <div class="page-header-content">
-              <h2>Buscar Mascotas</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Page Header End -->
-  <!-- Contact Section -->
-  <section class="contact-form-section section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
-          <p>Busca tu proxima mascota, completando el siguiente formulario:</p>
-        </div>
-		
-		     <div class="col-md-6">
-            <!-- Single accordion starts -->
-            <div class="single-accordion-set wow fadeIn"  data-wow-delay="0.9s">
-            <!-- Single Accordion Set -->
-            <div id="accordionRound" class="mt-50" role="tablist" aria-multiselectable="true">
-                <!-- Single Panel -->
-                 <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne-1">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordionRound" href="#collapseOne-1" aria-expanded="true" aria-controls="collapseOne-1">Tipo de animal</a>
-                    </h4>
-                  </div>
-                  <div id="collapseOne-1" class="collapse show" role="tabpanel" aria-labelledby="headingOne-1">
-                    <div class="col-md-7 col-md-offset-1 contact-form contact-info-section">
-					  <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
-						<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-						  <label for="subject" class="sr-only">Animal</label>
-						  <input type="text" placeholder="Animal" id="msg_subject" class="form-control contact-control" name="subject" required data-error="Por favor complete una animal">
-						  <div class="help-block with-errors"></div>
-						</div>
-						<div class="clearfix"></div>
-						</form>
-					</div>
-					</div>                
-                 </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne-2">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordionRound" href="#collapseOne-2" aria-expanded="true" aria-controls="collapseOne-2">Caracteristicas</a>
-                    </h4>
-                  </div>
-                  <div id="collapseOne-2" class="collapse show" role="tabpanel" aria-labelledby="headingOne-1">
-                    <div class="col-md-7 col-md-offset-1 contact-form contact-info-section">
-					  <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
-						<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-						  <label for="subject" class="sr-only">Edad</label>
-						  <input type="text" placeholder="Edad" id="msg_subject" class="form-control contact-control" name="subject" required data-error="Por favor complete una animal">
-						  <div class="help-block with-errors"></div>
-						</div>
-						<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-						  <label for="subject" class="sr-only">Sexo</label>
-						  <input type="text" placeholder="Hembra o Macho" id="msg_subject" class="form-control contact-control" name="subject" required data-error="Por favor complete una animal">
-						  <div class="help-block with-errors"></div>
-						</div>
-						<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-						  <label for="subject" class="sr-only">Raza</label>
-						  <input type="text" placeholder="Raza" id="msg_subject" class="form-control contact-control" name="subject" required data-error="Por favor complete una animal">
-						  <div class="help-block with-errors"></div>
-						</div>
-						<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-						  <label for="subject" class="sr-only">Tamano</label>
-						  <input type="text" placeholder="Tamano" id="msg_subject" class="form-control contact-control" name="subject" required data-error="Por favor complete una animal">
-						  <div class="help-block with-errors"></div>
-						</div>
-						<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-						  <label for="subject" class="sr-only">Castrado</label>
-						  <input type="text" placeholder="Castrado: SI o NO" id="msg_subject" class="form-control contact-control" name="subject" required data-error="Por favor complete una animal">
-						  <div class="help-block with-errors"></div>
-						</div>
-						<div class="clearfix"></div>
-						</form>
-					</div>
-					</div>                
-					 
-                 </div>
-				 <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne-3">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordionRound" href="#collapseOne-3" aria-expanded="true" aria-controls="collapseOne-3">
-                        Ubicacion
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseOne-3" class="collapse show" role="tabpanel" aria-labelledby="headingOne-3">
-                    <div class="col-md-7 col-md-offset-1 contact-form contact-info-section">
-					  <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
-						<div class="form-group wow slideInRight" data-wow-delay="0.5s">
-						  <label for="subject" class="sr-only">Ubicacion</label>
-						  <input type="text" placeholder="Animal" id="msg_subject" class="form-control contact-control" name="subject" required data-error="Por favor complete una animal">
-						  <div class="help-block with-errors"></div>
-						</div>
-						<div class="clearfix"></div>
-						</form>
-					</div>
-					</div>                
-                 </div>
-            </div>
-			</div>
-			</div>
+	<!-- Header area wrapper starts -->
+	<header id="header-wrap"> <jsp:include
+		page="../common/header.jsp" /> </header>
+	<!-- Header-wrap Section End -->
 
-      </div>
-	  <div class="col-md-7 col-md-offset-1 contact-form contact-info-section">
-            <button class="btn btn-common btn-lg wow bounceInUp" data-wow-delay="0.8s" type="submit" id="form-submit"><i class="fa fa-search"></i> Buscar</button>
-            <div id="msgSubmit" class="h3 text-center hidden"></div>
-            <div class="clearfix"></div>
-          
-        </div>
-    </div>
-  </section>
-  <!-- Contact Section End -->
-    
-    <!-- Classic Blog Section -->
-    <section class="animated-progress-area mt-50">
-      <div class="container">	
-        <div class="row">
-          <!-- BLog Article Section -->
-          <div class="col-md-9">
-            <!-- Single Blog Post -->
-            <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
-              <!-- Post Content -->
-              <section class="blog-post-content">
-                <div>
-                  <h2 class="blog-post-title"><a href="#">Resultados</a></h2>
-                </div>
-                <div class="blog-post">
-                </div><p>resultados</p>
-              </section>
-            </article>
-            <!-- Slider Post -->
-            <article class="blog-post-wrapper format-slider wow fadeIn" data-wow-delay="0.3s">
-              <!-- Author Info -->
-				<!-- Featured Content -->
-             
-              <!-- Post Content -->
-              <section class="blog-post-content">
-                <div>
-                  <h2 class="blog-post-title"><a href="#">Resultados</a></h2>
-                </div>
-                <div class="blog-post">
-                  <p>Resultados</p>
-                </div>
-              </section>
-              <!-- Footer -->
-             </article>
-            
-		</section>
-        <!-- Featured Section Ends -->
-    	<jsp:include page="../common/footer.jsp" />
-  </body>
+	<!-- Page Header -->
+	<div class="page-header-section">
+		<div class="container">
+			<div class="row">
+				<div class="page-header-area">
+					<div class="page-header-content">
+						<h2>Buscar Mascotas</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Page Header End -->
+	<!-- Contact Section -->
+	<section
+		class="animated-progress-area mt-50 contact-form-section section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 mb-50 text-center contact-title-text">
+				<h2>Busca tu proxima mascota!!</h2>
+				<p>Busca tu proxima mascota, utilizando los siguientes filtros:</p>
+			</div>
+			<spring:url value="/pets/doSearch" var="searchActionUrl" />
+			<form:form class="shake" role="form" action="${searchActionUrl}"
+				modelAttribute="searchDTO" method="post" id="searchfrom"
+				name="searchfrom">
+				<div class="row">
+					<div class="col-xs-8 col-md-4">
+						<div class="form-group">
+							<h6>Tipo de Mascota</h6>
+							<form:select path="petType" id="petType"
+								class="form-control contact-control" name="petType"
+								data-error="Por favor seleccione el tipo de mascota">
+								<form:option value="0" label="Todos" selected="selected"/>
+								<form:option value="1" label="Perro" />
+								<form:option value="2" label="Gato" />
+								<form:option value="3" label="Conejo" />
+								<form:option value="4" label="Paloma" />
+							</form:select>
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-4">
+						<div class="form-group">
+							<h6>Tamaño</h6>
+							<form:select path="sizeType" id="sizeType"
+								class="form-control contact-control" name="sizeType"
+								data-error="Por favor seleccione el tamaño de la mascota">
+								<form:option value="0" label="Todos" selected="selected"/>
+								<form:option value="1" label="Pequeño" />
+								<form:option value="2" label="Mediano" />
+								<form:option value="3" label="Grande" />
+								<form:option value="4" label="Gigante" />
+							</form:select>
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-4">
+						<div class="form-group">
+							<h6>Raza</h6>
+							<form:input path="breed" type="text" id="breed"
+								class="form-control contact-control" name="breed"
+								data-error="Por favor complete la raza" />
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-4">
+						<div class="form-group">
+							<h6>Edad</h6>
+							<form:input path="age" type="text" id="age"
+								class="form-control contact-control" name="age"
+								data-error="Por favor complete la edad" />
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-4">
+						<div class="form-group">
+							<h6>Provincia</h6>
+							<form:select path="provinceId" id="provinceId"
+								class="form-control contact-control" name="provinceId"
+								data-error="Por favor seleccione seleccione la provincia">
+								<form:option value="0" label="Todos" selected="selected"/>
+								<form:option value="1" label="Buenos Aires" />
+								<form:option value="2" label="Buenos Aires - GBA" />
+								<form:option value="3" label="Capital Federal" />
+								<form:option value="4" label="Catamarca" />
+							</form:select>
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-4">
+						<div class="form-group">
+							<h6>Localidad</h6>
+							<form:select path="locationId" id="locationId"
+								class="form-control contact-control" name="locationId"
+								data-error="Por favor seleccione seleccione la localidad">
+								<form:option value="0" label="Todos" selected="selected"/>
+								<form:option value="1" label="25 de Mayo" />
+								<form:option value="2" label="3 de febrero" />
+								<form:option value="3" label="A. Alsina" />
+								<form:option value="4" label="A. Gonzáles Cháves" />
+							</form:select>
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-3">
+						<div class="form-group">
+							<h6>Sexo:</h6>
+							<span><form:radiobutton path="sex" id="sex" name="sex"
+									itemValue="H" label="Hembra" /> <form:radiobutton path="sex"
+									id="sex" name="sex" itemValue="M" label="Macho" /> </span>
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-3">
+						<div class="form-group">
+							<h6>Castrado:</h6>
+							<span><form:checkbox path="castrated" id="castrated"
+									label="" name="castrated" /></span>
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-3">
+						<div class="form-group">
+							<h6>Vacunado:</h6>
+							<span><form:checkbox path="vaccinate" id="vaccinate"
+									label="" name="vaccinate" /></span>
+						</div>
+					</div>
+
+				</div>
+				<div
+					class="col-md-7 col-md-offset-1 contact-form contact-info-section">
+					<button class="btn btn-common btn-lg" type="submit"
+						id="form-submit">
+						<i class="fa fa-search"></i>Buscar
+					</button>
+				</div>
+			</form:form>
+		</div>
+	</div>
+	</section>
+	<!-- Contact Section End -->
+
+	<!-- Classic Blog Section -->
+	<section
+		class="animated-progress-area mt-50 contact-form-section section-padding">
+	<div class="container">
+	 <c:choose>
+ 	        <c:when test="${results.size() > 0}">
+ 	        	<h4>Resultados</h4>
+				<div class="row">
+					<!-- BLog Article Section -->
+					<div class="col-md-9">
+					<c:forEach items="${results}" var="resultPetsSearch">
+						<!-- Single Blog Post -->
+						<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
+						<section class="blog-post-content">
+							<div>
+								<h2 class="blog-post-title">
+									${resultPetsSearch.name} - ${resultPetsSearch.age} ${resultPetsSearch.sex} ${resultPetsSearch.breed}
+								</h2>
+							</div>
+						</section> 
+						</article>
+					</c:forEach>
+					</div>
+				</div>
+ 	        </c:when>
+ 	        <c:otherwise>
+ 	        	<p>No se encontraron resultados para la busqueda, revise los filtros aplicados.</p>
+ 	        </c:otherwise>
+ 	 </c:choose>
+	</div>
+	</section>
+	<!-- Featured Section Ends -->
+	<jsp:include page="../common/footer.jsp" />
+</body>
 </html>

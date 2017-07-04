@@ -70,7 +70,7 @@ public class AboutUsDAOImpl implements AboutUsDAO {
 //		Query query = sessionFactory.openSession().createQuery("from AboutUs");
 		Criteria criteria = sessionFactory.openSession().createCriteria(AboutUs.class);
 		AboutUs aboutUs = (AboutUs) criteria.uniqueResult();
-		logger.info("AboutUs found, details=" + aboutUs);
+		logger.info("AboutUs found :" + aboutUs);
 		return aboutUs;
 	}
 

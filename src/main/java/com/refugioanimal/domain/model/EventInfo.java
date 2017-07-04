@@ -21,18 +21,25 @@ import javax.persistence.Table;
 public class EventInfo {
 
 	@Id
-	@Column(name = "idEvento", nullable = false)
+	@Column(name = "idEvento", unique = true, nullable = false)
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
-	@Column(name = "fecha", nullable = true)
+	@Column(name = "fecha", nullable = false)
 	private Date eventDate;
 
-	@Column(name = "descripcion", nullable = true, length=500)
+	@Column(name = "descripcion", nullable = false, length = 500)
 	private String description;
 
-	@Column(name = "lugar", nullable = true, length=200)
+	@Column(name = "lugar", nullable = false, length = 200)
 	private String place;
+
+	/**
+	 * default constructor for class.
+	 */
+	public EventInfo() {
+		super();
+	}
 
 	/**
 	 * @return the id

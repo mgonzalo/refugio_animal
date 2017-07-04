@@ -211,6 +211,16 @@ button:hover {
   position: relative;
   box-shadow: none;
 }
+.form-group h6 {
+   	float:left;
+    margin-right:10px;
+    padding:7px 0;
+    color:gray;
+}
+.form-group span {
+	display: block;
+    overflow: hidden;
+}
 .form-group .form-control:focus {
   
 }
@@ -549,9 +559,9 @@ i:hover {
 }
 #carousel-area .carousel-item .carousel-caption h3 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
-  color: #fff;
-  font-weight: 100;
+  font-size: 35px;
+  color: #e8e0e0;
+  font-weight: 650;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
   -webkit-animation-duration: 1.2s;
@@ -2111,7 +2121,7 @@ footer #copyright .nav-inline {
 }
 .panel-default .panel-heading a::after {
   color: #fff;
-  content: "";
+  content: "ï„‚";
   font-family: "FontAwesome";
   font-size: 22px;
   font-weight: 300;
@@ -2122,13 +2132,13 @@ footer #copyright .nav-inline {
   top: 50%;
 }
 .panel-default .panel-heading .collapsed::after {
-  content: "";
+  content: "ï„ƒ";
 }
 .accordionSmall .panel-default .panel-heading a::after {
-  content: "";
+  content: "ï�¨";
 }
 .accordionSmall .panel-default .panel-heading .collapsed::after {
-  content: "";
+  content: "ï�§";
 }
 .panel-default .panel-collapse .panel-body {
   background-color: #fafafa;
@@ -2384,7 +2394,7 @@ ul.nav-tabs li a {
 }
 #single-testimonial-item .testimonial-inner::before {
     color: #fff;
-    content: "";
+    content: "ï„�";
     font-family: fontawesome;
     font-size: 45px;
     left: 25px;

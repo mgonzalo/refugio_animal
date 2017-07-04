@@ -61,10 +61,10 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img src="assets/img/slider/bg-1.jpg" alt="">
+              <img src="<spring:url value="/resources/img/perros_en_la_calle.jpg"/>">
               <div class="carousel-caption">
                 <h2>Adopta a tu proxima mascota!!</h2>
-                <h3>Brindale un hogar y el amor que ellos necesitan./h3>
+                <h3>Brindale un hogar y el amor que ellos necesitan.</h3>
                 <a class="btn btn-lg btn-common" href="<spring:url value="/pets/search"/>">
                   <i class="fa fa-heart">
                   </i>
@@ -73,10 +73,10 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="assets/img/slider/bg-2.jpg" alt="">
+              <img src="<spring:url value="/resources/img/gatos.jpg"/>">
               <div class="carousel-caption">
                 <h2>Adopta a tu proxima mascota!!</h2>
-                <h3>Brindale un hogar y el amor que ellos necesitan./h3>
+                <h3>Brindale un hogar y el amor que ellos necesitan.</h3>
                 <a class="btn btn-common btn-lg " href="<spring:url value="/pets/search"/>">
                   <i class="fa fa-heart">
                   </i>
@@ -85,10 +85,10 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="assets/img/slider/bg-3.jpg" alt="">
+              <img src="<spring:url value="/resources/img/animales_varios.jpg"/>">
               <div class="carousel-caption">
                 <h2>Adopta a tu proxima mascota!!</h2>
-                <h3>Brindale un hogar y el amor que ellos necesitan./h3>
+                <h3>Brindale un hogar y el amor que ellos necesitan.</h3>
                 <a class="btn btn-common btn-lg " href="<spring:url value="/pets/search"/>">
                   <i class="fa fa-heart">
                   </i>
@@ -259,8 +259,8 @@
           </div>
          <div class="col-md-12">
             <!-- End Portfolio Recent Projects -->
-            <div class="text-center loadmore-button wow fadeInUpQuick" data-wow-delay=".6s">
-              <a href="buscar-mascota.html" class="btn btn-common"><i class="fa fa-arrows"></i> Ver mas</a>
+            <div class="text-center loadmore-button wow fadeInUpQuick">
+              <a href="<spring:url value="/pets/search"/>" class="btn btn-common"><i class="fa fa-arrows"></i> Ver mas</a>
             </div>
          </div>
         </div>
@@ -282,7 +282,7 @@
  	         <c:choose>
  	         	<c:when test="${commonData.eventData.size() > 0}">
 	 	         	<c:forEach items="${commonData.eventData}" var="events">
-	 	         		<div class="col-md-4 col-sm-6 wow fadeInUpQuick" data-wow-delay=".3s" data-animation="fadeIn" data-animation-delay="01">
+	 	         		<div class="col-md-4 col-sm-6 wow fadeInUpQuick">
 				            <div class="featured-box">
 				              <div class="featured-icon">
 				                <i class="icon-pencil">

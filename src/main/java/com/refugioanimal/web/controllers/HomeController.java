@@ -6,6 +6,7 @@ package com.refugioanimal.web.controllers;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,7 @@ public class HomeController extends BaseController {
 
 	@RequestMapping(value = { "/", "home" }, method = GET)
 	public ModelAndView getIndexView(ModelAndView model) {
-		LastPetPublishDTO lastPetPublish = petService.getLastPublishPets(new Date());
+		List<LastPetPublishDTO> lastPetPublish = petService.getLastPublishPets(new Date());
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + HOME_INDEX_VIEW);
 		model.addObject("commonData", getCommonData());
 		model.addObject("lastPets", lastPetPublish);

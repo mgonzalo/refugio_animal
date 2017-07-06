@@ -3,6 +3,7 @@
  */
 package com.refugioanimal.domain.services.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -56,7 +57,6 @@ public class PetServiceImpl implements PetService {
 	private PublicationDAO publicationDao;
 	@Autowired
 	private SpeciesDAO speciesDao;
-	
 
 	/*
 	 * (non-Javadoc)
@@ -72,9 +72,13 @@ public class PetServiceImpl implements PetService {
 	 * @see com.refugioanimal.domain.services.PetService#getLastPublishPets(java.util.Date)
 	 */
 	@Override
-	public LastPetPublishDTO getLastPublishPets(Date today) {
-		petDao.getLastPublishPets();
-		return new LastPetPublishDTO();
+	public List<LastPetPublishDTO> getLastPublishPets(Date today) {
+		List<Pet> pets = petDao.getLastPublishPets();
+		List<LastPetPublishDTO> lastPetPublishDTOs = new ArrayList<LastPetPublishDTO>();
+		for (Pet pet : pets) {
+			lastPetPublishDTOs.add(new LastPetPublishDTO(pet.getId(), pet.getPetType().getId(), pet.getPetType().getSpecies().getId(), pet.getPetName()));
+		}
+		return lastPetPublishDTOs;
 	}
 
 	/*

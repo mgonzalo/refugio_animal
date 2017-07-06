@@ -24,7 +24,7 @@
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/responsive.css"/>"/>
     <!--Fonts-->
-    <link rel="stylesheet" media="screen" href="<spring:url value="/resources/fonts/font-awesome.min.css"/>"/>
+    <link rel="stylesheet" media="screen" href="<spring:url value="/resources/fonts/font-awesome/font-awesome.min.css"/>"/>
     <link rel="stylesheet" media="screen" href="<spring:url value="/resources/fonts/simple-line-icons.css"/>"/>    
      
     <!-- Extras -->
@@ -121,14 +121,14 @@
           <div class="col-md-12">
             <!-- Portfolio Controller/Buttons -->
             <div class="controls text-center wow fadeInUpQuick" data-wow-delay=".6s">
-              <a class="filter active btn btn-common" data-filter="all">
+              <a class="filter active btn btn-common" data-filter=".branding">
                 Perros 
               </a>
-              <a class="filter btn btn-common" data-filter=".branding">
+              <a class="filter btn btn-common" data-filter=".marketing">
                 Gatos 
               </a>
-              <a class="filter btn btn-common" data-filter=".marketing">
-                Otras
+              <a class="filter btn btn-common" data-filter=".planning">
+                Otros
               </a>
             </div>
             <!-- Portfolio Controller/Buttons Ends-->
@@ -136,7 +136,7 @@
 
           <!-- Portfolio Recent Projects -->
           <div id="portfolio" class="row wow fadeInUpQuick" data-wow-delay="0.8s">
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing planning">
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing">
               <div class="portfolio-item">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/img1.jpg" alt="" />                  
@@ -148,7 +148,7 @@
                         <a class="right-link" href="#"><i class="icon-heart"></i></a>
                       </div>
                       <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota</h4></a>
+                        <a class="sup-title" href="#"><h4>Nombre Mascota gato 1</h4></a>
                         <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
                       </div>
                     </div>
@@ -156,7 +156,7 @@
                 </div>               
               </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding planning">
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding">
               <div class="portfolio-item">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/img2.jpg" alt="" />                  
@@ -168,7 +168,7 @@
                         <a class="right-link" href="#"><i class="icon-heart"></i></a>
                       </div>
                       <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota</h4></a>
+                        <a class="sup-title" href="#"><h4>Nombre Mascota perro 1</h4></a>
                         <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
                       </div>
                     </div>
@@ -176,7 +176,7 @@
                 </div>               
               </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding research">
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding">
               <div class="portfolio-item">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/img3.jpg" alt="" />                  
@@ -188,7 +188,7 @@
                         <a class="right-link" href="#"><i class="icon-heart"></i></a>
                       </div>
                       <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota</h4></a>
+                        <a class="sup-title" href="#"><h4>Nombre Mascota perro 2</h4></a>
                         <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
                       </div>
                     </div>
@@ -196,7 +196,7 @@
                 </div>               
               </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing research">
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing">
               <div class="portfolio-item">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/img4.jpg" alt="" />                  
@@ -208,7 +208,7 @@
                         <a class="right-link" href="#"><i class="icon-heart"></i></a>
                       </div>
                       <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota</h4></a>
+                        <a class="sup-title" href="#"><h4>Nombre Mascota gato 2</h4></a>
                         <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
                       </div>
                     </div>
@@ -216,7 +216,7 @@
                 </div>               
               </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing planning">
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing">
               <div class="portfolio-item">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/img5.jpg" alt="" />                  
@@ -228,7 +228,7 @@
                         <a class="right-link" href="#"><i class="icon-heart"></i></a>
                       </div>
                       <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota</h4></a>
+                        <a class="sup-title" href="#"><h4>Nombre Mascota gato 3</h4></a>
                         <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
                       </div>
                     </div>
@@ -236,7 +236,7 @@
                 </div>               
               </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix planning research">
+            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix planning">
               <div class="portfolio-item">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/img6.jpg" alt="" />                  
@@ -248,7 +248,7 @@
                         <a class="right-link" href="#"><i class="icon-heart"></i></a>
                       </div>
                       <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota</h4></a>
+                        <a class="sup-title" href="#"><h4>Nombre Mascota otro</h4></a>
                         <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
                       </div>
                     </div>

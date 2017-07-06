@@ -220,14 +220,15 @@
 							<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
 							<section class="blog-post-content">
 								<div>
+									<img alt="${resultPetsSearch.name}" src="<spring:url value="/resources/img/pets/${resultPetsSearch.petID}/${resultPetsSearch.petID}_0.jpg"/>"/>
 									<h2 class="blog-post-title">
-										<img alt="${resultPetsSearch.name}" src="<spring:url value="/resources/img/pets/${resultPetsSearch.petID}/${resultPetsSearch.petID}_princ.jpg"/>"/>
-										Nombre Mascota ${resultPetsSearch.name} 
-										Edad ${resultPetsSearch.age} años 
-										Sexo ${resultPetsSearch.sex} 
-										Raza ${resultPetsSearch.breed}
+										${resultPetsSearch.name} 
 									</h2>
 								</div>
+								<div class="blog-post"></div>
+								<p>${resultPetsSearch.age}</p>
+								<p>${resultPetsSearch.sex}</p>
+								<p>${resultPetsSearch.breed}</p>
 							</section> 
 							</article>
 						</a>

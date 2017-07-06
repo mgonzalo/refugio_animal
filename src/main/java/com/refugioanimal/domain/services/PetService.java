@@ -36,7 +36,7 @@ public interface PetService {
 	 * @param today
 	 * @return getLastPublishPets
 	 */
-	LastPetPublishDTO getLastPublishPets(Date today);
+	List<LastPetPublishDTO> getLastPublishPets(Date today);
 
 	/**
 	 * Create the pet, the user and the publication objets.

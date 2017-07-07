@@ -95,11 +95,50 @@
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-              <form:input path="age" type="text" placeholder="Edad" id="age" class="form-control contact-control" name="age" data-error="Por favor complete la edad"/>
+<%--               <form:input path="age" type="text" placeholder="Edad" id="age" class="form-control contact-control" name="age" data-error="Por favor complete la edad"/> --%>
+              <h6>Edad:</h6>
+              <span>
+              <form:select path="age" id="age" class="form-control contact-control">
+              	<form:option value="0.1" label="1 Mes"/>
+              	<form:option value="0.2" label="2 Meses"/>
+              	<form:option value="0.3" label="3 Meses"/>
+              	<form:option value="0.4" label="4 Meses"/>
+              	<form:option value="0.5" label="5 Meses"/>
+              	<form:option value="0.6" label="6 Meses"/>
+              	<form:option value="0.7" label="7 Meses"/>
+              	<form:option value="0.8" label="8 Meses"/>
+              	<form:option value="0.9" label="9 Meses"/>
+              	<form:option value="0.10" label="10 Meses"/>
+              	<form:option value="0.11" label="11 Meses"/>
+              	<form:option value="1" label="1 Año"/>
+              	<form:option value="2" label="2 Años"/>
+				<form:option value="3" label="3 Años"/>
+				<form:option value="4" label="4 Años"/>
+				<form:option value="5" label="5 Años"/>
+				<form:option value="6" label="6 Años"/>
+				<form:option value="7" label="7 Años"/>
+				<form:option value="8" label="8 Años"/>
+				<form:option value="9" label="9 Años"/>
+				<form:option value="10" label="10 Años"/>
+				<form:option value="11" label="11 Años"/>
+				<form:option value="12" label="12 Años"/>
+				<form:option value="13" label="13 Años"/>
+				<form:option value="14" label="14 Años"/>
+				<form:option value="15" label="15 Años"/>
+				<form:option value="16" label="16 Años"/>
+				<form:option value="17" label="17 Años"/>
+              </form:select>
+              </span>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-              <form:input path="sex" type="text" placeholder="Sexo: Hembra(H) o Macho(M)" id="sex" class="form-control contact-control" name="sex" maxlength="1" data-error="Por favor complete el sexo"/>
+              <h6>Sexo:</h6>
+              <span>
+              <form:select path="sex" id="sex" class="form-control contact-control">
+              	<form:option value="H" label="Hembra (H)"/>
+              	<form:option value="M" label="Macho (M)"/>
+              </form:select>
+              </span>
               <div class="help-block with-errors"></div>
             </div>
 			<h4>Caracteristicas de la Mascota:</h4>

@@ -226,9 +226,9 @@
 									</h2>
 								</div>
 								<div class="blog-post"></div>
-								<p>${resultPetsSearch.age}</p>
-								<p>${resultPetsSearch.sex}</p>
-								<p>${resultPetsSearch.breed}</p>
+								<p>${resultPetsSearch.age}<c:choose><c:when test="${resultPetsSearch.age < 1}"> Meses</c:when><c:otherwise> Años</c:otherwise></c:choose> - 
+								<c:choose><c:when test="${resultPetsSearch.sex == 'H'}">Hembra</c:when><c:otherwise>Macho</c:otherwise></c:choose> - 
+								${resultPetsSearch.breed}</p>
 							</section> 
 							</article>
 						</a>

@@ -5,6 +5,12 @@ package com.refugioanimal.domain.services.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * @author Administrator
  */
@@ -15,11 +21,22 @@ public class UserDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 3020506720120968985L;
 
+	@NotBlank(message = "Ingrese el nombre del dueño.")
+	@Size(min = 1, max = 300)
 	private String name;
+	@NotBlank(message = "Ingrese el dni del dueño.")
+	@Size(min = 1, max = 11)
 	private Long docNumber;
+	@NotBlank(message = "Ingrese el email del dueño.")
+	@Email(message = "El email insgresado no es un email valido.")
+	@Size(min = 1, max = 150)
 	private String email;
+	@NotBlank(message = "Ingrese el telefono del dueño.")
+	@Size(min = 1, max = 80)
 	private String phone;
+	@NotNull(message = "Ingrese la provincia.")
 	private Long provinceId;
+	@NotNull(message = "Ingrese la localidad.")
 	private Long locationId;
 	private String street;
 

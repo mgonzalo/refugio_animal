@@ -31,8 +31,10 @@ import com.refugioanimal.domain.repositories.dao.UserDAO;
 import com.refugioanimal.domain.services.PetService;
 import com.refugioanimal.domain.services.dto.LastPetPublishDTO;
 import com.refugioanimal.domain.services.dto.PetDTO;
+import com.refugioanimal.domain.services.dto.PetTypeDTO;
 import com.refugioanimal.domain.services.dto.SizeTypeDTO;
 import com.refugioanimal.domain.services.dto.SpecieTypeDTO;
+import com.refugioanimal.domain.wrappers.PetTypeWrapper;
 import com.refugioanimal.domain.wrappers.PetWrapper;
 import com.refugioanimal.domain.wrappers.PublicationWrapper;
 import com.refugioanimal.domain.wrappers.SizeWrapper;
@@ -94,9 +96,9 @@ public class PetServiceImpl implements PetService {
 		PetType petType = petTypeDao.getPetTypeById(petDTO.getPetType());
 
 		Pet petToCreate = PetWrapper.toPet(petDTO, size, petType);
-		Long petIdCreated = petDao.savePet(PetWrapper.toPet(petDTO, size, petType));
+		petDao.savePet(PetWrapper.toPet(petDTO, size, petType));
 		User userToCreate = UserWrapper.toUser(petDTO.getUserDTO());
-		Long userIdCreated = userDao.saveUser(userToCreate);
+		userDao.saveUser(userToCreate);
 		publicationDao.createPublication(PublicationWrapper.toPublication(petToCreate, userToCreate));
 	}
 
@@ -118,6 +120,16 @@ public class PetServiceImpl implements PetService {
 	public List<SizeTypeDTO> getSizeTypes() {
 		List<Size> sizes = sizeDao.getAllSizes();
 		return SizeWrapper.toSizeTypDTO(sizes);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.refugioanimal.domain.services.PetService#getPetTypesBySpecieId(java.lang.Long)
+	 */
+	@Override
+	public List<PetTypeDTO> getPetTypesBySpecieId(Long specieId) {
+		List<PetType> petTypes = petTypeDao.getPetTypeBySpecieId(specieId);
+		return PetTypeWrapper.toPetTypeDTO(petTypes);
 	}
 
 }

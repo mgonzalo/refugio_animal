@@ -13,6 +13,7 @@ import com.refugioanimal.domain.exceptions.SizeException;
 import com.refugioanimal.domain.exceptions.UserException;
 import com.refugioanimal.domain.services.dto.LastPetPublishDTO;
 import com.refugioanimal.domain.services.dto.PetDTO;
+import com.refugioanimal.domain.services.dto.PetTypeDTO;
 import com.refugioanimal.domain.services.dto.SizeTypeDTO;
 import com.refugioanimal.domain.services.dto.SpecieTypeDTO;
 
@@ -63,5 +64,12 @@ public interface PetService {
 	 * @return List<SizeTypeDTO>
 	 */
 	List<SizeTypeDTO> getSizeTypes();
+
+	/**
+	 * Get a PetTypes by specieId.
+	 * @param specieId
+	 * @return List<PetTypeDTO>
+	 */
+	List<PetTypeDTO> getPetTypesBySpecieId(Long specieId);
 
 }

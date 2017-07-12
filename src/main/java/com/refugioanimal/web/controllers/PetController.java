@@ -8,6 +8,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ import com.refugioanimal.domain.services.SearchService;
 import com.refugioanimal.domain.services.UserService;
 import com.refugioanimal.domain.services.dto.PetDTO;
 import com.refugioanimal.domain.services.dto.PetTypeDTO;
+import com.refugioanimal.domain.services.dto.ProvinceDTO;
 import com.refugioanimal.domain.services.dto.SearchDTO;
 import com.refugioanimal.domain.services.dto.SizeTypeDTO;
 import com.refugioanimal.domain.services.dto.SpecieTypeDTO;
@@ -50,6 +53,10 @@ public class PetController extends BaseController {
 		modelAndView.setViewName(VIEW_CONTAIN_FOLDER_NAME + PUBLISH_PET_VIEW);
 		List<SpecieTypeDTO> specieTypeDTOs = petService.getSpecieTypes();
 		List<SizeTypeDTO> sizeTypeDTOs = petService.getSizeTypes();
+		List<ProvinceDTO> provinceDTOs = userservice.getAllProvincesByCountry();
+		modelAndView.addObject("specieTypes", specieTypeDTOs);
+		modelAndView.addObject("sizeTypes", sizeTypeDTOs);
+		modelAndView.addObject("provinces", provinceDTOs);
 		modelAndView.addObject("petDTO", new PetDTO());
 		modelAndView.addObject("commonData", getCommonData());
 		modelAndView.addObject("showDiv", "none");
@@ -57,10 +64,17 @@ public class PetController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/new" }, method = POST)
-	public ModelAndView newPet(@ModelAttribute("petDTO") PetDTO petDTO, ModelAndView modelAndView) {
+	public ModelAndView newPet(@ModelAttribute("petDTO") @Valid PetDTO petDTO, ModelAndView modelAndView) {
 		modelAndView.setViewName(VIEW_CONTAIN_FOLDER_NAME + PUBLISH_PET_VIEW);
+		List<SpecieTypeDTO> specieTypeDTOs = petService.getSpecieTypes();
+		List<SizeTypeDTO> sizeTypeDTOs = petService.getSizeTypes();
+		List<ProvinceDTO> provinceDTOs = userservice.getAllProvincesByCountry();
+
+		modelAndView.addObject("provinces", provinceDTOs);
 		modelAndView.addObject("petDTO", petDTO);
 		modelAndView.addObject("commonData", getCommonData());
+		modelAndView.addObject("specieTypes", specieTypeDTOs);
+		modelAndView.addObject("sizeTypes", sizeTypeDTOs);
 
 		try {
 			petService.createPublication(petDTO);
@@ -122,7 +136,6 @@ public class PetController extends BaseController {
 		return model;
 	}
 
-	
 	/**
 	 * Get all petTypes by SpecieType selected.
 	 * 
@@ -131,8 +144,8 @@ public class PetController extends BaseController {
 	 */
 	@RequestMapping(value = "/petTypes", method = GET, produces = "application/json")
 	@ResponseBody
-	public PetTypeDTO getPetTypesBySpecieType(@RequestParam(name = "specieType", required = true) Long specieType) {
-		return null;
+	public List<PetTypeDTO> getPetTypesBySpecieType(@RequestParam(name = "specieType", required = true) Long specieType) {
+		return petService.getPetTypesBySpecieId(specieType);
 	}
 
 }

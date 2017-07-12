@@ -60,6 +60,31 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
     <![endif]-->
+    
+    <script src="<spring:url value="/resources/js/jquery-min.js"/>"></script>
+        <!-- Tether Js -->
+    <script src="<spring:url value="/resources/js/tether.min.js"/>"></script>
+    <!-- Bootstrap JS -->    
+    <script src="<spring:url value="/resources/js/bootstrap.min.js"/>"></script>
+    <!--Text Rotator-->
+    <script src="<spring:url value="/resources/js/jquery.mixitup.js"/>"></script>
+    <!--WOW Scroll Spy-->
+    <script src="<spring:url value="/resources/js/wow.js"/>"></script>
+    <!-- OWL Carousel -->
+    <script src="<spring:url value="/resources/js/owl.carousel.js"/>"></script>
+    <!-- WayPoint -->
+    <script src="<spring:url value="/resources/js/waypoints.min.js"/>"></script>
+    <!-- CounterUp -->
+    <script src="<spring:url value="/resources/js/jquery.counterup.min.js"/>"></script>
+    <!-- ScrollTop -->
+    <script src="<spring:url value="/resources/js/jquery.slicknav.js"/>"></script>
+    <!-- Appear -->
+    <script src="<spring:url value="/resources/js/jquery.appear.js"/>"></script>
+    <!-- Vide js -->
+    <script src="<spring:url value="/resources/js/jquery.vide.js"/>"></script>
+     <!-- All JS plugin Triggers -->
+    <script src="<spring:url value="/resources/js/main.js"/>"></script>
+    
 </head>
 <body>
 
@@ -101,7 +126,7 @@
 							<form:select path="petType" id="petType"
 								class="form-control contact-control" name="petType"
 								data-error="Por favor seleccione el tipo de mascota">
-								<form:option value="0" label="Todos" selected="selected"/>
+								<form:option value="0" label="Todos" selected="selected" />
 								<form:option value="1" label="Perro" />
 								<form:option value="2" label="Gato" />
 								<form:option value="3" label="Conejo" />
@@ -115,7 +140,7 @@
 							<form:select path="sizeType" id="sizeType"
 								class="form-control contact-control" name="sizeType"
 								data-error="Por favor seleccione el tamaño de la mascota">
-								<form:option value="0" label="Todos" selected="selected"/>
+								<form:option value="0" label="Todos" selected="selected" />
 								<form:option value="1" label="Pequeño" />
 								<form:option value="2" label="Mediano" />
 								<form:option value="3" label="Grande" />
@@ -145,7 +170,7 @@
 							<form:select path="provinceId" id="provinceId"
 								class="form-control contact-control" name="provinceId"
 								data-error="Por favor seleccione seleccione la provincia">
-								<form:option value="0" label="Todos" selected="selected"/>
+								<form:option value="0" label="Todos" selected="selected" />
 								<form:option value="1" label="Buenos Aires" />
 								<form:option value="2" label="Buenos Aires - GBA" />
 								<form:option value="3" label="Capital Federal" />
@@ -159,7 +184,7 @@
 							<form:select path="locationId" id="locationId"
 								class="form-control contact-control" name="locationId"
 								data-error="Por favor seleccione seleccione la localidad">
-								<form:option value="0" label="Todos" selected="selected"/>
+								<form:option value="0" label="Todos" selected="selected" />
 								<form:option value="1" label="25 de Mayo" />
 								<form:option value="2" label="3 de febrero" />
 								<form:option value="3" label="A. Alsina" />
@@ -208,38 +233,45 @@
 	<section
 		class="animated-progress-area mt-50 contact-form-section section-padding">
 	<div class="container">
-	 <c:choose>
- 	        <c:when test="${results.size() > 0}">
- 	        	<h4 class="blog-post-title">Resultados</h4>
+		<c:choose>
+			<c:when test="${results.size() > 0}">
+				<h4 class="blog-post-title">Resultados</h4>
 				<div class="row">
 					<!-- BLog Article Section -->
 					<div class="col-md-9">
-					<c:forEach items="${results}" var="resultPetsSearch">
-						<!-- Single Blog Post -->
-						<a href="<spring:url value="/pets/${resultPetsSearch.petID}"/>">
-							<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
-							<section class="blog-post-content">
+						<c:forEach items="${results}" var="resultPetsSearch">
+							<!-- Single Blog Post -->
+							<a href="<spring:url value="/pets/${resultPetsSearch.petID}"/>">
+								<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
+								<section class="blog-post-content">
 								<div>
-									<img alt="${resultPetsSearch.name}" src="<spring:url value="/resources/img/pets/${resultPetsSearch.petID}/${resultPetsSearch.petID}_0.jpg"/>"/>
-									<h2 class="blog-post-title">
-										${resultPetsSearch.name} 
-									</h2>
+									<img alt="${resultPetsSearch.name}"
+										src="<spring:url value="/resources/img/pets/${resultPetsSearch.petID}/${resultPetsSearch.petID}_0.jpg"/>" />
+									<h2 class="blog-post-title">${resultPetsSearch.name}</h2>
 								</div>
 								<div class="blog-post"></div>
-								<p>${resultPetsSearch.age}<c:choose><c:when test="${resultPetsSearch.age < 1}"> Meses</c:when><c:otherwise> Años</c:otherwise></c:choose> - 
-								<c:choose><c:when test="${resultPetsSearch.sex == 'H'}">Hembra</c:when><c:otherwise>Macho</c:otherwise></c:choose> - 
-								${resultPetsSearch.breed}</p>
-							</section> 
-							</article>
-						</a>
-					</c:forEach>
+								<p>${resultPetsSearch.age}<c:choose>
+										<c:when test="${resultPetsSearch.age < 1}"> Meses</c:when>
+										<c:otherwise> Años</c:otherwise>
+									</c:choose>
+									-
+									<c:choose>
+										<c:when test="${resultPetsSearch.sex == 'H'}">Hembra</c:when>
+										<c:otherwise>Macho</c:otherwise>
+									</c:choose>
+									- ${resultPetsSearch.breed}
+								</p>
+								</section> </article>
+							</a>
+						</c:forEach>
 					</div>
 				</div>
- 	        </c:when>
- 	        <c:otherwise>
- 	        	<h3>No se encontraron resultados para la busqueda, revise los filtros aplicados.</h3>
- 	        </c:otherwise>
- 	 </c:choose>
+			</c:when>
+			<c:otherwise>
+				<h3>No se encontraron resultados para la busqueda, revise los
+					filtros aplicados.</h3>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	</section>
 	<!-- Featured Section Ends -->

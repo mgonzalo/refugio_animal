@@ -9,6 +9,7 @@
 		    <param-name>contextConfigLocation</param-name>
 		    <param-value>
 		       classpath:com/refugioanimal/config/spring/spring-*.xml
+<!-- 				/WEB-INF/config/spring/spring-*.xml -->
 		    </param-value>
 	</context-param>
 
@@ -23,6 +24,7 @@
 	   	  <param-name>contextConfigLocation</param-name>
 		  <param-value>
 		        classpath:com/refugioanimal/config/spring/mvc-spring.xml
+<!-- 				/WEB-INF/config/spring/mvc-spring.xml -->
 		  </param-value>
 	     </init-param>	
 	     <load-on-startup>1</load-on-startup> 

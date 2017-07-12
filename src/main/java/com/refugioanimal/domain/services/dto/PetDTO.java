@@ -5,6 +5,11 @@ package com.refugioanimal.domain.services.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * @author Administrator
  */
@@ -17,19 +22,29 @@ public class PetDTO implements Serializable {
 
 	private Long petID;
 	// like, cat,dog, rabbit, hamster. etc.
+	@NotNull(message = "Debe seleccionar algun tipo de mascota.")
 	private Long petType;
 	// like mammal, reptile, fish. etc.
+	@NotNull(message = "Debe seleccionar un tipo de especie.")
 	private Long specieType;
+	@NotBlank(message = "Ingrese el nombre de la mascota.")
+	@Size(min = 1, max = 149)
 	private String name;
-	private Long age;
+	@NotNull(message = "Debe seleccionar una edad.")
+	private Float age;
+	@NotNull(message = "Debe especificar el sexo de la mascota.")
 	private String sex;
+	@Size(max = 150)
 	private String breed;// raza
+	@NotNull(message = "Debe seleccionar el tamaño de la mascota.")
 	private Long sizeType;
 	private Boolean castrated;
 	private Boolean vaccinate;
 	private Boolean compatibilityWithOtherAnimals;
 	private Boolean specialCare;
+	@Size(max = 950)
 	private String description;
+	@NotNull(message = "Ingrese los datos del dueño.")
 	private UserDTO userDTO;
 
 	/**
@@ -57,7 +72,7 @@ public class PetDTO implements Serializable {
 	 * @param description
 	 * @param user
 	 */
-	public PetDTO(Long petID, Long petType, Long specieType, String name, String sex, String breed, Long sizeType, Long age, Boolean castrated, Boolean vaccinate, Boolean compatibilityWithOtherAnimals, Boolean specialCare, String description,
+	public PetDTO(Long petID, Long petType, Long specieType, String name, String sex, String breed, Long sizeType, Float age, Boolean castrated, Boolean vaccinate, Boolean compatibilityWithOtherAnimals, Boolean specialCare, String description,
 			UserDTO user) {
 		super();
 		this.petID = petID;
@@ -128,7 +143,7 @@ public class PetDTO implements Serializable {
 	/**
 	 * @return the age
 	 */
-	public Long getAge() {
+	public Float getAge() {
 		return age;
 	}
 
@@ -205,7 +220,7 @@ public class PetDTO implements Serializable {
 	/**
 	 * @param age the age to set
 	 */
-	public void setAge(Long age) {
+	public void setAge(Float age) {
 		this.age = age;
 	}
 

@@ -63,4 +63,13 @@ public class SizeTypeDTO implements Serializable {
 		this.description = description;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SizeTypeDTO [id=" + id + ", description=" + description + "]";
+	}
+
 }

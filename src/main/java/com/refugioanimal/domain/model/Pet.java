@@ -4,7 +4,6 @@
 package com.refugioanimal.domain.model;
 
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
@@ -12,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -40,7 +38,7 @@ public class Pet {
 	private Size size;
 
 	@Column(name = "edad", nullable = false)
-	private Long age;
+	private Float age;
 
 	@Column(name = "sexo", nullable = false, length = 2)
 	private Character sex;
@@ -94,7 +92,7 @@ public class Pet {
 	 * @param specialCare
 	 * @param description
 	 */
-	public Pet(Long id, PetType petType, String petName, Size size, Long age, Character sex, String breed, Boolean castrated, Boolean vaccinated, Boolean compatibility, Boolean specialCare, String description) {
+	public Pet(Long id, PetType petType, String petName, Size size, Float age, Character sex, String breed, Boolean castrated, Boolean vaccinated, Boolean compatibility, Boolean specialCare, String description) {
 		super();
 		this.id = id;
 		this.petType = petType;
@@ -125,7 +123,7 @@ public class Pet {
 	 * @param specialCare
 	 * @param description
 	 */
-	public Pet(PetType petType, String petName, Size size, Long age, Character sex, String breed, Boolean castrated, Boolean vaccinated, Boolean compatibility, Boolean specialCare, String description) {
+	public Pet(PetType petType, String petName, Size size, Float age, Character sex, String breed, Boolean castrated, Boolean vaccinated, Boolean compatibility, Boolean specialCare, String description) {
 		super();
 		this.petType = petType;
 		this.petName = petName;
@@ -199,14 +197,14 @@ public class Pet {
 	/**
 	 * @return the age
 	 */
-	public Long getAge() {
+	public Float getAge() {
 		return age;
 	}
 
 	/**
 	 * @param age the age to set
 	 */
-	public void setAge(Long age) {
+	public void setAge(Float age) {
 		this.age = age;
 	}
 

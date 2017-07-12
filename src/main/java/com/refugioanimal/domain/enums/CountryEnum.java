@@ -8,5 +8,5 @@ package com.refugioanimal.domain.enums;
  */
 public enum CountryEnum {
 
-	ARGENTINA, BRASIL, CHILE, URUGUAY, PARAGUAY
+	UNUSED, ARGENTINA, BRASIL, CHILE, URUGUAY, PARAGUAY
 }

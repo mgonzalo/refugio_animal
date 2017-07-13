@@ -62,28 +62,3 @@
       <i class="fa fa-angle-up">
       </i>
     </a> 
-
-    <!-- JavaScript & jQuery Plugins -->
-    <script src="<spring:url value="/resources/js/jquery-min.js"/>"></script>
-    <!-- Tether Js -->
-    <script src="<spring:url value="/resources/js/tether.min.js"/>"></script>
-    <!-- Bootstrap JS -->    
-    <script src="<spring:url value="/resources/js/bootstrap.min.js"/>"></script>
-    <!--Text Rotator-->
-    <script src="<spring:url value="/resources/js/jquery.mixitup.js"/>"></script>
-    <!--WOW Scroll Spy-->
-    <script src="<spring:url value="/resources/js/wow.js"/>"></script>
-    <!-- OWL Carousel -->
-    <script src="<spring:url value="/resources/js/owl.carousel.js"/>"></script>
-    <!-- WayPoint -->
-    <script src="<spring:url value="/resources/js/waypoints.min.js"/>"></script>
-    <!-- CounterUp -->
-    <script src="<spring:url value="/resources/js/jquery.counterup.min.js"/>"></script>
-    <!-- ScrollTop -->
-    <script src="<spring:url value="/resources/js/jquery.slicknav.js"/>"></script>
-    <!-- Appear -->
-    <script src="<spring:url value="/resources/js/jquery.appear.js"/>"></script>
-    <!-- Vide js -->
-    <script src="<spring:url value="/resources/js/jquery.vide.js"/>"></script>
-     <!-- All JS plugin Triggers -->
-    <script src="<spring:url value="/resources/js/main.js"/>"></script>

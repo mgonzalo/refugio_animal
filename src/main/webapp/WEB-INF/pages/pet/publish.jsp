@@ -61,7 +61,7 @@
     </script>
     <![endif]-->
 
-<script src="<spring:url value="/resources/js/jquery-min.js"/>"></script>
+<script src="<spring:url value="/resources/js/jquery-1.11.2.min.js"/>"></script>
 <!-- Tether Js -->
 <script src="<spring:url value="/resources/js/tether.min.js"/>"></script>
 <!-- Bootstrap JS -->
@@ -82,22 +82,7 @@
 <!-- All JS plugin Triggers -->
 <script src="<spring:url value="/resources/js/main.js"/>"></script>
 
-<script type="text/javascript">
-	$('#specieType').change(function() {
-		debugger;
-		$.ajax({
-			url : "pets/petTypes",
-			data : {
-				"specieType" : $("#specieType").val()
-			},
-			dataType : "html",
-			type : "GET",
-			success : function(data) {
-				$('#petType').append(data);
-			}
-		});
-	});
-</script>
+
 </head>
 <body>
 
@@ -373,5 +358,26 @@
 
 	<!-- Featured Section Ends -->
 	<jsp:include page="../common/footer.jsp" />
+	
+	<script type="text/javascript">
+	
+	$('#specieType').change(function() {
+		<spring:url value="/pets/petTypes" var="petTypesActionUrl" />
+		$.ajax({
+			url :'${petTypesActionUrl}',
+			data : {
+				'specieType' : $("#specieType").val()
+			},
+			dataType: 'JSON',
+			type : 'GET',
+			success : function(data) {
+				 alert(data);
+				$('#petType').append(data);
+			}
+		});
+	});
+	
+	</script>
+	
 </body>
 </html>

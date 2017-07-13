@@ -56,7 +56,7 @@ public class PetTypeDAOImpl implements PetTypeDAO {
 	@Override
 	public List<PetType> getPetTypeBySpecieId(Long specieTypeId) {
 		Criteria criteria = sessionFactory.openSession().createCriteria(PetType.class);
-		criteria.add(eq("species", specieTypeId));
+		criteria.add(eq("species.id", specieTypeId));
 		List<PetType> petTypes = criteria.list();
 		return petTypes;
 	}

@@ -29,4 +29,11 @@ public interface PetTypeDAO {
 	 * @return List<PetType>
 	 */
 	List<PetType> getPetTypeBySpecieId(Long specieTypeId);
+
+	/**
+	 * Gets all PetTypes.
+	 * 
+	 * @return List<PetType>
+	 */
+	List<PetType> getAllPetTypes();
 }

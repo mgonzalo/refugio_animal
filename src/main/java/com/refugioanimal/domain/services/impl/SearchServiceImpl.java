@@ -8,12 +8,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.refugioanimal.domain.model.Pet;
-import com.refugioanimal.domain.repositories.dao.PetDAO;
+import com.refugioanimal.domain.model.Publication;
+import com.refugioanimal.domain.repositories.dao.PublicationDAO;
 import com.refugioanimal.domain.services.SearchService;
-import com.refugioanimal.domain.services.dto.PetDTO;
+import com.refugioanimal.domain.services.dto.PublicationDTO;
 import com.refugioanimal.domain.services.dto.SearchDTO;
-import com.refugioanimal.domain.wrappers.PetWrapper;
+import com.refugioanimal.domain.wrappers.PublicationWrapper;
 
 /**
  * @author Administrator
@@ -22,20 +22,18 @@ import com.refugioanimal.domain.wrappers.PetWrapper;
 public class SearchServiceImpl implements SearchService {
 
 	@Autowired
-	private PetDAO petDao;
-
-	// private PublicationDAO publicationDao;
+	private PublicationDAO publicationDao;
 
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * com.refugioanimal.domain.services.SearchService#searchPets(com.refugioanimal.domain.services.
-	 * dto.SearchDTO)
+	 * com.refugioanimal.domain.services.SearchService#searchPublications(com.refugioanimal.domain.
+	 * services.dto.SearchDTO)
 	 */
 	@Override
-	public List<PetDTO> searchPets(SearchDTO searchDTO) {
-		List<Pet> pets = petDao.searchPets(searchDTO);
-		return PetWrapper.toPetDTO(pets);
+	public List<PublicationDTO> searchPublications(SearchDTO searchDTO) {
+		List<Publication> publications = publicationDao.searchPublications(searchDTO);
+		return PublicationWrapper.toPublicationsDTO(publications);
 	}
 
 }

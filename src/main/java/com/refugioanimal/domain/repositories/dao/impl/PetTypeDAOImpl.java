@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,14 +51,30 @@ public class PetTypeDAOImpl implements PetTypeDAO {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.refugioanimal.domain.repositories.dao.PetTypeDAO#getPetTypeBySpecieId(java.lang.Long)
+	 * @see
+	 * com.refugioanimal.domain.repositories.dao.PetTypeDAO#getPetTypeBySpecieId(java.lang.Long)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PetType> getPetTypeBySpecieId(Long specieTypeId) {
 		Criteria criteria = sessionFactory.openSession().createCriteria(PetType.class);
 		criteria.add(eq("species.id", specieTypeId));
+		criteria.addOrder(Order.asc("description"));
 		List<PetType> petTypes = criteria.list();
+		return petTypes;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.refugioanimal.domain.repositories.dao.PetTypeDAO#getAllPetTypes()
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PetType> getAllPetTypes() {
+		Criteria criteria = sessionFactory.openSession().createCriteria(PetType.class);
+		criteria.addOrder(Order.asc("description"));
+		List<PetType> petTypes = (List<PetType>) criteria.list();
+		logger.info("PetTypes found :" + petTypes);
 		return petTypes;
 	}
 

@@ -3,7 +3,6 @@
  */
 package com.refugioanimal.domain.services;
 
-import java.util.Date;
 import java.util.List;
 
 import com.refugioanimal.domain.exceptions.MascotaException;
@@ -34,10 +33,9 @@ public interface PetService {
 	/**
 	 * Get all pets (dogs, cats, others) from the last month until the day of the date.
 	 * 
-	 * @param today
 	 * @return getLastPublishPets
 	 */
-	List<LastPetPublishDTO> getLastPublishPets(Date today);
+	List<LastPetPublishDTO> getLastPublishPets();
 
 	/**
 	 * Create the pet, the user and the publication objets.
@@ -65,6 +63,13 @@ public interface PetService {
 	 */
 	List<SizeTypeDTO> getSizeTypes();
 
+	/**
+	 * Get all PetTypes indistinct the species
+	 * 
+	 * @return List<PetTypeDTO>
+	 */
+	List<PetTypeDTO> getPetTypes();
+	
 	/**
 	 * Get a PetTypes by specieId.
 	 * @param specieId

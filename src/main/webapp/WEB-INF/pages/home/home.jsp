@@ -133,6 +133,8 @@
       </div>     
     </header>
 
+	<!-- lastPets preguntar si no es vacio e iterar por tipo. (perro, gatos, resto) -->
+
     <!-- Portfolio Section -->
     <section id="portfolio" class="section">
       <!-- Container Starts -->

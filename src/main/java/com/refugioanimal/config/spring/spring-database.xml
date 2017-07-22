@@ -20,8 +20,11 @@
 			<list>
 				<value>com.refugioanimal.domain.model.AboutUs</value>
 				<value>com.refugioanimal.domain.model.EventInfo</value>
+				<value>com.refugioanimal.domain.model.Location</value>
 				<value>com.refugioanimal.domain.model.Pet</value>
 				<value>com.refugioanimal.domain.model.PetType</value>
+				<value>com.refugioanimal.domain.model.Province</value>
+				<value>com.refugioanimal.domain.model.Publication</value>
 				<value>com.refugioanimal.domain.model.Size</value>
 				<value>com.refugioanimal.domain.model.Species</value>
 				<value>com.refugioanimal.domain.model.Status</value>

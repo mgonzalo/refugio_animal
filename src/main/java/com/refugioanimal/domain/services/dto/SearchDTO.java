@@ -17,7 +17,7 @@ public class SearchDTO implements Serializable {
 
 	private Long petType;
 	private Long sizeType;
-	private Long age;
+	private Float age;
 	private String sex;
 	private String breed;// raza
 	private Boolean castrated;
@@ -45,7 +45,7 @@ public class SearchDTO implements Serializable {
 	 * @param provinceId
 	 * @param locationId
 	 */
-	public SearchDTO(Long petType, Long sizeType, Long age, String sex, String breed, Boolean castrated, Boolean vaccinate, Long provinceId, Long locationId) {
+	public SearchDTO(Long petType, Long sizeType, Float age, String sex, String breed, Boolean castrated, Boolean vaccinate, Long provinceId, Long locationId) {
 		super();
 		this.petType = petType;
 		this.sizeType = sizeType;
@@ -89,14 +89,14 @@ public class SearchDTO implements Serializable {
 	/**
 	 * @return the age
 	 */
-	public Long getAge() {
+	public Float getAge() {
 		return age;
 	}
 
 	/**
 	 * @param age the age to set
 	 */
-	public void setAge(Long age) {
+	public void setAge(Float age) {
 		this.age = age;
 	}
 

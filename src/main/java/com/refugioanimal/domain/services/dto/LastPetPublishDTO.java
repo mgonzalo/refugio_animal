@@ -1,6 +1,6 @@
- /**
- * 
- */
+/**
+* 
+*/
 package com.refugioanimal.domain.services.dto;
 
 import java.io.Serializable;
@@ -15,6 +15,7 @@ public class LastPetPublishDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = -4050009125367886056L;
 
+	private Long publicationId;
 	private Long petID;
 	// like, cat,dog, rabbit, hamster. etc.
 	private Long petType;
@@ -32,13 +33,15 @@ public class LastPetPublishDTO implements Serializable {
 	/**
 	 * constructor for class.
 	 * 
+	 * @param publicationId
 	 * @param petID
 	 * @param petType
 	 * @param specieType
 	 * @param name
 	 */
-	public LastPetPublishDTO(Long petID, Long petType, Long specieType, String name) {
+	public LastPetPublishDTO(Long publicationId, Long petID, Long petType, Long specieType, String name) {
 		super();
+		this.publicationId = publicationId;
 		this.petID = petID;
 		this.petType = petType;
 		this.specieType = specieType;
@@ -71,6 +74,20 @@ public class LastPetPublishDTO implements Serializable {
 	 */
 	public String getName() {
 		return name;
+	}
+
+	/**
+	 * @return the publicationId
+	 */
+	public Long getPublicationId() {
+		return publicationId;
+	}
+
+	/**
+	 * @param publicationId the publicationId to set
+	 */
+	public void setPublicationId(Long publicationId) {
+		this.publicationId = publicationId;
 	}
 
 }

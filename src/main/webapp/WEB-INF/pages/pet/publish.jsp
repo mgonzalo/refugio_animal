@@ -82,7 +82,6 @@
 <!-- All JS plugin Triggers -->
 <script src="<spring:url value="/resources/js/main.js"/>"></script>
 
-
 </head>
 <body>
 
@@ -193,9 +192,7 @@
 						<span> <form:select path="specieType" id="specieType"
 								class="form-control contact-control"
 								data-error="Por favor seleccione el tipo de especie">
-								<c:forEach items="${specieTypes}" var="specie">
-									<form:option value="${specie.id}" label="${specie.description}" />
-								</c:forEach>
+								<form:options items="${specieTypes}" itemValue="id" itemLabel="description"/>
 							</form:select>
 						</span>
 						<div class="help-block with-errors"></div>
@@ -205,10 +202,6 @@
 						<span> <form:select path="petType" id="petType"
 								class="form-control contact-control"
 								data-error="Por favor seleccione el tipo de mascota">
-								<%--               	<form:option value="1" label="Perro"/> --%>
-								<%--               	<form:option value="2" label="Gato"/> --%>
-								<%--               	<form:option value="3" label="Conejo"/> --%>
-								<%--               	<form:option value="4" label="Paloma"/> --%>
 							</form:select>
 						</span>
 						<div class="help-block with-errors"></div>
@@ -224,10 +217,11 @@
 						<span> <form:select path="sizeType" id="sizeType"
 								class="form-control contact-control"
 								data-error="Por favor seleccione el tamaño de la mascota">
-								<c:forEach items="${sizeTypes}" var="sizeType">
-									<form:option value="${sizeType.id}"
-										label="${sizeType.description}" />
-								</c:forEach>
+<%-- 								<c:forEach items="${sizeTypes}" var="sizeType"> --%>
+<%-- 									<form:option value="${sizeType.id}" --%>
+<%-- 										label="${sizeType.description}" /> --%>
+<%-- 								</c:forEach> --%>
+								<form:options items="${sizeTypes}" itemValue="id" itemLabel="description"/>
 							</form:select>
 						</span>
 						<div class="help-block with-errors"></div>
@@ -316,23 +310,17 @@
 					<div class="form-group">
 						<h6>Provincia:</h6>
 						<span><form:select path="userDTO.provinceId"
-								id="user.provinceId" class="form-control contact-control"
+								id="userProvince" class="form-control contact-control"
 								data-error="Por favor seleccione seleccione la provincia">
-								<c:forEach items="${provinces}" var="province">
-									<form:option value="${province.id}" label="${province.name}" />
-								</c:forEach>
+								<form:options items="${provinces}" itemValue="id" itemLabel="name"/>
 							</form:select> </span>
 						<div class="help-block with-errors"></div>
 					</div>
 					<div class="form-group">
 						<h6>Localidad:</h6>
 						<span> <form:select path="userDTO.locationId"
-								id="user.locationId" class="form-control contact-control"
+								id="userLocation" class="form-control contact-control"
 								data-error="Por favor seleccione seleccione la localidad">
-								<form:option value="1" label="25 de Mayo" />
-								<form:option value="2" label="3 de febrero" />
-								<form:option value="3" label="A. Alsina" />
-								<form:option value="4" label="A. Gonzáles Cháves" />
 							</form:select>
 						</span>
 						<div class="help-block with-errors"></div>
@@ -361,21 +349,66 @@
 	
 	<script type="text/javascript">
 	
+	$(document).ready(function() {
+		$('#specieType').val('1').change();
+		$('#userProvince').val('3').change();
+	});
+	
 	$('#specieType').change(function() {
 		<spring:url value="/pets/petTypes" var="petTypesActionUrl" />
+		var idSpecieTypeSelected = $("#specieType").val();
+		getPetTypesAjax('${petTypesActionUrl}', idSpecieTypeSelected);
+	});
+	
+	function getPetTypesAjax(uri,specieTypeId){
 		$.ajax({
-			url :'${petTypesActionUrl}',
-			data : {
-				'specieType' : $("#specieType").val()
-			},
+			url : uri,
+			data : {'specieType':specieTypeId},
 			dataType: 'JSON',
 			type : 'GET',
-			success : function(data) {
-				 alert(data);
-				$('#petType').append(data);
-			}
+			contentType: 'application/json',
+			success : function(jsonData) {
+				$('#petType').empty();
+				$(jsonData).each(function(){
+					var option = $('<option />');
+					option.attr('value', this.id).text(this.description);
+					$('#petType').append(option);
+				});
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+		        alert(xhr.status);
+		        alert(thrownError);
+		    }
 		});
+	}
+	
+	$('#userProvince').change(function() {
+		<spring:url value="/users/locations" var="locationsActionUrl" />
+		var idProvinceSelected = $('#userProvince').val();
+		getLocationsAjax('${locationsActionUrl}',idProvinceSelected);
 	});
+	
+	function getLocationsAjax(uri,provinceId){
+		$.ajax({
+			url : uri,
+			data : {'provinceId':provinceId},
+			dataType: 'JSON',
+			type : 'GET',
+			contentType: 'application/json',
+			success : function(jsonData) {
+				$('#userLocation').empty();
+				$(jsonData).each(function(){
+					var option = $('<option />');
+					option.attr('value', this.id).text(this.locationName);
+					$('#userLocation').append(option);
+				});
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+		        alert(xhr.status);
+		        alert(thrownError);
+		    }
+		});
+	}
 	
 	</script>
 	

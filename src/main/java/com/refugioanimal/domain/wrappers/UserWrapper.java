@@ -8,8 +8,10 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.refugioanimal.domain.model.Location;
 import com.refugioanimal.domain.model.Province;
 import com.refugioanimal.domain.model.User;
+import com.refugioanimal.domain.services.dto.LocationDTO;
 import com.refugioanimal.domain.services.dto.ProvinceDTO;
 import com.refugioanimal.domain.services.dto.UserDTO;
 
@@ -32,7 +34,7 @@ public class UserWrapper {
 	}
 
 	/**
-	 * Get all province by countryId.
+	 * Create List<ProvinceDTO> object from List<Province> object
 	 * 
 	 * @param provinces
 	 * @return List<ProvinceDTO>
@@ -43,6 +45,20 @@ public class UserWrapper {
 			provinceDTOs.add(new ProvinceDTO(province.getId(), province.getProvinceName()));
 		}
 		return provinceDTOs;
+	}
+
+	/**
+	 * Create List<LocationDTO> object from List<Location> object
+	 * 
+	 * @param locations
+	 * @return
+	 */
+	public static List<LocationDTO> toLocationsDTO(List<Location> locations) {
+		List<LocationDTO> locationDTOs = new ArrayList<LocationDTO>();
+		for (Location location : locations) {
+			locationDTOs.add(new LocationDTO(location.getId(), location.getLocationName()));
+		}
+		return locationDTOs;
 	}
 
 }

@@ -363,17 +363,20 @@
 	
 	$('#specieType').change(function() {
 		<spring:url value="/pets/petTypes" var="petTypesActionUrl" />
+		var dataSelect = 	{'specieType':$("#specieType").val()};
 		$.ajax({
 			url :'${petTypesActionUrl}',
-			data : {
-				'specieType' : $("#specieType").val()
-			},
+			data : dataSelect,
 			dataType: 'JSON',
 			type : 'GET',
+			contentType: 'application/json',
 			success : function(data) {
-				 alert(data);
-				$('#petType').append(data);
-			}
+				$('#petType').append(JSON.stringify(data));
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+		        alert(xhr.status);
+		        alert(thrownError);
+		    }
 		});
 	});
 	

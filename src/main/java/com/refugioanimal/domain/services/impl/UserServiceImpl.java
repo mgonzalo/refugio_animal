@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.refugioanimal.domain.model.Location;
 import com.refugioanimal.domain.model.Province;
 import com.refugioanimal.domain.repositories.dao.LocationDAO;
 import com.refugioanimal.domain.repositories.dao.ProvinceDAO;
@@ -45,8 +46,8 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public List<LocationDTO> getAllLocationsByProvinceId(Long provinceId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Location> locations = locationDao.getAllLocationsByProvince(provinceId);
+		return UserWrapper.toLocationsDTO(locations);
 	}
 
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,7 @@ public class SizeDAOImpl implements SizeDAO {
 	@Override
 	public List<Size> getAllSizes() {
 		Criteria criteria = sessionFactory.openSession().createCriteria(Size.class);
+		criteria.addOrder(Order.asc("description"));
 		List<Size> sizes = (List<Size>) criteria.list();
 		logger.info("Sizes found :" + sizes);
 		return sizes;

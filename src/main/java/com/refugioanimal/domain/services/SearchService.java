@@ -5,21 +5,20 @@ package com.refugioanimal.domain.services;
 
 import java.util.List;
 
-import com.refugioanimal.domain.services.dto.PetDTO;
+import com.refugioanimal.domain.services.dto.PublicationDTO;
 import com.refugioanimal.domain.services.dto.SearchDTO;
 
 /**
  * @author Administrator
- *
  */
 public interface SearchService {
 
 	/**
-	 * Search pets by PetDTO.
+	 * Search publications by SearchDTO.
 	 * 
 	 * @param searchDTO
-	 * @return List<PetDTO>
+	 * @return List<PublicationDTO>
 	 */
-	List<PetDTO> searchPets(SearchDTO searchDTO);
+	List<PublicationDTO> searchPublications(SearchDTO searchDTO);
 
 }

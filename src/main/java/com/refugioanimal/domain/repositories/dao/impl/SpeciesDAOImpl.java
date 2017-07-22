@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class SpeciesDAOImpl implements SpeciesDAO {
 	@Override
 	public List<Species> getAllSpecies() {
 		Criteria criteria = sessionFactory.openSession().createCriteria(Species.class);
+		criteria.addOrder(Order.asc("description"));
 		List<Species> species = (List<Species>) criteria.list();
 		logger.info("Species found :" + species);
 		return species;

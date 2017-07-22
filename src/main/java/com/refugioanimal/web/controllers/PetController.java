@@ -25,6 +25,7 @@ import com.refugioanimal.domain.services.UserService;
 import com.refugioanimal.domain.services.dto.PetDTO;
 import com.refugioanimal.domain.services.dto.PetTypeDTO;
 import com.refugioanimal.domain.services.dto.ProvinceDTO;
+import com.refugioanimal.domain.services.dto.PublicationDTO;
 import com.refugioanimal.domain.services.dto.SearchDTO;
 import com.refugioanimal.domain.services.dto.SizeTypeDTO;
 import com.refugioanimal.domain.services.dto.SpecieTypeDTO;
@@ -98,7 +99,15 @@ public class PetController extends BaseController {
 	 */
 	@RequestMapping(value = "/search", method = GET)
 	public ModelAndView getSerchView(ModelAndView model) {
+		
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + PET_SEARCH_VIEW);
+		List<SizeTypeDTO> sizeTypeDTOs = petService.getSizeTypes();
+		List<ProvinceDTO> provinceDTOs = userservice.getAllProvincesByCountry();
+		List<PetTypeDTO> petTypeDTOs = petService.getPetTypes();
+		
+		model.addObject("petTypes", petTypeDTOs);
+		model.addObject("sizeTypes", sizeTypeDTOs);
+		model.addObject("provinces", provinceDTOs);
 		model.addObject("searchDTO", new SearchDTO());
 		model.addObject("commonData", getCommonData());
 		return model;
@@ -113,13 +122,19 @@ public class PetController extends BaseController {
 	 */
 	@RequestMapping(value = "/doSearch", method = POST)
 	public ModelAndView searchPets(@ModelAttribute("searchDTO") SearchDTO searchDTO, ModelAndView model) {
-
-		List<PetDTO> resultPets = searchService.searchPets(searchDTO);
-
+		List<PublicationDTO> publicationDTOs = searchService.searchPublications(searchDTO);
+		
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + PET_SEARCH_VIEW);
+		List<SizeTypeDTO> sizeTypeDTOs = petService.getSizeTypes();
+		List<ProvinceDTO> provinceDTOs = userservice.getAllProvincesByCountry();
+		List<PetTypeDTO> petTypeDTOs = petService.getPetTypes();
+		
+		model.addObject("petTypes", petTypeDTOs);
+		model.addObject("sizeTypes", sizeTypeDTOs);
+		model.addObject("provinces", provinceDTOs);
 		model.addObject("searchDTO", searchDTO);
 		model.addObject("commonData", getCommonData());
-		model.addObject("results", resultPets);
+		model.addObject("results", publicationDTOs);
 		return model;
 	}
 

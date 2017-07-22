@@ -33,7 +33,7 @@ public class Publication {
 	private User user;
 
 	@OneToOne(cascade = ALL)
-	@JoinColumn(name = "idMascota", unique = true, nullable = false)
+	@JoinColumn(name = "idMascota", nullable = false)
 	private Pet pet;
 
 	@Column(name = "fechaInicio", nullable = false)

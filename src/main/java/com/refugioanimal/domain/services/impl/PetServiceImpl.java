@@ -4,7 +4,6 @@
 package com.refugioanimal.domain.services.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -19,6 +18,7 @@ import com.refugioanimal.domain.exceptions.SizeException;
 import com.refugioanimal.domain.exceptions.UserException;
 import com.refugioanimal.domain.model.Pet;
 import com.refugioanimal.domain.model.PetType;
+import com.refugioanimal.domain.model.Publication;
 import com.refugioanimal.domain.model.Size;
 import com.refugioanimal.domain.model.Species;
 import com.refugioanimal.domain.model.User;
@@ -71,14 +71,14 @@ public class PetServiceImpl implements PetService {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.refugioanimal.domain.services.PetService#getLastPublishPets(java.util.Date)
+	 * @see com.refugioanimal.domain.services.PetService#getLastPublishPets()
 	 */
 	@Override
-	public List<LastPetPublishDTO> getLastPublishPets(Date today) {
-		List<Pet> pets = petDao.getLastPublishPets();
+	public List<LastPetPublishDTO> getLastPublishPets() {
+		List<Publication> publications = publicationDao.getLastPublications();
 		List<LastPetPublishDTO> lastPetPublishDTOs = new ArrayList<LastPetPublishDTO>();
-		for (Pet pet : pets) {
-			lastPetPublishDTOs.add(new LastPetPublishDTO(pet.getId(), pet.getPetType().getId(), pet.getPetType().getSpecies().getId(), pet.getPetName()));
+		for (Publication publication : publications) {
+			lastPetPublishDTOs.add(new LastPetPublishDTO(publication.getId(), publication.getPet().getId(), publication.getPet().getPetType().getId(), publication.getPet().getPetType().getSpecies().getId(), publication.getPet().getPetName()));
 		}
 		return lastPetPublishDTOs;
 	}
@@ -129,6 +129,16 @@ public class PetServiceImpl implements PetService {
 	@Override
 	public List<PetTypeDTO> getPetTypesBySpecieId(Long specieId) {
 		List<PetType> petTypes = petTypeDao.getPetTypeBySpecieId(specieId);
+		return PetTypeWrapper.toPetTypeDTO(petTypes);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.refugioanimal.domain.services.PetService#getPetTypes()
+	 */
+	@Override
+	public List<PetTypeDTO> getPetTypes() {
+		List<PetType> petTypes = petTypeDao.getAllPetTypes();
 		return PetTypeWrapper.toPetTypeDTO(petTypes);
 	}
 

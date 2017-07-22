@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class ProvinceDAOImpl implements ProvinceDAO {
 	public List<Province> getAllProvincesByCountry(CountryEnum country) {
 		Criteria criteria = sessionFactory.openSession().createCriteria(Province.class);
 		criteria.add(eq("idCountry", valueOf(country.ordinal())));
+		criteria.addOrder(Order.asc("provinceName"));
 		List<Province> provinces = criteria.list();
 		logger.info("province found" + provinces);
 		return provinces;

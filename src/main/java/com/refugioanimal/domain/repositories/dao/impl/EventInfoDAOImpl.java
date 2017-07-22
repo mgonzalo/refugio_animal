@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -69,6 +70,7 @@ public class EventInfoDAOImpl implements EventInfoDAO {
 		
 		Criteria criteria = sessionFactory.openSession().createCriteria(EventInfo.class);
 		criteria.add(between("eventDate", firstDayOfMonth, lastDayOfMonth));
+		criteria.addOrder(Order.desc("eventDate"));
 		List<EventInfo> eventInfos = criteria.list();
 		logger.info("Event info found, details=" + eventInfos);
 		return eventInfos;

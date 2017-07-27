@@ -10,9 +10,6 @@ import java.io.Serializable;
  */
 public class LastPetPublishDTO implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4050009125367886056L;
 
 	private Long publicationId;

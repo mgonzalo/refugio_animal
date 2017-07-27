@@ -12,6 +12,7 @@ import com.refugioanimal.domain.model.Publication;
 import com.refugioanimal.domain.repositories.dao.PublicationDAO;
 import com.refugioanimal.domain.services.SearchService;
 import com.refugioanimal.domain.services.dto.PublicationDTO;
+import com.refugioanimal.domain.services.dto.PublicationDataDTO;
 import com.refugioanimal.domain.services.dto.SearchDTO;
 import com.refugioanimal.domain.wrappers.PublicationWrapper;
 
@@ -34,6 +35,16 @@ public class SearchServiceImpl implements SearchService {
 	public List<PublicationDTO> searchPublications(SearchDTO searchDTO) {
 		List<Publication> publications = publicationDao.searchPublications(searchDTO);
 		return PublicationWrapper.toPublicationsDTO(publications);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.refugioanimal.domain.services.SearchService#getPublication(java.lang.Long)
+	 */
+	@Override
+	public PublicationDataDTO getPublication(Long publicationId) {
+		Publication publication = publicationDao.getPublicationById(publicationId);
+		return PublicationWrapper.toPublicationDataDTO(publication);
 	}
 
 }

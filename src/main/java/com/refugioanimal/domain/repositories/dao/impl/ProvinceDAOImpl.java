@@ -42,9 +42,22 @@ public class ProvinceDAOImpl implements ProvinceDAO {
 		Criteria criteria = sessionFactory.openSession().createCriteria(Province.class);
 		criteria.add(eq("idCountry", valueOf(country.ordinal())));
 		criteria.addOrder(Order.asc("provinceName"));
-		List<Province> provinces = criteria.list();
+		List<Province> provinces = (List<Province>) criteria.list();
 		logger.info("province found" + provinces);
 		return provinces;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.refugioanimal.domain.repositories.dao.ProvinceDAO#getProvinceByProvinceId(java.lang.Long)
+	 */
+	@Override
+	public Province getProvinceByProvinceId(Long provinceId) {
+		Criteria criteria = sessionFactory.openSession().createCriteria(Province.class);
+		criteria.add(eq("id", provinceId));
+		Province province = (Province) criteria.uniqueResult();
+		logger.info("province found" + province);
+		return province;
 	}
 
 }

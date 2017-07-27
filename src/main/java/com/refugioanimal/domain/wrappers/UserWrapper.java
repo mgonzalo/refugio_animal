@@ -8,6 +8,7 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.refugioanimal.domain.enums.UserTypeEnum;
 import com.refugioanimal.domain.model.Location;
 import com.refugioanimal.domain.model.Province;
 import com.refugioanimal.domain.model.User;
@@ -28,9 +29,10 @@ public class UserWrapper {
 	 * @param userDTO
 	 * @return User
 	 */
-	public static User toUser(UserDTO userDTO) {
+	public static User toUser(UserDTO userDTO, UserTypeEnum userTypeEnum, Province province, Location location) {
 		String[] arrName = userDTO.getName().split(" ");
-		return new User(arrName[0], arrName[1], userDTO.getDocNumber().toString(), userDTO.getEmail(), userDTO.getPhone(), EMPTY, COUNTRY_ID_AR, userDTO.getProvinceId(), userDTO.getLocationId(), userDTO.getStreet(), null, EMPTY, EMPTY, EMPTY, EMPTY);
+		return new User(arrName[0], arrName[1], userDTO.getDocNumber().toString(), userDTO.getEmail(), userDTO.getPhone(), EMPTY, COUNTRY_ID_AR, province, location, userDTO.getStreet(), Long.valueOf(userTypeEnum.ordinal()), EMPTY, EMPTY, EMPTY,
+				EMPTY);
 	}
 
 	/**

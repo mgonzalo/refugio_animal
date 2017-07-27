@@ -31,7 +31,9 @@ public class LocationDAOImpl implements LocationDAO {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.refugioanimal.domain.repositories.dao.LocationDAO#getAllLocationsByProvince(java.lang.Long)
+	 * @see
+	 * com.refugioanimal.domain.repositories.dao.LocationDAO#getAllLocationsByProvince(java.lang.
+	 * Long)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -42,6 +44,20 @@ public class LocationDAOImpl implements LocationDAO {
 		List<Location> locations = criteria.list();
 		logger.info("locations found" + locations);
 		return locations;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.refugioanimal.domain.repositories.dao.LocationDAO#getLocationByLocationId(java.lang.Long)
+	 */
+	@Override
+	public Location getLocationByLocationId(Long locationId) {
+		Criteria criteria = sessionFactory.openSession().createCriteria(Location.class);
+		criteria.add(eq("id", locationId));
+		Location location = (Location) criteria.uniqueResult();
+		logger.info("location found" + location);
+		return location;
 	}
 
 }

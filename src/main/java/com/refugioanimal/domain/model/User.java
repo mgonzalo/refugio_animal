@@ -3,12 +3,15 @@
  */
 package com.refugioanimal.domain.model;
 
+import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -37,10 +40,12 @@ public class User {
 	private String mobilePhone;
 	@Column(name = "idPais", nullable = false)
 	private Long countryId;
-	@Column(name = "idProvincia", nullable = false)
-	private Long provinceId;
-	@Column(name = "idLocalidad", nullable = false)
-	private Long locationId;
+	@OneToOne(cascade = ALL)
+	@JoinColumn(name = "idProvincia", nullable = false)
+	private Province province;
+	@OneToOne(cascade = ALL)
+	@JoinColumn(name = "idLocalidad", nullable = false)
+	private Location location;
 	@Column(name = "direccion", nullable = true, length = 250)
 	private String direction;
 	@Column(name = "idTipoEntidad", nullable = true)
@@ -71,8 +76,8 @@ public class User {
 	 * @param phone
 	 * @param mobilePhone
 	 * @param countryId
-	 * @param provinceId
-	 * @param locationId
+	 * @param province
+	 * @param location
 	 * @param direction
 	 * @param entityTypeId
 	 * @param businessName
@@ -80,7 +85,7 @@ public class User {
 	 * @param availableTime
 	 * @param dedication
 	 */
-	public User(String name, String lastname, String dni, String email, String phone, String mobilePhone, Long countryId, Long provinceId, Long locationId, String direction, Long entityTypeId, String businessName, String workingHours,
+	public User(String name, String lastname, String dni, String email, String phone, String mobilePhone, Long countryId, Province province, Location location, String direction, Long entityTypeId, String businessName, String workingHours,
 			String availableTime, String dedication) {
 		super();
 		this.name = name;
@@ -90,8 +95,8 @@ public class User {
 		this.phone = phone;
 		this.mobilePhone = mobilePhone;
 		this.countryId = countryId;
-		this.provinceId = provinceId;
-		this.locationId = locationId;
+		this.province = province;
+		this.location = location;
 		this.direction = direction;
 		this.entityTypeId = entityTypeId;
 		this.businessName = businessName;
@@ -213,31 +218,31 @@ public class User {
 	}
 
 	/**
-	 * @return the provinceId
+	 * @return the province
 	 */
-	public Long getProvinceId() {
-		return provinceId;
+	public Province getProvince() {
+		return province;
 	}
 
 	/**
-	 * @param provinceId the provinceId to set
+	 * @param province the province to set
 	 */
-	public void setProvinceId(Long provinceId) {
-		this.provinceId = provinceId;
+	public void setProvince(Province province) {
+		this.province = province;
 	}
 
 	/**
-	 * @return the locationId
+	 * @return the location
 	 */
-	public Long getLocationId() {
-		return locationId;
+	public Location getLocation() {
+		return location;
 	}
 
 	/**
-	 * @param locationId the locationId to set
+	 * @param location the location to set
 	 */
-	public void setLocationId(Long locationId) {
-		this.locationId = locationId;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	/**

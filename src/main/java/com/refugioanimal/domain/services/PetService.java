@@ -10,9 +10,9 @@ import com.refugioanimal.domain.exceptions.PetTypeException;
 import com.refugioanimal.domain.exceptions.PublicationException;
 import com.refugioanimal.domain.exceptions.SizeException;
 import com.refugioanimal.domain.exceptions.UserException;
-import com.refugioanimal.domain.services.dto.LastPetPublishDTO;
 import com.refugioanimal.domain.services.dto.PetDTO;
 import com.refugioanimal.domain.services.dto.PetTypeDTO;
+import com.refugioanimal.domain.services.dto.ResultLastPetsPublishDTO;
 import com.refugioanimal.domain.services.dto.SizeTypeDTO;
 import com.refugioanimal.domain.services.dto.SpecieTypeDTO;
 
@@ -33,9 +33,9 @@ public interface PetService {
 	/**
 	 * Get all pets (dogs, cats, others) from the last month until the day of the date.
 	 * 
-	 * @return getLastPublishPets
+	 * @return ResultLastPetsPublishDTO
 	 */
-	List<LastPetPublishDTO> getLastPublishPets();
+	ResultLastPetsPublishDTO getLastPublishPets();
 
 	/**
 	 * Create the pet, the user and the publication objets.

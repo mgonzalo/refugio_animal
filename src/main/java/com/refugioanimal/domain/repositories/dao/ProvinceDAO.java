@@ -20,5 +20,13 @@ public interface ProvinceDAO {
 	 * @return List<Province>
 	 */
 	List<Province> getAllProvincesByCountry(CountryEnum argentina);
+	
+	/**
+	 * Get province by provinceId.
+	 * 
+	 * @param provinceId
+	 * @return Province
+	 */
+	Province getProvinceByProvinceId(Long provinceId);
 
 }

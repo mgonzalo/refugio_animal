@@ -3,6 +3,12 @@
  */
 package com.refugioanimal.domain.services.impl;
 
+import static com.refugioanimal.domain.enums.PetTypeEnum.CAT;
+import static com.refugioanimal.domain.enums.PetTypeEnum.DOG;
+import static com.refugioanimal.domain.enums.UserTypeEnum.NORMAL_USER;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +22,18 @@ import com.refugioanimal.domain.exceptions.PetTypeException;
 import com.refugioanimal.domain.exceptions.PublicationException;
 import com.refugioanimal.domain.exceptions.SizeException;
 import com.refugioanimal.domain.exceptions.UserException;
+import com.refugioanimal.domain.model.Location;
 import com.refugioanimal.domain.model.Pet;
 import com.refugioanimal.domain.model.PetType;
+import com.refugioanimal.domain.model.Province;
 import com.refugioanimal.domain.model.Publication;
 import com.refugioanimal.domain.model.Size;
 import com.refugioanimal.domain.model.Species;
 import com.refugioanimal.domain.model.User;
+import com.refugioanimal.domain.repositories.dao.LocationDAO;
 import com.refugioanimal.domain.repositories.dao.PetDAO;
 import com.refugioanimal.domain.repositories.dao.PetTypeDAO;
+import com.refugioanimal.domain.repositories.dao.ProvinceDAO;
 import com.refugioanimal.domain.repositories.dao.PublicationDAO;
 import com.refugioanimal.domain.repositories.dao.SizeDAO;
 import com.refugioanimal.domain.repositories.dao.SpeciesDAO;
@@ -32,6 +42,7 @@ import com.refugioanimal.domain.services.PetService;
 import com.refugioanimal.domain.services.dto.LastPetPublishDTO;
 import com.refugioanimal.domain.services.dto.PetDTO;
 import com.refugioanimal.domain.services.dto.PetTypeDTO;
+import com.refugioanimal.domain.services.dto.ResultLastPetsPublishDTO;
 import com.refugioanimal.domain.services.dto.SizeTypeDTO;
 import com.refugioanimal.domain.services.dto.SpecieTypeDTO;
 import com.refugioanimal.domain.wrappers.PetTypeWrapper;
@@ -59,6 +70,10 @@ public class PetServiceImpl implements PetService {
 	private PublicationDAO publicationDao;
 	@Autowired
 	private SpeciesDAO speciesDao;
+	@Autowired
+	ProvinceDAO provinceDao;
+	@Autowired
+	LocationDAO locationDao;
 
 	/*
 	 * (non-Javadoc)
@@ -74,13 +89,25 @@ public class PetServiceImpl implements PetService {
 	 * @see com.refugioanimal.domain.services.PetService#getLastPublishPets()
 	 */
 	@Override
-	public List<LastPetPublishDTO> getLastPublishPets() {
+	public ResultLastPetsPublishDTO getLastPublishPets() {
 		List<Publication> publications = publicationDao.getLastPublications();
 		List<LastPetPublishDTO> lastPetPublishDTOs = new ArrayList<LastPetPublishDTO>();
+		Boolean hasDogTypePet, hasCatTypePet, hasOtherTypesPet;
+		hasDogTypePet = hasCatTypePet = hasOtherTypesPet = FALSE;
+
 		for (Publication publication : publications) {
+			if (publication.getPet().getPetType().getId().equals(Long.valueOf(DOG.ordinal()))) {
+				hasDogTypePet = TRUE;
+			} else if (publication.getPet().getPetType().getId().equals(Long.valueOf(CAT.ordinal()))) {
+				hasCatTypePet = TRUE;
+			} else {
+				hasOtherTypesPet = TRUE;
+			}
+
 			lastPetPublishDTOs.add(new LastPetPublishDTO(publication.getId(), publication.getPet().getId(), publication.getPet().getPetType().getId(), publication.getPet().getPetType().getSpecies().getId(), publication.getPet().getPetName()));
 		}
-		return lastPetPublishDTOs;
+
+		return new ResultLastPetsPublishDTO(lastPetPublishDTOs, hasDogTypePet, hasCatTypePet, hasOtherTypesPet);
 	}
 
 	/*
@@ -97,7 +124,11 @@ public class PetServiceImpl implements PetService {
 
 		Pet petToCreate = PetWrapper.toPet(petDTO, size, petType);
 		petDao.savePet(PetWrapper.toPet(petDTO, size, petType));
-		User userToCreate = UserWrapper.toUser(petDTO.getUserDTO());
+
+		Province province = provinceDao.getProvinceByProvinceId(petDTO.getUserDTO().getProvinceId());
+		Location location = locationDao.getLocationByLocationId(petDTO.getUserDTO().getLocationId());
+
+		User userToCreate = UserWrapper.toUser(petDTO.getUserDTO(), NORMAL_USER, province, location);
 		userDao.saveUser(userToCreate);
 		publicationDao.createPublication(PublicationWrapper.toPublication(petToCreate, userToCreate));
 	}

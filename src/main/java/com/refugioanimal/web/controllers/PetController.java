@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +28,7 @@ import com.refugioanimal.domain.services.dto.PetDTO;
 import com.refugioanimal.domain.services.dto.PetTypeDTO;
 import com.refugioanimal.domain.services.dto.ProvinceDTO;
 import com.refugioanimal.domain.services.dto.PublicationDTO;
+import com.refugioanimal.domain.services.dto.PublicationDataDTO;
 import com.refugioanimal.domain.services.dto.SearchDTO;
 import com.refugioanimal.domain.services.dto.SizeTypeDTO;
 import com.refugioanimal.domain.services.dto.SpecieTypeDTO;
@@ -41,6 +44,7 @@ public class PetController extends BaseController {
 	private static final String PUBLISH_PET_VIEW = "publish";
 	private static final String PET_SEARCH_VIEW = "search";
 	private static final String PET_ANIMALCARE_VIEW = "animalcare";
+	private static final String PET_FILE_VIEW = "viewItem";
 
 	@Autowired
 	PetService petService;
@@ -99,12 +103,12 @@ public class PetController extends BaseController {
 	 */
 	@RequestMapping(value = "/search", method = GET)
 	public ModelAndView getSerchView(ModelAndView model) {
-		
+
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + PET_SEARCH_VIEW);
 		List<SizeTypeDTO> sizeTypeDTOs = petService.getSizeTypes();
 		List<ProvinceDTO> provinceDTOs = userservice.getAllProvincesByCountry();
 		List<PetTypeDTO> petTypeDTOs = petService.getPetTypes();
-		
+
 		model.addObject("petTypes", petTypeDTOs);
 		model.addObject("sizeTypes", sizeTypeDTOs);
 		model.addObject("provinces", provinceDTOs);
@@ -123,12 +127,12 @@ public class PetController extends BaseController {
 	@RequestMapping(value = "/doSearch", method = POST)
 	public ModelAndView searchPets(@ModelAttribute("searchDTO") SearchDTO searchDTO, ModelAndView model) {
 		List<PublicationDTO> publicationDTOs = searchService.searchPublications(searchDTO);
-		
+
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + PET_SEARCH_VIEW);
 		List<SizeTypeDTO> sizeTypeDTOs = petService.getSizeTypes();
 		List<ProvinceDTO> provinceDTOs = userservice.getAllProvincesByCountry();
 		List<PetTypeDTO> petTypeDTOs = petService.getPetTypes();
-		
+
 		model.addObject("petTypes", petTypeDTOs);
 		model.addObject("sizeTypes", sizeTypeDTOs);
 		model.addObject("provinces", provinceDTOs);
@@ -161,6 +165,22 @@ public class PetController extends BaseController {
 	@ResponseBody
 	public List<PetTypeDTO> getPetTypesBySpecieType(@RequestParam(name = "specieType", required = true) Long specieType) {
 		return petService.getPetTypesBySpecieId(specieType);
+	}
+
+	/**
+	 * Get Pet by id.
+	 * 
+	 * @param publicationId
+	 * @param model
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/{publicationId}", method = GET)
+	public ModelAndView getPet(@PathVariable(name = "publicationId", required = true) Long publicationId, ModelAndView model) {
+		PublicationDataDTO publicationDataDTO = searchService.getPublication(publicationId);
+		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + PET_FILE_VIEW);
+		model.addObject("commonData", getCommonData());
+		model.addObject("data", publicationDataDTO);
+		return model;
 	}
 
 }

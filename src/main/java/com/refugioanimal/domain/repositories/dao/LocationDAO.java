@@ -20,5 +20,13 @@ public interface LocationDAO {
 	 * @return List<Location>
 	 */
 	List<Location> getAllLocationsByProvince(Long provinceId);
+	
+	/**
+	 * Get location by locationId
+	 * 
+	 * @param locationId
+	 * @return Location
+	 */
+	Location getLocationByLocationId(Long locationId);
 
 }

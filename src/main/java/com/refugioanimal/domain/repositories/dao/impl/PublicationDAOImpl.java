@@ -67,7 +67,7 @@ public class PublicationDAOImpl implements PublicationDAO {
 
 		Criteria criteria = sessionFactory.openSession().createCriteria(Publication.class);
 		criteria.createAlias("pet", "petAl");
-		
+
 		if (searchDTO.getPetType() != null && searchDTO.getPetType() > ALL_DEFAULT_VALUE_COMBO_BOX) {
 			criteria.add(eq("petAl.petType.id", searchDTO.getPetType()));
 		}
@@ -83,26 +83,26 @@ public class PublicationDAOImpl implements PublicationDAO {
 		if (isNotBlank(searchDTO.getSex().trim())) {
 			criteria.add(eq("petAl.sex", searchDTO.getSex().trim().toUpperCase()));
 		}
-		
+
 		criteria.add(eq("petAl.castrated", searchDTO.getCastrated()));
 		criteria.add(eq("petAl.vaccinated", searchDTO.getVaccinate()));
-		
+
 		if (searchDTO.getProvinceId() != null && searchDTO.getProvinceId() > ALL_DEFAULT_VALUE_COMBO_BOX) {
 			criteria.createAlias("user", "userAl");
-			criteria.add(eq("userAl.provinceId", searchDTO.getProvinceId()));
+			criteria.add(eq("userAl.province.id", searchDTO.getProvinceId()));
 			if (searchDTO.getLocationId() != null && searchDTO.getLocationId() > ALL_DEFAULT_VALUE_COMBO_BOX) {
-				criteria.add(eq("userAl.locationId", searchDTO.getLocationId()));
+				criteria.add(eq("userAl.location.id", searchDTO.getLocationId()));
 			}
 		}
-		
+
 		criteria.add(eq("active", TRUE));
 		criteria.addOrder(Order.desc("startDate"));
 		criteria.addOrder(Order.desc("id"));
-		
+
 		List<Publication> publications = (List<Publication>) criteria.list();
 		return publications;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see com.refugioanimal.domain.repositories.dao.PublicationDAO#getLastPublications()
@@ -116,9 +116,26 @@ public class PublicationDAOImpl implements PublicationDAO {
 		criteria.addOrder(Order.desc("startDate"));
 		criteria.add(eq("active", TRUE));
 		criteria.setMaxResults(15);
-		
+
 		List<Publication> publications = (List<Publication>) criteria.list();
 		return publications;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.refugioanimal.domain.repositories.dao.PublicationDAO#getPublicationById(java.lang.Long)
+	 */
+	@Override
+	public Publication getPublicationById(Long publicationId) {
+		Criteria criteria = sessionFactory.openSession().createCriteria(Publication.class);
+		criteria.add(eq("id", publicationId));
+		criteria.add(eq("active", TRUE));
+		
+		Publication publication = (Publication) criteria.uniqueResult();
+		logger.info("publicacion encontrada, :" + publication);
+
+		return publication;
 	}
 
 }

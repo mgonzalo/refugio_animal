@@ -5,15 +5,13 @@ package com.refugioanimal.web.controllers;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.refugioanimal.domain.services.PetService;
-import com.refugioanimal.domain.services.dto.LastPetPublishDTO;
+import com.refugioanimal.domain.services.dto.ResultLastPetsPublishDTO;
 
 /**
  * @author Administrator
@@ -30,10 +28,10 @@ public class HomeController extends BaseController {
 
 	@RequestMapping(value = { "/", "home" }, method = GET)
 	public ModelAndView getIndexView(ModelAndView model) {
-		List<LastPetPublishDTO> lastPetPublish = petService.getLastPublishPets();
+		ResultLastPetsPublishDTO lastPetPublish = petService.getLastPublishPets();
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + HOME_INDEX_VIEW);
 		model.addObject("commonData", getCommonData());
-		model.addObject("lastPets", lastPetPublish);
+		model.addObject("lastPublishPets", lastPetPublish);
 		return model;
 	}
 

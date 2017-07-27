@@ -38,4 +38,12 @@ public interface PublicationDAO {
 	 */
 	List<Publication> getLastPublications();
 
+	/**
+	 * Find publication by publicationId.
+	 * 
+	 * @param publicationId
+	 * @return Publication
+	 */
+	Publication getPublicationById(Long publicationId);
+
 }

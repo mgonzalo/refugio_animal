@@ -19,6 +19,7 @@ public class PublicationDTO implements Serializable {
 	private String petName;
 	private String petAge;
 	private String petSex;
+	private String petSize;
 	private String petBreed;
 	private String ubicacion;
 
@@ -30,23 +31,25 @@ public class PublicationDTO implements Serializable {
 	}
 
 	/**
-	 * Constructor for class.
+	 * constructor for class.
 	 * 
 	 * @param publicationId
 	 * @param petId
 	 * @param petName
 	 * @param petAge
 	 * @param petSex
+	 * @param petSize
 	 * @param petBreed
 	 * @param ubicacion
 	 */
-	public PublicationDTO(Long publicationId, Long petId, String petName, String petAge, String petSex, String petBreed, String ubicacion) {
+	public PublicationDTO(Long publicationId, Long petId, String petName, String petAge, String petSex, String petSize, String petBreed, String ubicacion) {
 		super();
 		this.publicationId = publicationId;
 		this.petId = petId;
 		this.petName = petName;
 		this.petAge = petAge;
 		this.petSex = petSex;
+		this.petSize = petSize;
 		this.petBreed = petBreed;
 		this.ubicacion = ubicacion;
 	}
@@ -147,6 +150,20 @@ public class PublicationDTO implements Serializable {
 	 */
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
+	}
+
+	/**
+	 * @return the petSize
+	 */
+	public String getPetSize() {
+		return petSize;
+	}
+
+	/**
+	 * @param petSize the petSize to set
+	 */
+	public void setPetSize(String petSize) {
+		this.petSize = petSize;
 	}
 
 }

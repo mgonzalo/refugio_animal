@@ -61,27 +61,6 @@
     </script>
     <![endif]-->
 
-<script src="<spring:url value="/resources/js/jquery-1.11.2.min.js"/>"></script>
-<!-- Tether Js -->
-<script src="<spring:url value="/resources/js/tether.min.js"/>"></script>
-<!-- Bootstrap JS -->
-<script src="<spring:url value="/resources/js/bootstrap.min.js"/>"></script>
-<!--Text Rotator-->
-<script src="<spring:url value="/resources/js/jquery.mixitup.js"/>"></script>
-<!--WOW Scroll Spy-->
-<script src="<spring:url value="/resources/js/wow.js"/>"></script>
-<!-- CounterUp -->
-<script
-	src="<spring:url value="/resources/js/jquery.counterup.min.js"/>"></script>
-<!-- OWL Carousel -->
-<script src="<spring:url value="/resources/js/owl.carousel.js"/>"></script>
-<!-- ScrollTop -->
-<script src="<spring:url value="/resources/js/jquery.slicknav.js"/>"></script>
-<!-- Appear -->
-<script src="<spring:url value="/resources/js/jquery.appear.js"/>"></script>
-<!-- All JS plugin Triggers -->
-<script src="<spring:url value="/resources/js/main.js"/>"></script>
-
 </head>
 <body>
 
@@ -253,9 +232,9 @@
 					</div>
 					<div class="form-group">
 						<form:textarea path="description" id="description"
-							maxlength="150" cols="100" rows="3"
+							maxlength="150" rows="3"
 							placeholder="Descripcion de la Mascota"
-							cssStyle="form-control contact-control" />
+							class="form-control" />
 						<div class="help-block with-errors"></div>
 					</div>
 					<h4>Fotos de la Mascota:</h4>
@@ -278,7 +257,7 @@
 						<div class="help-block with-errors"></div>
 					</div>
 
-					<h4>Datos del dueño:</h4>
+					<h4>Datos del Dueño:</h4>
 					<div class="form-group">
 						<form:input path="userDTO.name" placeholder="Nombre y Apellido"
 							maxlength="300" id="user.name"
@@ -310,7 +289,7 @@
 					<div class="form-group">
 						<h6>Provincia:</h6>
 						<span><form:select path="userDTO.provinceId"
-								id="userProvince" class="form-control contact-control"
+								id="userProvinceId" class="form-control contact-control"
 								data-error="Por favor seleccione seleccione la provincia">
 								<form:options items="${provinces}" itemValue="id" itemLabel="name"/>
 							</form:select> </span>
@@ -319,7 +298,7 @@
 					<div class="form-group">
 						<h6>Localidad:</h6>
 						<span> <form:select path="userDTO.locationId"
-								id="userLocation" class="form-control contact-control"
+								id="userLocationId" class="form-control contact-control"
 								data-error="Por favor seleccione seleccione la localidad">
 							</form:select>
 						</span>
@@ -332,10 +311,12 @@
 							data-error="Por favor complete la ubicacion" />
 						<div class="help-block with-errors"></div>
 					</div>
-					<button class="btn btn-common btn-lg" type="submit"
-						id="form-submit">
-						<i class="fa fa-send"></i>Publicar
-					</button>
+					<div class="wraptocenter">
+						<button class="btn btn-common btn-lg" type="submit"
+							id="form-submit">
+							<i class="fa fa-send"></i>Publicar
+						</button>
+					</div>
 					<div class="clearfix"></div>
 				</form:form>
 			</div>
@@ -347,14 +328,36 @@
 	<!-- Featured Section Ends -->
 	<jsp:include page="../common/footer.jsp" />
 	
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/jquery-1.11.2.min.js"/>"></script>
+    <script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/jquery.validate.min.js"/>"></script>
+    <script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/publishpet-validator.js"/>"></script>
+	<!-- Tether Js -->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/tether.min.js"/>"></script>
+	<!-- Bootstrap JS -->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/bootstrap.min.js"/>"></script>
+	<!--Text Rotator-->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/jquery.mixitup.js"/>"></script>
+	<!--WOW Scroll Spy-->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/wow.js"/>"></script>
+	<!-- CounterUp -->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/jquery.counterup.min.js"/>"></script>
+	<!-- OWL Carousel -->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/owl.carousel.js"/>"></script>
+	<!-- ScrollTop -->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/jquery.slicknav.js"/>"></script>
+	<!-- Appear -->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/jquery.appear.js"/>"></script>
+	<!-- All JS plugin Triggers -->
+	<script language="JavaScript" type="text/javascript" src="<spring:url value="/resources/js/main.js"/>"></script>
+	
 	<script type="text/javascript">
 	
 	$(document).ready(function() {
-		$('#specieType').val('1').change();
-		$('#userProvince').val('3').change();
+		$("#specieType").val('1').change();
+		$("#userProvinceId").val('3').change();
 	});
 	
-	$('#specieType').change(function() {
+	$("#specieType").change(function() {
 		<spring:url value="/pets/petTypes" var="petTypesActionUrl" />
 		var idSpecieTypeSelected = $("#specieType").val();
 		getPetTypesAjax('${petTypesActionUrl}', idSpecieTypeSelected);
@@ -368,11 +371,11 @@
 			type : 'GET',
 			contentType: 'application/json',
 			success : function(jsonData) {
-				$('#petType').empty();
+				$("#petType").empty();
 				$(jsonData).each(function(){
 					var option = $('<option />');
 					option.attr('value', this.id).text(this.description);
-					$('#petType').append(option);
+					$("#petType").append(option);
 				});
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
@@ -382,9 +385,9 @@
 		});
 	}
 	
-	$('#userProvince').change(function() {
+	$("#userProvinceId").change(function() {
 		<spring:url value="/users/locations" var="locationsActionUrl" />
-		var idProvinceSelected = $('#userProvince').val();
+		var idProvinceSelected = $("#userProvinceId").val();
 		getLocationsAjax('${locationsActionUrl}',idProvinceSelected);
 	});
 	
@@ -396,11 +399,11 @@
 			type : 'GET',
 			contentType: 'application/json',
 			success : function(jsonData) {
-				$('#userLocation').empty();
+				$("#userLocationId").empty();
 				$(jsonData).each(function(){
 					var option = $('<option />');
 					option.attr('value', this.id).text(this.locationName);
-					$('#userLocation').append(option);
+					$("#userLocationId").append(option);
 				});
 			},
 			error: function (xhr, ajaxOptions, thrownError) {

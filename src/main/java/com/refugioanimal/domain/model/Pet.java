@@ -61,14 +61,6 @@ public class Pet {
 	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String description;
 
-//	@OneToOne(cascade = ALL)
-//	@JoinColumn(name = "idUsuario", nullable = false)
-//	private User owner;
-//
-	@OneToOne(cascade = ALL)
-	@JoinColumn(name = "idMascota", nullable = false)
-	private Publication publication;
-
 	/**
 	 * default constructor for class.
 	 */
@@ -304,34 +296,6 @@ public class Pet {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-//	/**
-//	 * @return the owner
-//	 */
-//	public User getOwner() {
-//		return owner;
-//	}
-//
-//	/**
-//	 * @param owner the owner to set
-//	 */
-//	public void setOwner(User owner) {
-//		this.owner = owner;
-//	}
-
-	/**
-	 * @return the publication
-	 */
-	public Publication getPublication() {
-		return publication;
-	}
-
-	/**
-	 * @param publication the publication to set
-	 */
-	public void setPublication(Publication publication) {
-		this.publication = publication;
 	}
 
 }

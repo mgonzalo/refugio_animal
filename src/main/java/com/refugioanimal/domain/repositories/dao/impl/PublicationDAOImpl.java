@@ -14,14 +14,21 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.refugioanimal.domain.exceptions.PublicationException;
+import com.refugioanimal.domain.model.Pet;
 import com.refugioanimal.domain.model.Publication;
+import com.refugioanimal.domain.model.User;
 import com.refugioanimal.domain.repositories.dao.PublicationDAO;
 import com.refugioanimal.domain.services.dto.SearchDTO;
 
@@ -47,6 +54,10 @@ public class PublicationDAOImpl implements PublicationDAO {
 	public Long createPublication(Publication publication) throws PublicationException {
 		try {
 			Long publicationId = (Long) sessionFactory.openSession().save(publication);
+			// Session session = sessionFactory.openSession();
+			// Transaction trx = session.beginTransaction();
+			// Long publicationId = (Long) session.save(publication);
+			// trx.commit();
 			logger.info("publicacion creada exitosamente, id publicacion :" + publicationId);
 			return publicationId;
 		} catch (HibernateException he) {
@@ -80,7 +91,7 @@ public class PublicationDAOImpl implements PublicationDAO {
 		if (searchDTO.getAge() != null && searchDTO.getAge() > ALL_DEFAULT_VALUE_COMBO_BOX) {
 			criteria.add(le("petAl.age", searchDTO.getAge()));
 		}
-		if (isNotBlank(searchDTO.getSex().trim())) {
+		if (isNotBlank(searchDTO.getSex().trim()) && !searchDTO.getSex().trim().equals("T")) {
 			criteria.add(eq("petAl.sex", searchDTO.getSex().trim().toUpperCase()));
 		}
 
@@ -131,7 +142,7 @@ public class PublicationDAOImpl implements PublicationDAO {
 		Criteria criteria = sessionFactory.openSession().createCriteria(Publication.class);
 		criteria.add(eq("id", publicationId));
 		criteria.add(eq("active", TRUE));
-		
+
 		Publication publication = (Publication) criteria.uniqueResult();
 		logger.info("publicacion encontrada, :" + publication);
 

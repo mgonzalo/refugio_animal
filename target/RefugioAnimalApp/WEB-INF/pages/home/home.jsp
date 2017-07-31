@@ -132,8 +132,12 @@
         </div>
       </div>     
     </header>
-
-    <!-- Portfolio Section -->
+    <div class="wraptocenter">
+		<img alt="no compres, adopta!" width="130px" height="100px" src="<spring:url value="/resources/img/no-compres-adopta.png"/>">
+	</div>
+	<c:choose>
+		<c:when test="${lastPublishPets.lastPetPublishDTOs.size() > 0}">
+			<!-- Portfolio Section -->
     <section id="portfolio" class="section">
       <!-- Container Starts -->
       <div class="container">
@@ -145,141 +149,107 @@
           <div class="col-md-12">
             <!-- Portfolio Controller/Buttons -->
             <div class="controls text-center wow fadeInUpQuick" data-wow-delay=".6s">
+              <c:if test="${lastPublishPets.hasDogTypePet}">
               <a class="filter active btn btn-common" data-filter=".branding">
                 Perros 
               </a>
+              </c:if>
+              <c:if test="${lastPublishPets.hasCatTypePet}">
               <a class="filter btn btn-common" data-filter=".marketing">
                 Gatos 
               </a>
+              </c:if>
+              <c:if test="${lastPublishPets.hasOtherTypesPet}">
               <a class="filter btn btn-common" data-filter=".planning">
                 Otros
               </a>
+               </c:if>
             </div>
             <!-- Portfolio Controller/Buttons Ends-->
           </div>
 
           <!-- Portfolio Recent Projects -->
           <div id="portfolio" class="row wow fadeInUpQuick" data-wow-delay="0.8s">
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing">
-              <div class="portfolio-item">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/img1.jpg" alt="" />                  
-                </div> 
-                <div class="portfoli-content">
-                  <div class="sup-desc-wrap">
-                    <div class="sup-desc-inner">
-                      <div class="sup-link">
-                        <a class="right-link" href="#"><i class="icon-heart"></i></a>
-                      </div>
-                      <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota gato 1</h4></a>
-                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding">
-              <div class="portfolio-item">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/img2.jpg" alt="" />                  
-                </div> 
-                <div class="portfoli-content">
-                  <div class="sup-desc-wrap">
-                    <div class="sup-desc-inner">
-                      <div class="sup-link">
-                        <a class="right-link" href="#"><i class="icon-heart"></i></a>
-                      </div>
-                      <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota perro 1</h4></a>
-                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding">
-              <div class="portfolio-item">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/img3.jpg" alt="" />                  
-                </div> 
-                <div class="portfoli-content">
-                  <div class="sup-desc-wrap">
-                    <div class="sup-desc-inner">
-                      <div class="sup-link">
-                        <a class="right-link" href="#"><i class="icon-heart"></i></a>
-                      </div>
-                      <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota perro 2</h4></a>
-                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing">
-              <div class="portfolio-item">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/img4.jpg" alt="" />                  
-                </div> 
-                <div class="portfoli-content">
-                  <div class="sup-desc-wrap">
-                    <div class="sup-desc-inner">
-                      <div class="sup-link">
-                        <a class="right-link" href="#"><i class="icon-heart"></i></a>
-                      </div>
-                      <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota gato 2</h4></a>
-                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing">
-              <div class="portfolio-item">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/img5.jpg" alt="" />                  
-                </div> 
-                <div class="portfoli-content">
-                  <div class="sup-desc-wrap">
-                    <div class="sup-desc-inner">
-                      <div class="sup-link">
-                        <a class="right-link" href="#"><i class="icon-heart"></i></a>
-                      </div>
-                      <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota gato 3</h4></a>
-                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix planning">
-              <div class="portfolio-item">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/img6.jpg" alt="" />                  
-                </div> 
-                <div class="portfoli-content">
-                  <div class="sup-desc-wrap">
-                    <div class="sup-desc-inner">
-                      <div class="sup-link">
-                        <a class="right-link" href="#"><i class="icon-heart"></i></a>
-                      </div>
-                      <div class="sup-meta-wrap">
-                        <a class="sup-title" href="#"><h4>Nombre Mascota otro</h4></a>
-                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
+          
+          <c:forEach items="${lastPublishPets.lastPetPublishDTOs}" var="lastPetPublish">
+          	<c:choose>
+	          	<c:when test="${lastPetPublish.petType == 1}">
+	          		<div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding">
+	              <div class="portfolio-item">
+	                <div class="portfolio-img">
+<%-- 	                  <img alt="${lastPetPublish.name}" --%>
+<%-- 							src="<spring:url value="/resources/img/pets/${lastPetPublish.publicationId}/${lastPetPublish.name}_${lastPetPublish.petID}_0.jpg"/>" />                   --%>
+	                <img alt="Imagen no Disponible" src="<spring:url value="/resources/img/no_imagen_dog.jpg"/>" />                  
+	                </div> 
+	                <div class="portfoli-content">
+	                  <div class="sup-desc-wrap">
+	                    <div class="sup-desc-inner">
+	                      <div class="sup-link">
+	                        <a class="right-link" href="<spring:url value="/pets/${lastPetPublish.publicationId}"/>"><i class="icon-heart"></i></a>
+	                      </div>
+	                      <div class="sup-meta-wrap">
+	                        <a class="sup-title" href="<spring:url value="/pets/${lastPetPublish.publicationId}"/>"><h4>${lastPetPublish.name}</h4></a>
+	                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>               
+	              </div>
+	            </div>
+	            <div class="col-sm-2 col-md-1 col-lg-1 col-xl-1"></div>
+	          	</c:when>
+          		<c:when test="${lastPetPublish.petType == 2}">
+	          	<div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing">
+	              <div class="portfolio-item">
+	                <div class="portfolio-img">
+<%-- 	                  <img alt="${lastPetPublish.name}" --%>
+<%-- 							src="<spring:url value="/resources/img/pets/${lastPetPublish.publicationId}/${lastPetPublish.name}_${lastPetPublish.petID}_0.jpg"/>" />                   --%>
+	                	  <img alt="Imagen no Disponible" src="<spring:url value="/resources/img/no_imagen_dog.jpg"/>" />                  
+	                </div> 
+	                <div class="portfoli-content">
+	                  <div class="sup-desc-wrap">
+	                    <div class="sup-desc-inner">
+	                      <div class="sup-link">
+	                        <a class="right-link" href="<spring:url value="/pets/${lastPetPublish.publicationId}"/>"><i class="icon-heart"></i></a>
+	                      </div>
+	                      <div class="sup-meta-wrap">
+	                        <a class="sup-title" href="<spring:url value="/pets/${lastPetPublish.publicationId}"/>"><h4>${lastPetPublish.name}</h4></a>
+	                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>               
+	              </div>
+	            </div>
+	            <div class="col-sm-2 col-md-1 col-lg-1 col-xl-1"></div>
+          		</c:when>
+          		<c:otherwise>
+          		<div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix planning">
+	              <div class="portfolio-item">
+	                <div class="portfolio-img">
+	                  <img alt="${lastPetPublish.name}"
+							src="<spring:url value="/resources/img/pets/${lastPetPublish.publicationId}/${lastPetPublish.name}_${lastPetPublish.petID}_0.jpg"/>" />                  
+	                </div> 
+	                <div class="portfoli-content">
+	                  <div class="sup-desc-wrap">
+	                    <div class="sup-desc-inner">
+	                      <div class="sup-link">
+	                        <a class="right-link" href="<spring:url value="/pets/${lastPetPublish.publicationId}"/>"><i class="icon-heart"></i></a>
+	                      </div>
+	                      <div class="sup-meta-wrap">
+	                        <a class="sup-title" href="<spring:url value="/pets/${lastPetPublish.publicationId}"/>"><h4>${lastPetPublish.name}</h4></a>
+	                        <p class="sup-description">Hace click en el corazon para ver a la mascota</p>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>               
+	              </div>
+	            </div>
+	            <div class="col-sm-2 col-md-1 col-lg-1 col-xl-1"></div>
+          		</c:otherwise>
+          	</c:choose>
+          </c:forEach>
+            
           </div>
          <div class="col-md-12">
             <!-- End Portfolio Recent Projects -->
@@ -287,12 +257,14 @@
               <a href="<spring:url value="/pets/search"/>" class="btn btn-common"><i class="fa fa-arrows"></i> Ver mas</a>
             </div>
          </div>
+          
         </div>
       </div>
       <!-- Container Ends -->
     </section>
-    <!-- Portfolio Section Ends -->        
-
+    <!-- Portfolio Section Ends -->   
+		</c:when>
+	</c:choose>
     <!-- Featured Section Starts -->
     <section id="featured" class="section">
       <!-- Container Starts -->

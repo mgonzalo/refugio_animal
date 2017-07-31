@@ -19,6 +19,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.refugioanimal.domain.model.AboutUs</value>
+				<value>com.refugioanimal.domain.model.Contact</value>
 				<value>com.refugioanimal.domain.model.EventInfo</value>
 				<value>com.refugioanimal.domain.model.Location</value>
 				<value>com.refugioanimal.domain.model.Pet</value>

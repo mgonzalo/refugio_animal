@@ -7,19 +7,18 @@
         <nav class="navbar navbar-toggleable-sm navbar-light">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-            </button>
-            <a class="navbar-brand" href="<spring:url value="/home"/>">
-              <img src="<spring:url value="/resources/img/Logo.jpg"/>" alt="RefugioAnimal" size="">
-            </a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation"/></button>
+	            <a class="navbar-brand" href="<spring:url value="/home"/>">
+	              <img src="<spring:url value="/resources/img/logo.png"/>" style="width: 100%;height:auto;" alt="RefugioAnimal">
+	            </a>
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="main-menu">
             <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link active" href="<spring:url value="/home"/>">Home <span class="sr-only">(current)</span></a>
+              <li class="nav-item ${navHomeActive}">
+                <a class="nav-link ${navHomeActive}" href="<spring:url value="/home"/>">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mascotas</a>
+                <a class="nav-link ${navPetActive} dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mascotas</a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="<spring:url value="/pets/search"/>">Buscar</a>
                   <a class="dropdown-item" href="<spring:url value="/pets/publish"/>">Publicar</a>
@@ -27,16 +26,16 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Veterinarias</a>
+                <a class="nav-link ${navVeterinaryShelterActive} dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Veterinarias</a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="<spring:url value="/veterinaryshelter/search"/>">Buscar</a>
                   <a class="dropdown-item" href="<spring:url value="/veterinaryshelter/publish"/>">Publicar</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contacto</a>
+                <a class="nav-link ${navContactActive} dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contacto</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="<spring:url value="/contactus"/>">Contacto</a>
+                  <a class="dropdown-item" href="<spring:url value="/contact/contactus"/>">Contacto</a>
                 </div>
               </li>
             </ul>
@@ -71,7 +70,7 @@
             <li>
               <a href="#">Contacto</a>
               <ul>
-                <li><a href="<spring:url value="/contactus"/>">Contacto</a></li>
+                <li><a href="<spring:url value="/contact/contactus"/>">Contacto</a></li>
               </ul>                        
             </li>  
           </ul>

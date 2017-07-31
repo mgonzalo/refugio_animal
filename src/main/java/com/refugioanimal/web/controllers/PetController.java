@@ -65,6 +65,10 @@ public class PetController extends BaseController {
 		modelAndView.addObject("petDTO", new PetDTO());
 		modelAndView.addObject("commonData", getCommonData());
 		modelAndView.addObject("showDiv", "none");
+		modelAndView.addObject("navHomeActive", "");
+		modelAndView.addObject("navPetActive", "active");
+		modelAndView.addObject("navVeterinaryShelterActive", "");
+		modelAndView.addObject("navContactActive", "");
 		return modelAndView;
 	}
 
@@ -80,6 +84,10 @@ public class PetController extends BaseController {
 		modelAndView.addObject("commonData", getCommonData());
 		modelAndView.addObject("specieTypes", specieTypeDTOs);
 		modelAndView.addObject("sizeTypes", sizeTypeDTOs);
+		modelAndView.addObject("navHomeActive", "");
+		modelAndView.addObject("navPetActive", "active");
+		modelAndView.addObject("navVeterinaryShelterActive", "");
+		modelAndView.addObject("navContactActive", "");
 
 		try {
 			petService.createPublication(petDTO);
@@ -114,6 +122,10 @@ public class PetController extends BaseController {
 		model.addObject("provinces", provinceDTOs);
 		model.addObject("searchDTO", new SearchDTO());
 		model.addObject("commonData", getCommonData());
+		model.addObject("navHomeActive", "");
+		model.addObject("navPetActive", "active");
+		model.addObject("navVeterinaryShelterActive", "");
+		model.addObject("navContactActive", "");
 		return model;
 	}
 
@@ -138,6 +150,10 @@ public class PetController extends BaseController {
 		model.addObject("provinces", provinceDTOs);
 		model.addObject("searchDTO", searchDTO);
 		model.addObject("commonData", getCommonData());
+		model.addObject("navHomeActive", "");
+		model.addObject("navPetActive", "active");
+		model.addObject("navVeterinaryShelterActive", "");
+		model.addObject("navContactActive", "");
 		model.addObject("results", publicationDTOs);
 		return model;
 	}
@@ -152,6 +168,10 @@ public class PetController extends BaseController {
 	public ModelAndView getAnimalCareView(ModelAndView model) {
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + PET_ANIMALCARE_VIEW);
 		model.addObject("commonData", getCommonData());
+		model.addObject("navHomeActive", "");
+		model.addObject("navPetActive", "active");
+		model.addObject("navVeterinaryShelterActive", "");
+		model.addObject("navContactActive", "");
 		return model;
 	}
 
@@ -179,6 +199,10 @@ public class PetController extends BaseController {
 		PublicationDataDTO publicationDataDTO = searchService.getPublication(publicationId);
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + PET_FILE_VIEW);
 		model.addObject("commonData", getCommonData());
+		model.addObject("navHomeActive", "");
+		model.addObject("navPetActive", "active");
+		model.addObject("navVeterinaryShelterActive", "");
+		model.addObject("navContactActive", "");
 		model.addObject("data", publicationDataDTO);
 		return model;
 	}

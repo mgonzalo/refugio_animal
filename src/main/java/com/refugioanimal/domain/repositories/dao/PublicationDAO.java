@@ -6,7 +6,9 @@ package com.refugioanimal.domain.repositories.dao;
 import java.util.List;
 
 import com.refugioanimal.domain.exceptions.PublicationException;
+import com.refugioanimal.domain.model.Pet;
 import com.refugioanimal.domain.model.Publication;
+import com.refugioanimal.domain.model.User;
 import com.refugioanimal.domain.services.dto.SearchDTO;
 
 /**

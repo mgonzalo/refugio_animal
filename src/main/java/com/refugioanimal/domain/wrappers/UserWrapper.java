@@ -31,7 +31,9 @@ public class UserWrapper {
 	 */
 	public static User toUser(UserDTO userDTO, UserTypeEnum userTypeEnum, Province province, Location location) {
 		String[] arrName = userDTO.getName().split(" ");
-		return new User(arrName[0], arrName[1], userDTO.getDocNumber().toString(), userDTO.getEmail(), userDTO.getPhone(), EMPTY, COUNTRY_ID_AR, province, location, userDTO.getStreet(), Long.valueOf(userTypeEnum.ordinal()), EMPTY, EMPTY, EMPTY,
+		String userName = arrName[0];
+		String userLastName = arrName.length > 1? arrName[1] : EMPTY;
+		return new User(userName, userLastName, userDTO.getDocNumber().toString(), userDTO.getEmail(), userDTO.getPhone(), EMPTY, COUNTRY_ID_AR, province, location, userDTO.getStreet(), Long.valueOf(userTypeEnum.ordinal()), EMPTY, EMPTY, EMPTY,
 				EMPTY);
 	}
 

@@ -25,6 +25,10 @@ public class VeterinaryShelterController extends BaseController {
 	public ModelAndView getPublishView(ModelAndView modelAndView) {
 		modelAndView.setViewName(VIEW_CONTAIN_FOLDER_NAME + PUBLISH_VETERINARY_SHELTER_VIEW);
 		modelAndView.addObject("commonData", getCommonData());
+		modelAndView.addObject("navHomeActive", "");
+		modelAndView.addObject("navPetActive", "");
+		modelAndView.addObject("navVeterinaryShelterActive", "active");
+		modelAndView.addObject("navContactActive", "");
 		return modelAndView;
 	}
 
@@ -35,10 +39,14 @@ public class VeterinaryShelterController extends BaseController {
 	
 
 	@RequestMapping(value = "/search", method = GET)
-	public ModelAndView getSerchView(ModelAndView model) {
-		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + SEARCH_VETERINARY_SHELTER_VIEW);
-		model.addObject("commonData", getCommonData());
-		return model;
+	public ModelAndView getSerchView(ModelAndView modelAndView) {
+		modelAndView.setViewName(VIEW_CONTAIN_FOLDER_NAME + SEARCH_VETERINARY_SHELTER_VIEW);
+		modelAndView.addObject("commonData", getCommonData());
+		modelAndView.addObject("navHomeActive", "");
+		modelAndView.addObject("navPetActive", "");
+		modelAndView.addObject("navVeterinaryShelterActive", "active");
+		modelAndView.addObject("navContactActive", "");
+		return modelAndView;
 	}
 
 }

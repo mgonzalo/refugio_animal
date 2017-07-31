@@ -5,6 +5,7 @@ package com.refugioanimal.domain.wrappers;
 
 import static java.lang.Boolean.TRUE;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,8 @@ import com.refugioanimal.domain.services.dto.PublicationDataDTO;
  * @author Administrator
  */
 public class PublicationWrapper {
+
+	private static DecimalFormat decimalFormat = new DecimalFormat("###.#");
 
 	/**
 	 * Create Publication object.
@@ -39,11 +42,13 @@ public class PublicationWrapper {
 	 */
 	public static List<PublicationDTO> toPublicationsDTO(List<Publication> publications) {
 		List<PublicationDTO> publicationDTOs = new ArrayList<PublicationDTO>();
+
 		for (Publication publication : publications) {
-			String petAge = publication.getPet().getAge() < 1 ? publication.getPet().getAge().toString() + " Meses" : publication.getPet().getAge().toString() + " Años";
+			String petAge = publication.getPet().getAge() < 1 ? decimalFormat.format(publication.getPet().getAge()).toString() + " Meses" : decimalFormat.format(publication.getPet().getAge()).toString() + " Años";
 			String petSex = publication.getPet().getSex().equals("H") ? "Hembra" : "Macho";
 			String ubicacion = publication.getUser().getProvince().getProvinceName() + " - " + publication.getUser().getLocation().getLocationName();
-			publicationDTOs.add(new PublicationDTO(publication.getId(), publication.getPet().getId(), publication.getPet().getPetName(), petAge, petSex, publication.getPet().getBreed(), ubicacion));
+			String petSize = publication.getPet().getSize().getDescription();
+			publicationDTOs.add(new PublicationDTO(publication.getId(), publication.getPet().getId(), publication.getPet().getPetName(), petAge, petSex, petSize, publication.getPet().getBreed(), ubicacion));
 		}
 		return publicationDTOs;
 	}
@@ -64,7 +69,7 @@ public class PublicationWrapper {
 		String ownerStreet = publication.getUser().getDirection();
 		String petPetType = publication.getPet().getPetType().getDescription();
 		String petName = publication.getPet().getPetName();
-		String petAge = publication.getPet().getAge() < 1 ? publication.getPet().getAge().toString() + " Meses" : publication.getPet().getAge().toString() + " Años";
+		String petAge = publication.getPet().getAge() < 1 ? decimalFormat.format(publication.getPet().getAge()).toString() + " Meses" : decimalFormat.format(publication.getPet().getAge()).toString() + " Años";
 		String petSex = publication.getPet().getSex().equals("H") ? "Hembra" : "Macho";
 		String petSize = publication.getPet().getSize().getDescription();
 		String petBreed = publication.getPet().getBreed();
@@ -73,7 +78,7 @@ public class PublicationWrapper {
 		Boolean petCompatibilityWithOtherAnimals = publication.getPet().getCompatibility();
 		Boolean petSpecialCare = publication.getPet().getSpecialCare();
 		String petDescription = publication.getPet().getDescription();
-		
+
 		return new PublicationDataDTO(ownerNameLastname, ownerEmail, ownerPhone, ownerProvince, ownerCity, ownerStreet, petPetType, petName, petAge, petSex, petSize, petBreed, petCastrated, petVaccinate, petCompatibilityWithOtherAnimals,
 				petSpecialCare, petDescription);
 	}

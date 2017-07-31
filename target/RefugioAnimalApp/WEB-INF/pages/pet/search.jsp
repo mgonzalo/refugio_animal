@@ -34,7 +34,7 @@
 	href="<spring:url value="/resources/css/responsive.css"/>" />
 <!--Fonts-->
 <link rel="stylesheet" media="screen"
-	href="<spring:url value="/resources/fonts/font-awesome.min.css"/>" />
+	href="<spring:url value="/resources/fonts/font-awesome/font-awesome.min.css"/>" />
 <link rel="stylesheet" media="screen"
 	href="<spring:url value="/resources/fonts/simple-line-icons.css"/>" />
 
@@ -99,7 +99,8 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>Buscar Mascotas</h2>
+<!-- 						<h2>Buscar Mascotas</h2> -->
+					<img alt="buscar mascotas" width="55%" height="60%" src="<spring:url value="/resources/img/mascota_adopcion_transparente.png"/>">
 					</div>
 				</div>
 			</div>
@@ -126,11 +127,8 @@
 							<form:select path="petType" id="petType"
 								class="form-control contact-control" name="petType"
 								data-error="Por favor seleccione el tipo de mascota">
-								<form:option value="0" label="Todos" selected="selected" />
-								<form:option value="1" label="Perro" />
-								<form:option value="2" label="Gato" />
-								<form:option value="3" label="Conejo" />
-								<form:option value="4" label="Paloma" />
+								<form:option value="0" label="Todas" selected="selected" />
+								<form:options items="${petTypes}" itemValue="id" itemLabel="description"/>
 							</form:select>
 						</div>
 					</div>
@@ -138,13 +136,9 @@
 						<div class="form-group">
 							<h6>Tamaño</h6>
 							<form:select path="sizeType" id="sizeType"
-								class="form-control contact-control" name="sizeType"
-								data-error="Por favor seleccione el tamaño de la mascota">
+								class="form-control contact-control">
 								<form:option value="0" label="Todos" selected="selected" />
-								<form:option value="1" label="Pequeño" />
-								<form:option value="2" label="Mediano" />
-								<form:option value="3" label="Grande" />
-								<form:option value="4" label="Gigante" />
+								<form:options items="${sizeTypes}" itemValue="id" itemLabel="description"/>
 							</form:select>
 						</div>
 					</div>
@@ -152,43 +146,60 @@
 						<div class="form-group">
 							<h6>Raza</h6>
 							<form:input path="breed" type="text" id="breed"
-								class="form-control contact-control" name="breed"
-								data-error="Por favor complete la raza" />
+								class="form-control contact-control" name="breed"/>
 						</div>
 					</div>
 					<div class="col-xs-8 col-md-4">
 						<div class="form-group">
 							<h6>Edad</h6>
-							<form:input path="age" type="text" id="age"
-								class="form-control contact-control" name="age"
-								data-error="Por favor complete la edad" />
+							<form:select path="age" id="age"
+								class="form-control contact-control">
+								<form:option value="0" label="Todas" selected="selected" />
+								<form:option value="0.1" label="1 Mes" />
+								<form:option value="0.2" label="2 Meses" />
+								<form:option value="0.3" label="3 Meses" />
+								<form:option value="0.4" label="4 Meses" />
+								<form:option value="0.5" label="5 Meses" />
+								<form:option value="0.6" label="6 Meses" />
+								<form:option value="0.7" label="7 Meses" />
+								<form:option value="0.8" label="8 Meses" />
+								<form:option value="0.9" label="9 Meses" />
+								<form:option value="0.10" label="10 Meses" />
+								<form:option value="0.11" label="11 Meses" />
+								<form:option value="1" label="1 Año" />
+								<form:option value="2" label="2 Años" />
+								<form:option value="3" label="3 Años" />
+								<form:option value="4" label="4 Años" />
+								<form:option value="5" label="5 Años" />
+								<form:option value="6" label="6 Años" />
+								<form:option value="7" label="7 Años" />
+								<form:option value="8" label="8 Años" />
+								<form:option value="9" label="9 Años" />
+								<form:option value="10" label="10 Años" />
+								<form:option value="11" label="11 Años" />
+								<form:option value="12" label="12 Años" />
+								<form:option value="13" label="13 Años" />
+								<form:option value="14" label="14 Años" />
+								<form:option value="15" label="15 Años" />
+								<form:option value="16" label="16 Años" />
+								<form:option value="17" label="17 Años" />
+							</form:select>
 						</div>
 					</div>
 					<div class="col-xs-8 col-md-4">
 						<div class="form-group">
 							<h6>Provincia</h6>
-							<form:select path="provinceId" id="provinceId"
-								class="form-control contact-control" name="provinceId"
-								data-error="Por favor seleccione seleccione la provincia">
-								<form:option value="0" label="Todos" selected="selected" />
-								<form:option value="1" label="Buenos Aires" />
-								<form:option value="2" label="Buenos Aires - GBA" />
-								<form:option value="3" label="Capital Federal" />
-								<form:option value="4" label="Catamarca" />
+							<form:select path="provinceId"
+								id="userProvince" class="form-control contact-control">
+								<form:option value="0" label="Todas" selected="selected" />
+								<form:options items="${provinces}" itemValue="id" itemLabel="name"/>
 							</form:select>
 						</div>
 					</div>
 					<div class="col-xs-8 col-md-4">
 						<div class="form-group">
 							<h6>Localidad</h6>
-							<form:select path="locationId" id="locationId"
-								class="form-control contact-control" name="locationId"
-								data-error="Por favor seleccione seleccione la localidad">
-								<form:option value="0" label="Todos" selected="selected" />
-								<form:option value="1" label="25 de Mayo" />
-								<form:option value="2" label="3 de febrero" />
-								<form:option value="3" label="A. Alsina" />
-								<form:option value="4" label="A. Gonzáles Cháves" />
+							<form:select path="locationId" id="userLocation" class="form-control contact-control">
 							</form:select>
 						</div>
 					</div>
@@ -197,7 +208,10 @@
 							<h6>Sexo:</h6>
 							<span><form:radiobutton path="sex" id="sex" name="sex"
 									itemValue="H" label="Hembra" /> <form:radiobutton path="sex"
-									id="sex" name="sex" itemValue="M" label="Macho" /> </span>
+									id="sex" name="sex" itemValue="M" label="Macho" /> 
+									<form:radiobutton path="sex" id="sex" name="sex"
+									itemValue="T" label="Todos" />
+							</span>
 						</div>
 					</div>
 					<div class="col-xs-8 col-md-3">
@@ -214,14 +228,14 @@
 									label="" name="vaccinate" /></span>
 						</div>
 					</div>
-
 				</div>
 				<div
 					class="col-md-7 col-md-offset-1 contact-form contact-info-section">
-					<button class="btn btn-common btn-lg" type="submit"
-						id="form-submit">
-						<i class="fa fa-search"></i>Buscar
-					</button>
+<!-- 					<button class="btn btn-common btn-lg" type="submit" -->
+<!-- 						id="form-submit"> -->
+<!-- 						<i class="fa fa-search"></i>Buscar -->
+<!-- 					</button> -->
+					<img id="btnImgSearch" alt="buscar mascotas" width="180px" height="60px" align="right" src="<spring:url value="/resources/img/boton-buscar2_transp.png"/>">
 				</div>
 			</form:form>
 		</div>
@@ -234,47 +248,94 @@
 		class="animated-progress-area mt-50 contact-form-section section-padding">
 	<div class="container">
 		<c:choose>
-			<c:when test="${results.size() > 0}">
-				<h4 class="blog-post-title">Resultados</h4>
-				<div class="row">
-					<!-- BLog Article Section -->
-					<div class="col-md-9">
-						<c:forEach items="${results}" var="resultPetsSearch">
-							<!-- Single Blog Post -->
-							<a href="<spring:url value="/pets/${resultPetsSearch.petID}"/>">
-								<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
-								<section class="blog-post-content">
-								<div>
-									<img alt="${resultPetsSearch.name}"
-										src="<spring:url value="/resources/img/pets/${resultPetsSearch.petID}/${resultPetsSearch.petID}_0.jpg"/>" />
-									<h2 class="blog-post-title">${resultPetsSearch.name}</h2>
-								</div>
-								<div class="blog-post"></div>
-								<p>${resultPetsSearch.age}<c:choose>
-										<c:when test="${resultPetsSearch.age < 1}"> Meses</c:when>
-										<c:otherwise> Años</c:otherwise>
-									</c:choose>
-									-
-									<c:choose>
-										<c:when test="${resultPetsSearch.sex == 'H'}">Hembra</c:when>
-										<c:otherwise>Macho</c:otherwise>
-									</c:choose>
-									- ${resultPetsSearch.breed}
-								</p>
-								</section> </article>
-							</a>
-						</c:forEach>
-					</div>
-				</div>
+			<c:when test="${results != null}">
+				<c:choose>
+					<c:when test="${results.size() > 0}">
+						<h4 class="blog-post-title">Resultados</h4>
+						<div class="row">
+							<!-- BLog Article Section -->
+							<div class="col-md-9">
+								<c:forEach items="${results}" var="resultPetsSearch">
+									<!-- Single Blog Post -->
+									<a href="<spring:url value="/pets/${resultPetsSearch.publicationId}"/>">
+										<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
+										<section class="blog-post-content">
+											<div>
+												<img alt="${resultPetsSearch.petName}"
+													src="<spring:url value="/resources/img/pets/${resultPetsSearch.publicationId}/${resultPetsSearch.petName}_${resultPetsSearch.petId}_0.jpg"/>" />
+												<h2 class="blog-post-title">${resultPetsSearch.petName}</h2>
+											</div>
+											<div class="blog-post"></div>
+											<label title="sexo">${resultPetsSearch.petSex}</label>
+											<label title="nombre">${resultPetsSearch.petAge}</label>
+											<label title="raza">${resultPetsSearch.petBreed}</label>
+											<label title="tamaño">${resultPetsSearch.petSize}</label>
+<!-- 											<div class="blog-post"></div> -->
+											<label title="ubicacion">${resultPetsSearch.ubicacion}</label>
+										</section>
+										</article>
+									</a>
+								</c:forEach>
+							</div>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<h3>No se encontraron resultados para la busqueda, revise los filtros aplicados.</h3>
+						<div class="wraptocenter">
+							<img id="btnImgSearch" height="300px" width="250px" alt="sin resultados" src="<spring:url value="/resources/img/perro-triste_transp.png"/>">
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</c:when>
-			<c:otherwise>
-				<h3>No se encontraron resultados para la busqueda, revise los
-					filtros aplicados.</h3>
-			</c:otherwise>
 		</c:choose>
 	</div>
 	</section>
 	<!-- Featured Section Ends -->
 	<jsp:include page="../common/footer.jsp" />
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$('#userProvince').change();
+	});
+	
+	$('#btnImgSearch').click(function(){
+		searchfrom.submit();
+	});
+	
+	$('#userProvince').change(function() {
+		<spring:url value="/users/locations" var="locationsActionUrl" />
+		var idProvinceSelected = $('#userProvince').val();
+		getLocationsAjax('${locationsActionUrl}',idProvinceSelected);
+	});
+	
+	function getLocationsAjax(uri,provinceId){
+		$.ajax({
+			url : uri,
+			data : {'provinceId':provinceId},
+			dataType: 'JSON',
+			type : 'GET',
+			contentType: 'application/json',
+			success : function(jsonData) {
+				$('#userLocation').empty();
+				if(jsonData.length > 0){
+					$(jsonData).each(function(){
+						var option = $('<option />');
+						option.attr('value', this.id).text(this.locationName);
+						$('#userLocation').append(option);
+					});
+				}else{
+					$('#userLocation').append('<option value="0" selected="selected">Todas</option>');
+				}
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+		        alert(xhr.status);
+		        alert(thrownError);
+		    }
+		});
+	}
+	
+	</script>
+	
 </body>
 </html>

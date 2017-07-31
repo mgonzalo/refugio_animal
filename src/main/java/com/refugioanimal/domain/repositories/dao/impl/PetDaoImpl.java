@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.refugioanimal.domain.exceptions.MascotaException;
 import com.refugioanimal.domain.model.Pet;
@@ -55,6 +56,12 @@ public class PetDaoImpl implements PetDAO {
 	public Long savePet(Pet pet) throws MascotaException {
 		try {
 			Long petId = (Long) sessionFactory.openSession().save(pet);
+//			Session session = sessionFactory.openSession();
+//			Transaction trx = session.beginTransaction();
+//			Long petId = (Long)session.save(pet);
+//			session.flush();
+//			trx.commit();
+//			session.close();
 			logger.info("mascota creada exitosamente, id mascota :" + petId);
 			return petId;
 		} catch (HibernateException he) {

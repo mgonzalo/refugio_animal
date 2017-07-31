@@ -3542,3 +3542,22 @@ ul.contact-info2 i.fa {
       bottom: 25px;
     }
 }
+
+.wraptocenter {
+  text-align: center;
+}
+
+.wraptoright {
+  text-align: right;
+}
+
+.label_viewitem {
+	display:block;
+	width:100%;
+	padding:.5rem .75rem;
+	font-size:1rem;
+	line-height:0.90;
+	color:#464a4c;
+	background-image:none;
+	background-clip:padding-box;
+}

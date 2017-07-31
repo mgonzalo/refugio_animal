@@ -132,9 +132,9 @@
         </div>
       </div>     
     </header>
-
-	<!-- lastPets preguntar si no es vacio e iterar por tipo. (perro, gatos, resto) -->
-
+    <div class="wraptocenter">
+		<img alt="no compres, adopta!" width="130px" height="100px" src="<spring:url value="/resources/img/no-compres-adopta.png"/>">
+	</div>
 	<c:choose>
 		<c:when test="${lastPublishPets.lastPetPublishDTOs.size() > 0}">
 			<!-- Portfolio Section -->

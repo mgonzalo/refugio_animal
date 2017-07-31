@@ -24,7 +24,7 @@
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="<spring:url value="/resources/css/responsive.css"/>"/>
     <!--Fonts-->
-    <link rel="stylesheet" media="screen" href="<spring:url value="/resources/fonts/font-awesome.min.css"/>"/>
+    <link rel="stylesheet" media="screen" href="<spring:url value="/resources/fonts/font-awesome/font-awesome.min.css"/>"/>
     <link rel="stylesheet" media="screen" href="<spring:url value="/resources/fonts/simple-line-icons.css"/>"/>    
      
      <!-- Extras -->
@@ -43,6 +43,31 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
     <![endif]-->
+    
+    <script src="<spring:url value="/resources/js/jquery-min.js"/>"></script>
+        <!-- Tether Js -->
+    <script src="<spring:url value="/resources/js/tether.min.js"/>"></script>
+    <!-- Bootstrap JS -->    
+    <script src="<spring:url value="/resources/js/bootstrap.min.js"/>"></script>
+    <!--Text Rotator-->
+    <script src="<spring:url value="/resources/js/jquery.mixitup.js"/>"></script>
+    <!--WOW Scroll Spy-->
+    <script src="<spring:url value="/resources/js/wow.js"/>"></script>
+    <!-- OWL Carousel -->
+    <script src="<spring:url value="/resources/js/owl.carousel.js"/>"></script>
+    <!-- WayPoint -->
+    <script src="<spring:url value="/resources/js/waypoints.min.js"/>"></script>
+    <!-- CounterUp -->
+    <script src="<spring:url value="/resources/js/jquery.counterup.min.js"/>"></script>
+    <!-- ScrollTop -->
+    <script src="<spring:url value="/resources/js/jquery.slicknav.js"/>"></script>
+    <!-- Appear -->
+    <script src="<spring:url value="/resources/js/jquery.appear.js"/>"></script>
+    <!-- Vide js -->
+    <script src="<spring:url value="/resources/js/jquery.vide.js"/>"></script>
+     <!-- All JS plugin Triggers -->
+    <script src="<spring:url value="/resources/js/main.js"/>"></script>
+    
   </head>
   <body>
 
@@ -58,7 +83,8 @@
         <div class="row">
           <div class="page-header-area">
             <div class="page-header-content">
-              <h2>Cuidados de la Mascota</h2>
+<!--               <h2>Cuidados de la Mascota</h2> -->
+				<img alt="cuida tu mascotas" width="31%" height="35%" align="middle" src="<spring:url value="/resources/img/cuida_tu_mascota.png"/>">
             </div>
           </div>
         </div>

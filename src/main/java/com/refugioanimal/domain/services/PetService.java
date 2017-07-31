@@ -5,6 +5,11 @@ package com.refugioanimal.domain.services;
 
 import java.util.List;
 
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+
 import com.refugioanimal.domain.exceptions.MascotaException;
 import com.refugioanimal.domain.exceptions.PetTypeException;
 import com.refugioanimal.domain.exceptions.PublicationException;
@@ -46,6 +51,11 @@ public interface PetService {
 	 * @throws PetTypeException
 	 * @throws UserException
 	 * @throws PublicationException
+	 * @throws SystemException 
+	 * @throws HeuristicRollbackException 
+	 * @throws HeuristicMixedException 
+	 * @throws RollbackException 
+	 * @throws SecurityException 
 	 */
 	void createPublication(PetDTO pet) throws MascotaException, SizeException, PetTypeException, UserException, PublicationException;
 

@@ -32,6 +32,10 @@ public class HomeController extends BaseController {
 		model.setViewName(VIEW_CONTAIN_FOLDER_NAME + HOME_INDEX_VIEW);
 		model.addObject("commonData", getCommonData());
 		model.addObject("lastPublishPets", lastPetPublish);
+		model.addObject("navHomeActive", "active");
+		model.addObject("navPetActive", "");
+		model.addObject("navVeterinaryShelterActive", "");
+		model.addObject("navContactActive", "");
 		return model;
 	}
 

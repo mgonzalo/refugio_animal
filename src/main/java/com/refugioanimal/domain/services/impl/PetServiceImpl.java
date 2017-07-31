@@ -8,14 +8,15 @@ import static com.refugioanimal.domain.enums.PetTypeEnum.DOG;
 import static com.refugioanimal.domain.enums.UserTypeEnum.NORMAL_USER;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static org.slf4j.LoggerFactory.getLogger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.refugioanimal.domain.exceptions.MascotaException;
 import com.refugioanimal.domain.exceptions.PetTypeException;
@@ -58,6 +59,8 @@ import com.refugioanimal.domain.wrappers.UserWrapper;
 @Service
 public class PetServiceImpl implements PetService {
 
+	private static final Logger logger = getLogger(PetServiceImpl.class);
+
 	@Autowired
 	private PetDAO petDao;
 	@Autowired
@@ -71,9 +74,9 @@ public class PetServiceImpl implements PetService {
 	@Autowired
 	private SpeciesDAO speciesDao;
 	@Autowired
-	ProvinceDAO provinceDao;
+	private ProvinceDAO provinceDao;
 	@Autowired
-	LocationDAO locationDao;
+	private LocationDAO locationDao;
 
 	/*
 	 * (non-Javadoc)
@@ -117,20 +120,52 @@ public class PetServiceImpl implements PetService {
 	 * PetDTO)
 	 */
 	@Override
-	@Transactional
 	public void createPublication(PetDTO petDTO) throws MascotaException, SizeException, PetTypeException, UserException, PublicationException {
-		Size size = sizeDao.getSizeById(petDTO.getSizeType());
-		PetType petType = petTypeDao.getPetTypeById(petDTO.getPetType());
+		Pet petToCreate = createPet(petDTO);
+		User userToCreate = createUser(petDTO);
+		createPublication(petToCreate, userToCreate);
+	}
 
-		Pet petToCreate = PetWrapper.toPet(petDTO, size, petType);
-		petDao.savePet(PetWrapper.toPet(petDTO, size, petType));
+	/**
+	 * @param petToCreate
+	 * @param userToCreate
+	 * @throws PublicationException
+	 */
+	private void createPublication(Pet petToCreate, User userToCreate) throws PublicationException {
+		publicationDao.createPublication(PublicationWrapper.toPublication(petToCreate, userToCreate));
+	}
 
+	/**
+	 * @param petDTO
+	 * @return
+	 * @throws UserException
+	 */
+	private User createUser(PetDTO petDTO) throws UserException {
 		Province province = provinceDao.getProvinceByProvinceId(petDTO.getUserDTO().getProvinceId());
 		Location location = locationDao.getLocationByLocationId(petDTO.getUserDTO().getLocationId());
 
 		User userToCreate = UserWrapper.toUser(petDTO.getUserDTO(), NORMAL_USER, province, location);
-		userDao.saveUser(userToCreate);
-		publicationDao.createPublication(PublicationWrapper.toPublication(petToCreate, userToCreate));
+		Long userIdCreated = userDao.saveUser(userToCreate);
+		userToCreate.setId(userIdCreated);
+		return userToCreate;
+	}
+
+	/**
+	 * @param petDTO
+	 * @return
+	 * @throws SizeException
+	 * @throws PetTypeException
+	 * @throws MascotaException
+	 */
+	private Pet createPet(PetDTO petDTO) throws SizeException, PetTypeException, MascotaException {
+		Size size = sizeDao.getSizeById(petDTO.getSizeType());
+
+		PetType petType = petTypeDao.getPetTypeById(petDTO.getPetType());
+
+		Pet petToCreate = PetWrapper.toPet(petDTO, size, petType);
+		Long petIdCreated = petDao.savePet(petToCreate);
+		petToCreate.setId(petIdCreated);
+		return petToCreate;
 	}
 
 	/*

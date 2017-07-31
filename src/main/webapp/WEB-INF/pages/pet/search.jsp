@@ -99,7 +99,8 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>Buscar Mascotas</h2>
+<!-- 						<h2>Buscar Mascotas</h2> -->
+					<img alt="buscar mascotas" width="55%" height="60%" src="<spring:url value="/resources/img/mascota_adopcion_transparente.png"/>">
 					</div>
 				</div>
 			</div>
@@ -207,7 +208,10 @@
 							<h6>Sexo:</h6>
 							<span><form:radiobutton path="sex" id="sex" name="sex"
 									itemValue="H" label="Hembra" /> <form:radiobutton path="sex"
-									id="sex" name="sex" itemValue="M" label="Macho" /> </span>
+									id="sex" name="sex" itemValue="M" label="Macho" /> 
+									<form:radiobutton path="sex" id="sex" name="sex"
+									itemValue="T" label="Todos" />
+							</span>
 						</div>
 					</div>
 					<div class="col-xs-8 col-md-3">
@@ -227,10 +231,11 @@
 				</div>
 				<div
 					class="col-md-7 col-md-offset-1 contact-form contact-info-section">
-					<button class="btn btn-common btn-lg" type="submit"
-						id="form-submit">
-						<i class="fa fa-search"></i>Buscar
-					</button>
+<!-- 					<button class="btn btn-common btn-lg" type="submit" -->
+<!-- 						id="form-submit"> -->
+<!-- 						<i class="fa fa-search"></i>Buscar -->
+<!-- 					</button> -->
+					<img id="btnImgSearch" alt="buscar mascotas" width="180px" height="60px" align="right" src="<spring:url value="/resources/img/boton-buscar2_transp.png"/>">
 				</div>
 			</form:form>
 		</div>
@@ -255,26 +260,30 @@
 									<a href="<spring:url value="/pets/${resultPetsSearch.publicationId}"/>">
 										<article class="blog-post-wrapper wow fadeIn"> <!-- Post Content -->
 										<section class="blog-post-content">
-										<div>
-											<img alt="${resultPetsSearch.petName}"
-												src="<spring:url value="/resources/img/pets/${resultPetsSearch.publicationId}/${resultPetsSearch.petName}_${resultPetsSearch.petId}_0.jpg"/>" />
-											<h2 class="blog-post-title">${resultPetsSearch.petName}</h2>
-										</div>
-										<div class="blog-post"></div>
-										<p>${resultPetsSearch.petAge}
-											- ${resultPetsSearch.petSex}
-											- ${resultPetsSearch.petBreed}
-										</p>
-										<p>${resultPetsSearch.ubicacion}</p>
-										</section></article>
+											<div>
+												<img alt="${resultPetsSearch.petName}"
+													src="<spring:url value="/resources/img/pets/${resultPetsSearch.publicationId}/${resultPetsSearch.petName}_${resultPetsSearch.petId}_0.jpg"/>" />
+												<h2 class="blog-post-title">${resultPetsSearch.petName}</h2>
+											</div>
+											<div class="blog-post"></div>
+											<label title="sexo">${resultPetsSearch.petSex}</label>
+											<label title="nombre">${resultPetsSearch.petAge}</label>
+											<label title="raza">${resultPetsSearch.petBreed}</label>
+											<label title="tamaño">${resultPetsSearch.petSize}</label>
+<!-- 											<div class="blog-post"></div> -->
+											<label title="ubicacion">${resultPetsSearch.ubicacion}</label>
+										</section>
+										</article>
 									</a>
 								</c:forEach>
 							</div>
 						</div>
 					</c:when>
 					<c:otherwise>
-						<h3>No se encontraron resultados para la busqueda, revise los
-							filtros aplicados.</h3>
+						<h3>No se encontraron resultados para la busqueda, revise los filtros aplicados.</h3>
+						<div class="wraptocenter">
+							<img id="btnImgSearch" height="300px" width="250px" alt="sin resultados" src="<spring:url value="/resources/img/perro-triste_transp.png"/>">
+						</div>
 					</c:otherwise>
 				</c:choose>
 			</c:when>
@@ -288,6 +297,10 @@
 	
 	$(document).ready(function() {
 		$('#userProvince').change();
+	});
+	
+	$('#btnImgSearch').click(function(){
+		searchfrom.submit();
 	});
 	
 	$('#userProvince').change(function() {

@@ -95,8 +95,13 @@ public class PublicationDAOImpl implements PublicationDAO {
 			criteria.add(eq("petAl.sex", searchDTO.getSex().trim().toUpperCase()));
 		}
 
-		criteria.add(eq("petAl.castrated", searchDTO.getCastrated()));
-		criteria.add(eq("petAl.vaccinated", searchDTO.getVaccinate()));
+		if(searchDTO.getCastrated()){
+			criteria.add(eq("petAl.castrated", searchDTO.getCastrated()));
+		}
+		
+		if(searchDTO.getVaccinate()){
+			criteria.add(eq("petAl.vaccinated", searchDTO.getVaccinate()));
+		}
 
 		if (searchDTO.getProvinceId() != null && searchDTO.getProvinceId() > ALL_DEFAULT_VALUE_COMBO_BOX) {
 			criteria.createAlias("user", "userAl");

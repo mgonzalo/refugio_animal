@@ -6,6 +6,7 @@ package com.refugioanimal.domain.services.impl;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import javax.mail.MessagingException;
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class ContactServiceImpl implements ContactService {
 	 * domain.services.dto.ContactDTO)
 	 */
 	@Override
+	@Transactional
 	public void saveContactAndSendEmail(ContactDTO contactDTO) throws MessagingException {
 
 		Contact contactToCreate = ContactWrapper.toContact(contactDTO);

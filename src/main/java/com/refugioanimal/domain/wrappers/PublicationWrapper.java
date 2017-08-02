@@ -46,7 +46,7 @@ public class PublicationWrapper {
 		for (Publication publication : publications) {
 			String petAge = publication.getPet().getAge() < 1 ? decimalFormat.format(publication.getPet().getAge()).toString() + " Meses" : decimalFormat.format(publication.getPet().getAge()).toString() + " Años";
 			String petSex = publication.getPet().getSex().equals("H") ? "Hembra" : "Macho";
-			String ubicacion = publication.getUser().getProvince().getProvinceName() + " - " + publication.getUser().getLocation().getLocationName();
+			String ubicacion = publication.getUser().getLocation().getLocationName()  + " - " + publication.getUser().getProvince().getProvinceName();
 			String petSize = publication.getPet().getSize().getDescription();
 			publicationDTOs.add(new PublicationDTO(publication.getId(), publication.getPet().getId(), publication.getPet().getPetName(), petAge, petSex, petSize, publication.getPet().getBreed(), ubicacion));
 		}

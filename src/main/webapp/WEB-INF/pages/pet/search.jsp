@@ -100,7 +100,7 @@
 				<div class="page-header-area">
 					<div class="page-header-content">
 <!-- 						<h2>Buscar Mascotas</h2> -->
-					<img alt="buscar mascotas" width="55%" height="60%" src="<spring:url value="/resources/img/mascota_adopcion_transparente.png"/>">
+					<img alt="buscar mascotas" width="60%" height="70%" src="<spring:url value="/resources/img/mascota_adopcion_transparente.png"/>">
 					</div>
 				</div>
 			</div>
@@ -266,11 +266,10 @@
 												<h2 class="blog-post-title">${resultPetsSearch.petName}</h2>
 											</div>
 											<div class="blog-post"></div>
-											<label title="sexo">${resultPetsSearch.petSex}</label>
-											<label title="nombre">${resultPetsSearch.petAge}</label>
-											<label title="raza">${resultPetsSearch.petBreed}</label>
-											<label title="tamaño">${resultPetsSearch.petSize}</label>
-<!-- 											<div class="blog-post"></div> -->
+											<label title="sexo">${resultPetsSearch.petSex}</label> - <label title="nombre">${resultPetsSearch.petAge}</label>
+											<div class="blog-post"></div>
+											<label title="raza">${resultPetsSearch.petBreed}</label> - <label title="tamaño">${resultPetsSearch.petSize}</label>
+											<div class="blog-post"></div>
 											<label title="ubicacion">${resultPetsSearch.ubicacion}</label>
 										</section>
 										</article>

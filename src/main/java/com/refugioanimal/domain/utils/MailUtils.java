@@ -19,8 +19,9 @@ import javax.mail.internet.MimeMessage;
 public class MailUtils {
 
 	private static final String PASSWORD_GMAIL_REFUGIO = "refugioanimal1234";
+	private static final String REFUGIO_ANIMAL_MAIL_FROM = "refigio.animal@gmail.com";
 	// Recipient's email ID needs to be mentioned.
-	private static final String REFUGIO_ANIMAL_MAIL = "refigio.animal@gmail.com";
+	private static final String REFUGIO_ANIMAL_MAIL_TO = "refuggio.animal@gmail.com";
 	// Assuming you are sending email from localhost
 	private static final String LOCALHOST = "smtp.gmail.com";
 
@@ -39,7 +40,7 @@ public class MailUtils {
 		Session session = Session.getInstance(properties,
 				  new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(REFUGIO_ANIMAL_MAIL, PASSWORD_GMAIL_REFUGIO);
+						return new PasswordAuthentication(REFUGIO_ANIMAL_MAIL_FROM, PASSWORD_GMAIL_REFUGIO);
 					}
 		});
 
@@ -51,13 +52,19 @@ public class MailUtils {
 			mimeMessage.setFrom(new InternetAddress(from));
 
 			// Set To: header field of the header.
-			mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(REFUGIO_ANIMAL_MAIL));
+			mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(REFUGIO_ANIMAL_MAIL_TO));
 
 			// Set Subject: header field
-			mimeMessage.setSubject(subject);
+			mimeMessage.setSubject("Consulta Web");
 
+			StringBuffer strb = new StringBuffer();
+			strb.append("Contacto Web \n");
+			strb.append(" 	Asunto : " + subject + "\n");
+			strb.append(" 	Email contacto : " + from + "\n");
+			strb.append(" 	Mensaje : " + message + "\n");
+			
 			// Now set the actual message
-			mimeMessage.setText(message);
+			mimeMessage.setText(strb.toString());
 
 			// Send message
 			Transport.send(mimeMessage);

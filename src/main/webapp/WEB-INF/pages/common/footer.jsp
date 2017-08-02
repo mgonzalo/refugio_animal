@@ -13,8 +13,8 @@
             <h3 class="small-title">Sobre Nosotros</h3>
             <c:out value="${commonData.aboutUsData.aboutUsDescription}" escapeXml="false"/>
             <div class="social-footer">
-              <a href="#"><i class="fa fa-facebook icon-round"></i></a>
-              <a href="#"><i class="fa fa-twitter icon-round"></i></a>
+           	  <a href="https://www.facebook.com/refugio.animal/" title="Facebook - Refugio Animal" target="_blank"><i class="fa fa-facebook icon-round"></i></a>
+              <a href="https://www.twitter.com/refugio.animal/" title="Twitter - Refugio Animal" target="_blank"><i class="fa fa-twitter icon-round"></i></a>
             </div>           
           </div><!-- Footer Widget Ends -->
           

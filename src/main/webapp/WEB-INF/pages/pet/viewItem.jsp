@@ -103,8 +103,8 @@
   <section class="animated-progress-area mt-50 contact-form-section section-padding">
     <div class="container">
      <div class="row">
-        <div class="col-md-10 col-md-offset-1 contact-form contact-info-section section split">
-			<h4>Datos de la Mascota:</h4>
+        <div class="col-md-12 col-md-offset-1 contact-form contact-info-section section split">
+			<h1 class="tit-section name-pet col-md-12">${data.petName}</h1>
 			<div class="form-group">
 				<div class="jcarousel-wrapper">
 		                <div class="jcarousel">
@@ -118,105 +118,49 @@
 		                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
 	            </div>
         	</div>
-            <div class="form-group">
-			  <h6>Nombre:</h6>
-			  <span><label class="label_viewitem">${data.petName}</label></span>
-            </div>
-            <div class="form-group">
-			  <h6>Edad:</h6>
-			  <span><label class="label_viewitem">${data.petAge}</label></span> 
-            </div>
-            <div class="form-group">
-			  <h6>Sexo:</h6>
-			  <span>
-			  	<label>
-			  		<img id="imgSexPet" alt="Sexo" src="<spring:url value="/resources/img/${data.petSex}_sex_icon.png"/>">
-			  	</label>
-			  </span>
-            </div>
-			<h4>Caracteristicas de la Mascota:</h4>
-            <div class="form-group">
-               <h6>Tipo:</h6>
-              	<span><label class="label_viewitem">${data.petPetType}</label></span>
-            </div>
-			<div class="form-group">
-			  <h6>Raza:</h6> 
-		      <span><label class="label_viewitem">${data.petBreed}</label></span>
-            </div>
-			<div class="form-group">
-               <h6>Tamaño:</h6>
-              <span><label class="label_viewitem">${data.petSize}</label></span>
-             </div>
-			<div class="form-group">
-              <h6>Castrado:</h6>
-              <span>
-              	<label>
-              		<img id="imgPetCastrated" alt="Castrado" src="<spring:url value="/resources/img/check_${data.petCastrated}.png"/>">
-              	</label>
-              </span>
-            </div>
-			<div class="form-group">
-  				<h6>Vacunado:</h6>              
-              <span>
-              	<label>
-                	<img id="imgPetVacunated" alt="Vacunado" src="<spring:url value="/resources/img/check_${data.petVaccinate}.png"/>">
-             	 </label>
-             </span>
-            </div>
-            <div class="form-group">
-              <h6>Cuidado especial:</h6>
-              <span>
-              	<label>
-              		<img id="imgPetSpecialCare" alt="Cuidado Especial" src="<spring:url value="/resources/img/check_${data.petSpecialCare}.png"/>">
-              	</label>
-              </span>
-            </div>
-           <div class="form-group">
-              <h6>Compatibilidad con otros animales:</h6>
-              <span>
-              	<label>
-              		<img id="imgPetCompatibility" alt="Compatibilidad con otros animales" src="<spring:url value="/resources/img/check_${data.petCompatibilityWithOtherAnimals}.png"/>">
-              	</label>
-              </span>
-            </div>
-            <div class="form-group">
-			  <h6>Descripcion:</h6>   
-              <span><label class="label_viewitem">${data.petDescription}</label></span>
-            </div>
-			<h4>Datos del dueño:</h4>
-			<div class="form-group">
-			<h6>Nombre y Apellido:</h6> 
-			<span><label class="label_viewitem">${data.ownerName}</label></span>
-           </div>
-			<div class="form-group">
-			<h6>Email:</h6>   
-			<span><label class="label_viewitem">${data.ownerEmail}</label></span>
-             </div>
-			<div class="form-group">
-			   <h6>Telefono:</h6>
-			  <span><label class="label_viewitem">${data.ownerPhone}</label></span>
-           </div>
-            <div class="form-group">
-              <h6>Provincia:</h6>
-			  <span><label class="label_viewitem">${data.ownerProvince}</label></span>
-             </div>
-			<div class="form-group">
-              <h6>Localidad:</h6>
-               <span><label class="label_viewitem">${data.ownerCity}</label></span>
-            </div>
-			<div class="form-group">
-			  <h6>Calle:</h6>
-			  <span><label class="label_viewitem">${data.ownerCity}</label></span>
-            </div>
+        	<ul class="data-list col-md-12">
+        		<li>Edad <b>${data.petAge}</b></li>
+        		<li>Sexo <b><img id="imgSexPet" alt="Sexo" src="<spring:url value="/resources/img/${data.petSex}_sex_icon.png"/>"></b></li>
+        		<li>Tipo <b>${data.petPetType}</b></li>
+        		<li>Raza <b>${data.petBreed}</b></li>
+        		<li>Tamaño <b>${data.petSize}</b></li>
+        		<li>Ubicacion <b>${data.ownerCity} - ${data.ownerProvince}</b></li>
+        		<li>Castrado <b><img id="imgPetCastrated" alt="Castrado" src="<spring:url value="/resources/img/check_${data.petCastrated}.png"/>"></b></li>
+        		<li>Vacunado <b><img id="imgPetVacunated" alt="Vacunado" src="<spring:url value="/resources/img/check_${data.petVaccinate}.png"/>"></b></li>
+        		<li>Cuidado Especial <b><img id="imgPetSpecialCare" alt="Cuidado Especial" src="<spring:url value="/resources/img/check_${data.petSpecialCare}.png"/>"></b></li>
+        		<li>Compatibilidad <b><img id="imgPetCompatibility" alt="Compatibilidad" src="<spring:url value="/resources/img/check_${data.petCompatibilityWithOtherAnimals}.png"/>"></b></li>
+        	</ul>
             <div class="clearfix"></div>
-            <div
-					class="col-md-7 col-md-offset-1 contact-form contact-info-section">
-<!-- 					<button class="btn btn-common btn-lg" type="submit" -->
-<!-- 						id="form-submit"> -->
-<!-- 						<i class="fa fa-search"></i>Buscar -->
-<!-- 					</button> -->
-					<img id="btnAdoptPet" alt="Adoptar!" width="180px" height="60px" align="right" src="<spring:url value="/resources/img/boton-adoptame_transp.png"/>">
+              <div class="clearfix"></div>
+            <div class="col-md-12" style="padding: 40px 15px 15px;">
+			  <h6>Descripcion</h6>   
+              <p class="inner-text">${data.petDescription}</p>
+            </div>
+            <div class="col-md-7 col-md-offset-1 contact-form contact-info-section" style="padding: 40px 0 15px;">
+<%-- 					<img id="btnAdoptPet" alt="Adoptar!" width="180px" height="60px" align="right" src="<spring:url value="/resources/img/boton-adoptame_transp.png"/>"> --%>
+				<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><img id="btnAdoptPet" alt="Adoptar!" width="180px" height="60px" align="right" src="<spring:url value="/resources/img/boton-adoptame_transp.png"/>">
+				</button>
 			</div>
+		<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog modal-lg">
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Adoptar</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>Some text in the modal.</p>
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="submit" class="btn btn-default" data-dismiss="modal">Adoptar</button>
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!-- Modal -->
         </div>
        </div>
      </div>
@@ -225,5 +169,18 @@
 
   <!-- Featured Section Ends -->
   <jsp:include page="../common/footer.jsp" />
+  
+  
+  <script type="text/javascript">
+  
+  $(document).ready(function() {
+
+//       $("#btnAdoptPet").click(function () {
+//     	  var w = window.open("", "popupWindow", "width=600, height=400, scrollbars=yes");
+//       });
+	});	
+  
+  </script>
+  
   </body>
 </html>

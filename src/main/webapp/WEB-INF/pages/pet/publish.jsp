@@ -106,7 +106,7 @@
 				<p>Para publicar, completa el siguiente formulario:</p>
 			</div>
 			<div
-				class="col-md-7 col-md-offset-1 contact-form contact-info-section">
+				class="col-md-8 col-md-offset-1 contact-form contact-info-section">
 				<spring:url value="/pets/new" var="petActionUrl" />
 				<form:form class="shake" role="form" action="${petActionUrl}"
 					modelAttribute="petDTO" method="post" id="formPublish"
@@ -239,24 +239,14 @@
 					</div>
 					<h4>Fotos de la Mascota:</h4>
 					<div class="form-group">
-						<h6>Foto Principal</h6>
-						<span><input type="file" id="nombre" class="form-control"
-							name="foto1"></span>
-						<div class="help-block with-errors"></div>
-					</div>
-					<div class="form-group">
-						<h6>Foto2</h6>
-						<span><input type="file" id="nombre" class="form-control"
-							name="foto2"></span>
-						<div class="help-block with-errors"></div>
-					</div>
-					<div class="form-group">
-						<h6>Foto3</h6>
-						<span><input type="file" id="nombre" class="form-control"
-							name="foto3"></span>
-						<div class="help-block with-errors"></div>
-					</div>
+						<h6>Elija las fotos que desea agregar de su mascota, con un maximo de 4 fotos.</h6>
+						<div>
+						<input type="file" id="petPhoto" class="form-control"
+							name="petPhoto" multiple>
+						</div>
 
+						<div class="help-block with-errors"></div>
+					</div>
 					<h4>Datos del Dueño:</h4>
 					<div class="form-group">
 						<form:input path="userDTO.name" placeholder="Nombre y Apellido"
